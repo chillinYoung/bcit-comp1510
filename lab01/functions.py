@@ -1,0 +1,70 @@
+
+def format_name(first_name, last_name):
+
+    first_name = first_name.replace(' ', '')
+    last_name = last_name.replace(' ', '')
+    first_name = first_name[0].upper() + first_name[1:].lower()
+    last_name = last_name[0].upper() + last_name[1:].lower()
+
+    print('The full name is: ' +  first_name + ' ' + last_name)
+
+
+def tripler(user_input):
+    print('Result: ' +  (user_input * 3))
+
+
+def this_year():
+    year = (1000 * 2) + (10 * 2)
+    print('This year is : ' + str(year))
+
+
+def base_conversion():
+
+    decimal_num = int(input("Enter the number to convert: "))
+    base_num = int(input("Enter base number between 2 and 9: "))
+    max_num = ((base_num ** 4) - 1)
+
+    if decimal_num <= max_num:
+        # calculate remainder and store it to variable
+        # keep qutient to calculate later one
+        first_num = str(decimal_num % base_num)
+        qutient = decimal_num // base_num
+
+        second_num = str(qutient % base_num)
+        qutient = qutient // base_num
+
+        third_num = str(qutient % base_num)
+        qutient = qutient // base_num
+
+        fourth_num = str(qutient % base_num)
+
+        print(fourth_num + third_num + second_num + first_num)
+
+    else:
+        # input number is more than 4 digits in base number
+        print("The number is too big to convert!")
+
+
+
+
+    
+
+if __name__ == '__main__':
+
+    # to test format_name()
+    input_first = input("Enter your first name: ")
+    input_last = input("Enter your last name: ")
+    format_name(input_first, input_last)
+
+    # to test tripler()
+    input_tripler = input("Enter any character or word to repeat: ")
+    tripler(input_tripler)
+
+    # to test this_year()
+    this_year()
+
+    # to test base_conversion()
+    base_conversion()
+
+
+
