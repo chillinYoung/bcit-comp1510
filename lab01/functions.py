@@ -1,10 +1,8 @@
 
 def format_name(first_name, last_name):
 
-    first_name = first_name.replace(' ', '')
-    last_name = last_name.replace(' ', '')
-    first_name = first_name[0].upper() + first_name[1:].lower()
-    last_name = last_name[0].upper() + last_name[1:].lower()
+    first_name = first_name.replace(' ', '').title()
+    last_name = last_name.replace(' ', '').title()
 
     print('The full name is: ' +  first_name + ' ' + last_name)
 
@@ -14,7 +12,7 @@ def tripler(user_input):
 
 
 def this_year():
-    year = (1000 * 2) + (10 * 2)
+    year = int((8 * (8 * 8 * 8 - 8) + 8) * 8/(8 + 8))
     print('This year is : ' + str(year))
 
 
