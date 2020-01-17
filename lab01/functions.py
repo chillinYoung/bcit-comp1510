@@ -1,14 +1,17 @@
+# Comp1510 202010 Lab 01
+# Young Kim (A01087377)
+
 
 def format_name(first_name, last_name):
 
     first_name = first_name.replace(' ', '').title()
     last_name = last_name.replace(' ', '').title()
 
-    print('The full name is: ' +  first_name + ' ' + last_name)
+    print('The full name is: ' + first_name + ' ' + last_name)
 
 
 def tripler(user_input):
-    print('Result: ' +  (user_input * 3))
+    print('Result: ' + (user_input * 3))
 
 
 def this_year():
@@ -18,9 +21,10 @@ def this_year():
 
 def base_conversion():
 
-    decimal_num = int(input("Enter the number to convert: "))
     base_num = int(input("Enter base number between 2 and 9: "))
     max_num = ((base_num ** 4) - 1)
+    print("The maximum number is " + str(max_num))
+    decimal_num = int(input("Enter the number to convert: "))
 
     first_num = ""
     second_num = ""
@@ -46,16 +50,12 @@ def base_conversion():
                     fourth_num = str(qutient % base_num)
 
         # print final converted number by adding nums reversed
-        print(fourth_num + third_num + second_num + first_num + "(" + str(base_num) + ")")
+        print(fourth_num + third_num + second_num + first_num)
 
     else:
         # input number is more than 4 digits in base number
         print("# ERROR: the number is too big to convert!")
 
-
-
-
-    
 
 if __name__ == '__main__':
 
@@ -77,6 +77,3 @@ if __name__ == '__main__':
     # to test base_conversion()
     base_conversion()
     print()
-
-
-
