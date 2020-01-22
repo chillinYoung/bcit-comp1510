@@ -18,20 +18,20 @@ def remainder(devidend, divisor):
     return devidend % divisor
 
 
-def get_qutients(devidend, divisor, result):
+def get_quotients(devidend, divisor, result):
     '''
-    The function to get a set of qutients by dividing given values
+    The function to get a set of quotients by dividing given values
 
     :param devidend: the number that will be devided
     :param divisor: the number that does the deviding
     :param result: the variable that has empty string value
-    :return: qutients in string
+    :return: quotients in string
     '''
     if devidend == 0:
         return result
 
     result += str(remainder(devidend, divisor))
-    return get_qutients(devidend // divisor, divisor, result)
+    return get_quotients(devidend // divisor, divisor, result)
 
 
 def base_conversion():
@@ -47,18 +47,18 @@ def base_conversion():
 
     if decimal_num <= max_num:
         converted_num = ""
-        print(get_qutients(decimal_num, base_num, converted_num)[::-1])
+        return get_quotients(decimal_num, base_num, converted_num)[::-1]
 
     else:
         # input number is more than 4 digits in base number
-        print("# ERROR: the number is too big to convert!")
+        return "# ERROR: the number is too big to convert!"
 
 
 def main():
     '''
     The function to test codes, which is invoked by "if __name__ == '__main__'"
     '''
-    base_conversion()
+    print(base_conversion())
 
 
 if __name__ == '__main__':
