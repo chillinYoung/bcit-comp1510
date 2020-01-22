@@ -21,13 +21,20 @@ def roll_die(number_of_rolls, number_of_sides):
 def create_name(length):
 
     if length > 0:
-        
+        alphabets = "abcdefghijklmnopqrstuvwxyz"
+        result = ''.join(random.sample(alphabets, length))
+        return result.title()
+
+    else:
+        return None
 
 
 def main():
-    # print(roll_die(2, 6))
-
-
+    print("2 rolls with 6 sides: " + str(roll_die(2, 6)))
+    print("4 rolls with 4 sides: " + str(roll_die(4, 4)))
+    print()
+    print("create name with 3 length: " + create_name(3))
+    print("create name with 7 length: " + create_name(7))
 
 
 if __name__ == "__main__":
