@@ -9,18 +9,20 @@ Intentionally generated errors
 
 def main():
     '''
-    main function to excute some error scripts
+    main function to execute some error scripts
+    such as ZeroDivisionError, IndexError, and TypeError.
     '''
 
     # ZeroDivisionError
-    will_error = 3 / 0
+    zero_div_error = 3 / 0
 
     # IndexError
-    say_hi = "Hello"
-    print(say_hi[5])
+    index_error_1 = "Hello"
+    print(index_error_1[5])
 
-    new_list = [0, 1, 2, 3, 4, 5]
-    print(new_list[10])
+    quiz = "quiz"
+    score = "score"
+    index_error_2 = "I got a good {0} in the last {2}" .format(quiz, score)
 
     # TypeError
     type_error_1 = '5' + 5

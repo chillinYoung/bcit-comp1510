@@ -1,14 +1,42 @@
 # Comp1510 202010 Lab 02
 # Young Kim (A01087377)
 
+
 '''
 Base conversion of a nubmer
 '''
 
 
+def remainder(devidend, divisor):
+    '''
+    The function to get remainder of division.
+
+    :param devidend: the number that will be devided
+    :param divisor: the number that does the deviding
+    :return: remainder of division result
+    '''
+    return devidend % divisor
+
+
+def get_qutients(devidend, divisor, result):
+    '''
+    The function to get a set of qutients by dividing given values
+
+    :param devidend: the number that will be devided
+    :param divisor: the number that does the deviding
+    :param result: the variable that has empty string value
+    :return: qutients in string
+    '''
+    if devidend == 0:
+        return result
+
+    result += str(remainder(devidend, divisor))
+    return get_qutients(devidend // divisor, divisor, result)
+
+
 def base_conversion():
     '''
-    Function to convert base number
+    Function to convert a number into a different base number
 
     :return: converted number in 4 digits
     '''
@@ -17,40 +45,20 @@ def base_conversion():
     print("The maximum number is " + str(max_num))
     decimal_num = int(input("Enter the number to convert: "))
 
-    first_num = ""
-    second_num = ""
-    third_num = ""
-    fourth_num = ""
-
     if decimal_num <= max_num:
-        # calculate remainder and store it to variable
-        # keep qutient to calculate later one
-        first_num = str(decimal_num % base_num)
-        qutient = decimal_num // base_num
-
-        if qutient != 0:
-            second_num = str(qutient % base_num)
-            qutient = qutient // base_num
-
-        if qutient != 0:
-            third_num = str(qutient % base_num)
-            qutient = qutient // base_num
-
-        if qutient != 0:
-            fourth_num = str(qutient % base_num)
-
-        # print final converted number by adding nums reversed
-        return (fourth_num + third_num + second_num + first_num)
+        converted_num = ""
+        print(get_qutients(decimal_num, base_num, converted_num)[::-1])
 
     else:
         # input number is more than 4 digits in base number
-        return "# ERROR: the number is too big to convert!"
+        print("# ERROR: the number is too big to convert!")
 
 
 def main():
-    # to test base_conversion()
-    print(base_conversion())
-    print()
+    '''
+    The function to test codes, which is invoked by "if __name__ == '__main__'"
+    '''
+    base_conversion()
 
 
 if __name__ == '__main__':
