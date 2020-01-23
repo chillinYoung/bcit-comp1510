@@ -35,7 +35,7 @@ def create_name(length):
     '''
     if length > 0:
         alphabets = "abcdefghijklmnopqrstuvwxyz"
-        result = ''.join(random.sample(alphabets, length))
+        result = ''.join(random.choices(alphabets, k=length))
         return result.title()
 
     else:
