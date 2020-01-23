@@ -56,7 +56,7 @@ def base_conversion():
 
 def main():
     '''
-    The function to test codes, which is invoked by "if __name__ == '__main__'"
+    Drives the program
     '''
     print(base_conversion())
 

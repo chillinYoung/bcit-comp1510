@@ -9,7 +9,7 @@ Intentionally generated errors
 
 def main():
     '''
-    main function to execute some error scripts
+    Execute some error scripts
     such as ZeroDivisionError, IndexError, and TypeError.
     '''
 
