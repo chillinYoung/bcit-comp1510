@@ -1,8 +1,7 @@
-# Comp1510 202010 Lab 02
-# Young Kim (A01087377)
-
-
 '''
+Comp1510 202010 Lab 02
+Young Kim (A01087377)
+
 Simple genarating program that can roll die and create a name
 '''
 
@@ -11,8 +10,7 @@ import random
 
 
 def roll_die(number_of_rolls, number_of_sides):
-    '''
-    The function to get the total score of rolling die
+    '''Generate random total score of rolling die.
 
     :param number_of_rolls: the number of how much roll the die
     :param number_of_sides: the number of sides of the die
@@ -27,8 +25,7 @@ def roll_die(number_of_rolls, number_of_sides):
 
 
 def create_name(length):
-    '''
-    The function to create a name with the given length
+    '''Create a random name with the given length.
 
     :param length: the length to create name
     :return: randomly chosen titled letters with the given length

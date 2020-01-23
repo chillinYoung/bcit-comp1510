@@ -1,15 +1,15 @@
-# Comp1510 202010 Lab 02
-# Young Kim (A01087377)
-
-
 '''
-Base conversion of a nubmer
+Comp1510 202010 Lab 02
+Young Kim (A01087377)
+
+Base conversion of a decimal nubmer
 '''
 
 
 def remainder(devidend, divisor):
-    '''
-    The function to get remainder of division.
+    '''Calculate remainder of division.
+
+    A simple calculation function that devides devidend by divisor.
 
     :param devidend: the number that will be devided
     :param divisor: the number that does the deviding
@@ -19,12 +19,15 @@ def remainder(devidend, divisor):
 
 
 def get_quotients(devidend, divisor, result):
-    '''
-    The function to get a set of quotients by dividing given values
+    '''Calculate quotient repeately.
+
+    A fuction that collects a set of quotients by dividing given value repeately.
 
     :param devidend: the number that will be devided
     :param divisor: the number that does the deviding
     :param result: the variable that has empty string value
+    :precondition: result parameter should be passed with
+                    the variable which has empty string
     :return: quotients in string
     '''
     if devidend == 0:
@@ -35,8 +38,9 @@ def get_quotients(devidend, divisor, result):
 
 
 def base_conversion():
-    '''
-    Function to convert a number into a different base number
+    '''Convert a base of the number.
+
+    A function that converts a decimal number into a given base number.
 
     :return: converted number in 4 digits
     '''
