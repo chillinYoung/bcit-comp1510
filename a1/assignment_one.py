@@ -10,16 +10,42 @@ import random
 
 
 def quotient(dividend, divisor):
+    '''Divide dividend by divisor.
+
+    :param dividend: the number to be divided
+    :param divisor: the number to divide
+    :return: quotient of the division
+    '''
     return dividend // divisor
 
 
 def remainder(dividend, divisor):
+    '''Divide dividend by divisor.
+
+    :param dividend: the number to be divided
+    :param divisor: the number to divide
+    :return: remainder of the division
+    '''
     return dividend % divisor
 
 
 def convert_single_roman(single_int, notation):
+    '''Convert single integer to Roman number.
+
+    :param single_int: a single number to convert to Roman numeral
+    :param notation: the list that has 4 notation characters
+                     (with 3 different Roman notation characters)
+    :precondition: the list must has 4 strings which are in order
+                   '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
+                   e.g. ["I", "X", "V", "I"] or ["C", "M", "D", "C"]
+    :postcondition: converts the single integer (place value)
+                    to the correct Roman number
+    :return: converted Roman number
+    '''
 
     # analized = [prefix, carry_number, quotient, remainder]
+    # above order is to make combination of the letters
+    # prefix is for exceptions such as 4 and 9
     # quotient and remainder is the result dividing single number by 5
     analized = [0, 0, quotient(single_int, 5), remainder(single_int, 5)]
 
@@ -36,15 +62,17 @@ def convert_single_roman(single_int, notation):
 
 
 def convert_to_roman_numeral(positive_int):
-    '''Convert positive integer to roman numeral.
+    '''Convert positive integer to Roman numeral.
 
     :param positive_int: positive integer
     :precondition: input number must be a positive integer in range 1 to 10_000
-    :postcondition: convert the correct roman numeral
-    :return: converted roman numeral in string
+    :postcondition: convert the correct Roman numeral
+    :return: converted Roman numeral in string
     '''
 
-    # notation order → prefix, carry number, quotient, remainder
+    # Roman notation order → prefix, carry number, quotient, remainder
+    # → in order '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
+    # prefix is for exceptions of the pattern which are 4 and 9
     # quotient and remainder is the result dividing single number by 5
     notation = [["I", "X", "V", "I"],   # ones (units)
                 ["X", "C", "L", "X"],   # tens
@@ -65,10 +93,23 @@ def convert_to_roman_numeral(positive_int):
     return result
 
     '''
-    Decomposition:
-    Pattern matching/data representation:
-    Abstraction/generalization:
-    Algorithm/automation:
+    Computational Thinking
+        -Decomposition: split each place value and calculate each single number
+                        and add each palce value again in string. In case of
+                        the number over thousand in this assignment, it is
+                        simply multiplied to the Roman alphabet.
+        -Pattern matching/data representation: The roman numbers have a pattern
+                        that is only using three different characters for each
+                        place value, and the numbers are the combination of
+                        those three characters. Also, the combination has a
+                        similar pattern in the number every five times.
+        -Abstraction/generalization: make the patterns to a generalized set of
+                        numbers so that it can be converted to the numbers of
+                        the any place value.
+        -Algorithm/automation: converting each place value of the nubmer to the
+                        equivalent Roman number, the function can be used for
+                        any nubmer of integer digits repeatedly if the proper
+                        Roman number notation is given.
     '''
 
 
@@ -78,6 +119,14 @@ def colour_mixer():
     '''
     return
 
+    '''
+    Computational Thinking
+        - Decomposition: 
+        - Pattern matching/data representation:
+        - Abstraction/generalization:
+        - Algorithm/automation:
+    '''
+
 
 def time_caculator():
     '''
@@ -85,12 +134,28 @@ def time_caculator():
     '''
     return
 
+    '''
+    Computational Thinking
+        - Decomposition: 
+        - Pattern matching/data representation:
+        - Abstraction/generalization:
+        - Algorithm/automation:
+    '''
+
 
 def compound_interest():
     '''
 
     '''
     return
+
+    '''
+    Computational Thinking
+        - Decomposition: 
+        - Pattern matching/data representation:
+        - Abstraction/generalization:
+        - Algorithm/automation:
+    '''
 
 
 def add(a, b):
@@ -125,12 +190,28 @@ def rock_paper_scissors():
     #     print("Computer's choice is: %s" % computer_choice,
     #           "Result: DRAW!")
 
+    '''
+    Computational Thinking
+        - Decomposition: 
+        - Pattern matching/data representation:
+        - Abstraction/generalization:
+        - Algorithm/automation:
+    '''
+
 
 def number_generator():
     '''
 
     '''
     return
+
+    '''
+    Computational Thinking
+        - Decomposition: 
+        - Pattern matching/data representation:
+        - Abstraction/generalization:
+        - Algorithm/automation:
+    '''
 
 
 def number_translator():
@@ -139,19 +220,24 @@ def number_translator():
     '''
     return
 
+    '''
+    Computational Thinking
+        - Decomposition: 
+        - Pattern matching/data representation:
+        - Abstraction/generalization:
+        - Algorithm/automation:
+    '''
+
 
 def main():
+    '''Drive the program.
+
+    The tests of the fuctions
     '''
 
-    '''
-
-    print(convert_to_roman_numeral(5234))
-
-    # units = ["I", "X", "V", "I"]
-    # tens = ["X", "C", "L", "X"]
-    # hundreds = ["C", "M", "D", "C"]
-
-    # print(convert_single_roman(9, units))
+    roman_input = int(input("Enter the integer between 1 and 10_000 " \
+                            "to convert to Roman number: "))
+    print("Result:", convert_to_roman_numeral(roman_input))
 
 
 if __name__ == "__main__":
