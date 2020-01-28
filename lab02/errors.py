@@ -1,16 +1,16 @@
-'''
+"""
 Comp1510 202010 Lab 02
 Young Kim (A01087377)
 
 Intentionally generated errors
-'''
+"""
 
 
 def main():
-    '''Execute some error scripts.
+    """Execute some error scripts.
 
     A function that occurs ZeroDivisionError, IndexError, and TypeError.
-    '''
+    """
 
     # ZeroDivisionError
     zero_div_error = 3 / 0

@@ -1,25 +1,13 @@
-'''
+"""
 Comp1510 202010 Lab 02
 Young Kim (A01087377)
 
 Base conversion of a decimal nubmer
-'''
-
-
-def remainder(devidend, divisor):
-    '''Calculate remainder of division.
-
-    A simple calculation function that devides devidend by divisor.
-
-    :param devidend: the number that will be devided
-    :param divisor: the number that does the deviding
-    :return: remainder of division result
-    '''
-    return devidend % divisor
+"""
 
 
 def get_quotients(devidend, divisor, result):
-    '''Calculate quotient repeately.
+    """Calculate quotient repeately.
 
     A fuction that collects a set of quotients by dividing given value repeately.
 
@@ -29,21 +17,21 @@ def get_quotients(devidend, divisor, result):
     :precondition: result parameter should be passed with
                     the variable which has empty string
     :return: quotients in string
-    '''
+    """
     if devidend == 0:
         return result
 
-    result += str(remainder(devidend, divisor))
+    result += str(devidend % divisor)
     return get_quotients(devidend // divisor, divisor, result)
 
 
 def base_conversion():
-    '''Convert a base of the number.
+    """Convert a base of the number.
 
     A function that converts a decimal number into a given base number.
 
     :return: converted number in 4 digits
-    '''
+    """
     base_num = int(input("Enter base number between 2 and 9: "))
     max_num = ((base_num ** 4) - 1)
     print("The maximum number is " + str(max_num))
@@ -59,9 +47,9 @@ def base_conversion():
 
 
 def main():
-    '''
+    """
     Drives the program
-    '''
+    """
     print(base_conversion())
 
 

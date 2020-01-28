@@ -1,21 +1,21 @@
-'''
+"""
 Comp1510 202010 Lab 02
 Young Kim (A01087377)
 
 Simple genarating program that can roll die and create a name
-'''
+"""
 
 
 import random
 
 
 def roll_die(number_of_rolls, number_of_sides):
-    '''Generate random total score of rolling die.
+    """Generate random total score of rolling die.
 
     :param number_of_rolls: the number of how much roll the die
     :param number_of_sides: the number of sides of the die
     :return: the total score of rolling die
-    '''
+    """
     if number_of_rolls > 0 and number_of_sides > 0:
         result = random.randint(number_of_rolls,
                                 (number_of_rolls * number_of_sides))
@@ -25,11 +25,11 @@ def roll_die(number_of_rolls, number_of_sides):
 
 
 def create_name(length):
-    '''Create a random name with the given length.
+    """Create a random name with the given length.
 
     :param length: the length to create name
     :return: randomly chosen titled letters with the given length
-    '''
+    """
     if length > 0:
         alphabets = "abcdefghijklmnopqrstuvwxyz"
         result = ''.join(random.choices(alphabets, k=length))
@@ -40,9 +40,9 @@ def create_name(length):
 
 
 def main():
-    '''
+    """
     Drives the program
-    '''
+    """
     print("--- Let's roll the die! ---")
     rolls = int(input("Enter the numbers of rolls: "))
     sides = int(input("Enter the numbers of sides of the die: "))
