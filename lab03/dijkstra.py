@@ -1,6 +1,8 @@
 """
 COMP 1510 Lab 03
 Young Kim (Set 1E, A01087377)
+
+A function to sort the list elements.
 """
 
 
@@ -11,7 +13,11 @@ def dijkstra(list):
     """Sort the list elements.
 
     In order to red, white, and blue
+
     :param list: the list that has red, white or blue as the elements
+    :precondition: the list that only containes red, white, or blue elements
+                   must be given.
+    :postcondition: sort the list in order 'red, white, and blue'
 
     >>> list = ['red']
     >>> dijkstra(list)
