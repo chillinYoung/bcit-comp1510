@@ -14,8 +14,7 @@ def convert_single_roman(single_int, notation):
     """Convert single integer to Roman number.
 
     :param single_int: a single number to convert to Roman numeral
-    :param notation: the list that has 4 notation characters
-                     (with 3 different Roman notation characters)
+    :param notation: the list that has 4 Roman alphabets
     :precondition: the list must has 4 strings which are in order
                    '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
                    e.g. ["I", "X", "V", "I"] or ["C", "M", "D", "C"]
@@ -50,6 +49,10 @@ def convert_to_roman_numeral(positive_int):
 
     >>> convert_to_roman_numeral(10000)
     'MMMMMMMMMM'
+    >>> convert_to_roman_numeral(49)
+    'XLIX'
+    >>> convert_to_roman_numeral(135)
+    'CXXXV'
     """
 
     # Roman notation order → prefix, carry number, quotient, remainder
@@ -67,11 +70,12 @@ def convert_to_roman_numeral(positive_int):
         single_convert = str(positive_int)[-3:]
         thousands_convert = int(str(positive_int)[0:-3])
 
-    # for the splited (1000 > x) number, convert every place value
+    # for the splited (1000 > x) number, convert every place value from back
     for i in range(len(single_convert)):
         single_int = int(single_convert[-(i+1)])
         result = (convert_single_roman(single_int, notation[i]) + result)
 
+    # for the splited (x >= 1000) number, multiply it to "M"
     result = ("M" * thousands_convert) + result
     return result
 
