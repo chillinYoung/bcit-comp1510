@@ -1,36 +1,17 @@
-'''
+"""
 COMP 1510 Assignment #1
 Young Kim (Set 1E, A01087377)
 
 The first assignment for COMP 1510.
-'''
+"""
 
 
 import random
-
-
-def quotient(dividend, divisor):
-    '''Divide dividend by divisor.
-
-    :param dividend: the number to be divided
-    :param divisor: the number to divide
-    :return: quotient of the division
-    '''
-    return dividend // divisor
-
-
-def remainder(dividend, divisor):
-    '''Divide dividend by divisor.
-
-    :param dividend: the number to be divided
-    :param divisor: the number to divide
-    :return: remainder of the division
-    '''
-    return dividend % divisor
+import doctest
 
 
 def convert_single_roman(single_int, notation):
-    '''Convert single integer to Roman number.
+    """Convert single integer to Roman number.
 
     :param single_int: a single number to convert to Roman numeral
     :param notation: the list that has 4 notation characters
@@ -41,17 +22,15 @@ def convert_single_roman(single_int, notation):
     :postcondition: converts the single integer (place value)
                     to the correct Roman number
     :return: converted Roman number
-    '''
+    """
 
     # analized = [prefix, carry_number, quotient, remainder]
-    # above order is to make combination of the letters
     # prefix is for exceptions such as 4 and 9
-    # quotient and remainder is the result dividing single number by 5
-    analized = [0, 0, quotient(single_int, 5), remainder(single_int, 5)]
+    analized = [0, 0, (single_int // 5), (single_int % 5)]
 
-    if analized[3] == 4 and analized[2] == 0:
+    if single_int == 4:
         analized = [1, 0, 1, 0]
-    elif analized[3] == 4 and analized[2] == 1:
+    elif single_int == 9:
         analized = [1, 1, 0, 0]
 
     result = ""
@@ -62,29 +41,33 @@ def convert_single_roman(single_int, notation):
 
 
 def convert_to_roman_numeral(positive_int):
-    '''Convert positive integer to Roman numeral.
+    """Convert positive integer to Roman numeral.
 
     :param positive_int: positive integer
     :precondition: input number must be a positive integer in range 1 to 10_000
     :postcondition: convert the correct Roman numeral
     :return: converted Roman numeral in string
-    '''
+
+    >>> convert_to_roman_numeral(10000)
+    'MMMMMMMMMM'
+    """
 
     # Roman notation order → prefix, carry number, quotient, remainder
     # → in order '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
     # prefix is for exceptions of the pattern which are 4 and 9
-    # quotient and remainder is the result dividing single number by 5
     notation = [["I", "X", "V", "I"],   # ones (units)
                 ["X", "C", "L", "X"],   # tens
                 ["C", "M", "D", "C"]]   # hundreds
     result = ""
 
+    # split given number to (x >= 1000) and (1000 > x)
     single_convert = str(positive_int)
     thousands_convert = 0
     if positive_int >= 1000:
         single_convert = str(positive_int)[-3:]
         thousands_convert = int(str(positive_int)[0:-3])
 
+    # for the splited (1000 > x) number, convert every place value
     for i in range(len(single_convert)):
         single_int = int(single_convert[-(i+1)])
         result = (convert_single_roman(single_int, notation[i]) + result)
@@ -92,7 +75,7 @@ def convert_to_roman_numeral(positive_int):
     result = ("M" * thousands_convert) + result
     return result
 
-    '''
+    """
     Computational Thinking
         -Decomposition: split each place value and calculate each single number
                         and add each palce value again in string. In case of
@@ -102,7 +85,7 @@ def convert_to_roman_numeral(positive_int):
                         that is only using three different characters for each
                         place value, and the numbers are the combination of
                         those three characters. Also, the combination has a
-                        similar pattern in the number every five times.
+                        similar pattern in the number every five and ten times.
         -Abstraction/generalization: make the patterns to a generalized set of
                         numbers so that it can be converted to the numbers of
                         the any place value.
@@ -110,67 +93,59 @@ def convert_to_roman_numeral(positive_int):
                         equivalent Roman number, the function can be used for
                         any nubmer of integer digits repeatedly if the proper
                         Roman number notation is given.
-    '''
+    """
 
 
 def colour_mixer():
-    '''
+    """
 
-    '''
+    """
     return
 
-    '''
+    """
     Computational Thinking
         - Decomposition: 
         - Pattern matching/data representation:
         - Abstraction/generalization:
         - Algorithm/automation:
-    '''
+    """
 
 
 def time_caculator():
-    '''
+    """
 
-    '''
+    """
     return
 
-    '''
+    """
     Computational Thinking
         - Decomposition: 
         - Pattern matching/data representation:
         - Abstraction/generalization:
         - Algorithm/automation:
-    '''
+    """
 
 
 def compound_interest():
-    '''
+    """
 
-    '''
+    """
     return
 
-    '''
+    """
     Computational Thinking
         - Decomposition: 
         - Pattern matching/data representation:
         - Abstraction/generalization:
         - Algorithm/automation:
-    '''
-
-
-def add(a, b):
-    return a + b
-
-
-def is_odd_num(num):
-    return (num % 2 == 1)
+    """
 
 
 def rock_paper_scissors():
-    '''Rock, paper, scissors game.
+    """Rock, paper, scissors game.
 
     A function that play one round of rock, paper, scissors with computer.
-    '''
+    """
     # user_choice = (input("Enter the one of the 'Rock, Paper, Scissors': ")
     #                .replace(" ", "").lower())
     # computer_choice = random.randint(0, 2)
@@ -190,54 +165,51 @@ def rock_paper_scissors():
     #     print("Computer's choice is: %s" % computer_choice,
     #           "Result: DRAW!")
 
-    '''
+    """
     Computational Thinking
         - Decomposition: 
         - Pattern matching/data representation:
         - Abstraction/generalization:
         - Algorithm/automation:
-    '''
+    """
 
 
 def number_generator():
-    '''
+    """
 
-    '''
+    """
     return
 
-    '''
+    """
     Computational Thinking
         - Decomposition: 
         - Pattern matching/data representation:
         - Abstraction/generalization:
         - Algorithm/automation:
-    '''
+    """
 
 
 def number_translator():
-    '''
+    """
 
-    '''
+    """
     return
 
-    '''
+    """
     Computational Thinking
         - Decomposition: 
         - Pattern matching/data representation:
         - Abstraction/generalization:
         - Algorithm/automation:
-    '''
+    """
 
 
 def main():
-    '''Drive the program.
+    """Drive the program.
 
     The tests of the fuctions
-    '''
-
-    roman_input = int(input("Enter the integer between 1 and 10_000 " \
-                            "to convert to Roman number: "))
-    print("Result:", convert_to_roman_numeral(roman_input))
+    """
+    doctest.testmod()
 
 
 if __name__ == "__main__":
