@@ -53,6 +53,9 @@ def dijkstra(list):
 
 
 def main():
+    """
+    Excute the docstring in this module.
+    """
     doctest.testmod()
 
 
