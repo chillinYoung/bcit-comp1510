@@ -253,10 +253,19 @@ def number_generator():
 
 
 def number_translator():
-    """
+    """Translate alphabets to corresponding numbers
 
     """
-    return
+    orig_tel = input("Enter the 10-digit phone numbers in alphabets" \
+                     " (e.g. ABC-DEF-GHIJ): ")
+    result = ""
+    for char in orig_tel:
+        if char.isalpha():
+            result += str(((ord(char) - 65) // 3) + 2)
+        else:
+            result += char
+
+    return result
 
     """
     Computational Thinking
