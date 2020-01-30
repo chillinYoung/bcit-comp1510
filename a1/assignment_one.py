@@ -101,17 +101,39 @@ def convert_to_roman_numeral(positive_int):
 
 
 def colour_mixer():
-    """
+    """Mix two primary colours.
 
+    :precondition: user must input two different primary colours
+    :postcondition: the correct secondary colour
     """
-    return
+    print("Primary Colours: Red, Yellow, Blue")
+    colour1 = input("Enter the first primary colour to mix: ").strip().lower()
+    colour2 = input("Enter the second primary colour to mix: ").strip().lower()
+
+    orange = ["red", "yellow"]
+    green = ["yellow", "blue"]
+    purple = ["red", "blue"]
+
+    if colour1 == colour2:
+        print("Error: you entered same colour.")
+    elif (colour1 in orange) and (colour2 in orange):
+        print("Orange")
+    elif (colour1 in green) and (colour2 in green):
+        print("Green")
+    elif (colour1 in purple) and (colour2 in purple):
+        print("Purple")
+    else:
+        print("Error: invalid input.")
 
     """
     Computational Thinking
-        - Decomposition: 
-        - Pattern matching/data representation:
-        - Abstraction/generalization:
-        - Algorithm/automation:
+        - Decomposition: N/A
+        - Pattern matching/data representation: two of primary colour are mixed
+                        to a secondary colour regardless the input order.
+        - Abstraction/generalization: print result color after two prompt input
+                        colours are validated and checked.
+        - Algorithm/automation: using list and list operator to check primary
+                        colours regardless the order of input.
     """
 
 
