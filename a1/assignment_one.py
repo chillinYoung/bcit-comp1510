@@ -175,18 +175,33 @@ def time_calculator(seconds):
     """
 
 
-def compound_interest():
-    """
+def compound_interest(principal, annual_interest, compounded_nums, years):
+    """Calculate compound interest.
 
+    :param principal: principal amount in a float
+    :param annual_interest: the annual interest rate in a float
+    :param compound_interest: the number of times per year the interest is
+                              compounded in an integer
+    :param years: the number of years the account will be left alone to grow
+    :precondition: principal and annual interest must be given as an float, and
+                   compound interest and the number of years must be given as
+                   an integer
+    :postcondition: calculate correct compound interest added to principal
+    :return: the amount of money after the given time
     """
-    return
+    final_balance = (principal * (1 + (annual_interest / compounded_nums))
+                     ** (compounded_nums * years))
+    return final_balance
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation:
-        -Abstraction/generalization:
-        -Algorithm/automation:
+        -Decomposition: divide formula with parenthesis by paying attention to
+                        the operator precedence.
+        -Pattern matching/data representation: compound interest math formula.
+        -Abstraction/generalization: express a mathematical fomula in the
+                        function using python operators.
+        -Algorithm/automation: assign calculated result to a variable, and
+                        return it.
     """
 
 
@@ -228,7 +243,6 @@ def number_generator():
 
     """
     return
-
     """
     Computational Thinking
         -Decomposition: 
@@ -254,9 +268,9 @@ def number_translator():
 
 
 def main():
-    """Drive the program.
+    """
+    Test the functions in this module.
 
-    The tests of the fuctions
     """
     doctest.testmod()
 
