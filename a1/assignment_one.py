@@ -10,35 +10,6 @@ import random
 import doctest
 
 
-def convert_single_roman(single_int, notation):
-    """Convert single integer to Roman number.
-
-    :param single_int: a single number to convert to Roman numeral
-    :param notation: the list that has 4 Roman alphabets
-    :precondition: the list must has 4 strings which are in order
-                   '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
-                   e.g. ["I", "X", "V", "I"] or ["C", "M", "D", "C"]
-    :postcondition: converts the single integer (place value)
-                    to the correct Roman number
-    :return: converted Roman number
-    """
-
-    # analized = [prefix, carry_number, quotient, remainder]
-    # prefix is for exceptions such as 4 and 9
-    analized = [0, 0, (single_int // 5), (single_int % 5)]
-
-    if single_int == 4:
-        analized = [1, 0, 1, 0]
-    elif single_int == 9:
-        analized = [1, 1, 0, 0]
-
-    result = ""
-    for i in range(4):
-        result += notation[i] * analized[i]
-
-    return result
-
-
 def convert_to_roman_numeral(positive_int):
     """Convert positive integer to Roman numeral.
 
@@ -100,6 +71,35 @@ def convert_to_roman_numeral(positive_int):
     """
 
 
+def convert_single_roman(single_int, notation):
+    """Convert single integer to Roman number.
+
+    :param single_int: a single number to convert to Roman numeral
+    :param notation: the list that has 4 Roman alphabets
+    :precondition: the list must has 4 strings which are in order
+                   '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
+                   e.g. ["I", "X", "V", "I"] or ["C", "M", "D", "C"]
+    :postcondition: converts the single integer (place value)
+                    to the correct Roman number
+    :return: converted Roman number
+    """
+
+    # analized = [prefix, carry_number, quotient, remainder]
+    # prefix is for exceptions such as 4 and 9
+    analized = [0, 0, (single_int // 5), (single_int % 5)]
+
+    if single_int == 4:
+        analized = [1, 0, 1, 0]
+    elif single_int == 9:
+        analized = [1, 1, 0, 0]
+
+    result = ""
+    for i in range(4):
+        result += notation[i] * analized[i]
+
+    return result
+
+
 def colour_mixer():
     """Mix two primary colours.
 
@@ -127,28 +127,51 @@ def colour_mixer():
 
     """
     Computational Thinking
-        - Decomposition: N/A
-        - Pattern matching/data representation: two of primary colour are mixed
+        -Decomposition: get user input, compare/validate data, and print
+                        correct secondary colour.
+        -Pattern matching/data representation: two of primary colour are mixed
                         to a secondary colour regardless the input order.
-        - Abstraction/generalization: print result color after two prompt input
+        -Abstraction/generalization: print result color after two prompt input
                         colours are validated and checked.
-        - Algorithm/automation: using list and list operator to check primary
+        -Algorithm/automation: using list and list operator to check primary
                         colours regardless the order of input.
     """
 
 
-def time_caculator():
-    """
+def time_calculator(seconds):
+    """Convert seconds to day, hour, minute, and seconds.
 
+    :param seconds: seconds in positive integer
+    :precondition: seconds must be given with only positive integer
+    :postcondition: convert seconds to correct day, hour, minute, and seconds
+
+    >>> time_calculator(92464)
+    '1 1 41 4'
+    >>> time_calculator(361)
+    '0 0 6 1'
+    >>> time_calculator(777777)
+    '9 0 2 57'
     """
-    return
+    # time = [day, hour, minute, second] in seconds
+    time = [(60 * 60 * 24), (60 * 60), 60, 1]
+    result = []
+    for t in time:
+        result.append(str(seconds // t))
+        seconds = (seconds % t)
+    print(' '.join(result))
 
     """
     Computational Thinking
-        - Decomposition: 
-        - Pattern matching/data representation:
-        - Abstraction/generalization:
-        - Algorithm/automation:
+        -Decomposition: divide seconds until it gets 0, store data, and print
+                        result in given format.
+        -Pattern matching/data representation: divide input repeatedly and get
+                        quotients.
+        -Abstraction/generalization: divide given number (seconds) until it
+                        gets 0, and every quotient is part of a result
+                        sequentially.
+        -Algorithm/automation: divide given number by each converted time in
+                        the time list, and append the result to result list.
+                        Combine result list items with join method.
     """
 
 
@@ -160,10 +183,10 @@ def compound_interest():
 
     """
     Computational Thinking
-        - Decomposition: 
-        - Pattern matching/data representation:
-        - Abstraction/generalization:
-        - Algorithm/automation:
+        -Decomposition: 
+        -Pattern matching/data representation:
+        -Abstraction/generalization:
+        -Algorithm/automation:
     """
 
 
@@ -193,10 +216,10 @@ def rock_paper_scissors():
 
     """
     Computational Thinking
-        - Decomposition: 
-        - Pattern matching/data representation:
-        - Abstraction/generalization:
-        - Algorithm/automation:
+        -Decomposition: 
+        -Pattern matching/data representation:
+        -Abstraction/generalization:
+        -Algorithm/automation:
     """
 
 
@@ -208,10 +231,10 @@ def number_generator():
 
     """
     Computational Thinking
-        - Decomposition: 
-        - Pattern matching/data representation:
-        - Abstraction/generalization:
-        - Algorithm/automation:
+        -Decomposition: 
+        -Pattern matching/data representation:
+        -Abstraction/generalization:
+        -Algorithm/automation:
     """
 
 
@@ -223,10 +246,10 @@ def number_translator():
 
     """
     Computational Thinking
-        - Decomposition: 
-        - Pattern matching/data representation:
-        - Abstraction/generalization:
-        - Algorithm/automation:
+        -Decomposition: 
+        -Pattern matching/data representation:
+        -Abstraction/generalization:
+        -Algorithm/automation:
     """
 
 
