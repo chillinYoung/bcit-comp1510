@@ -22,8 +22,6 @@ def convert_to_roman_numeral(positive_int):
     'MMMMMMMMMM'
     >>> convert_to_roman_numeral(49)
     'XLIX'
-    >>> convert_to_roman_numeral(135)
-    'CXXXV'
     """
 
     # Roman notation order → prefix, carry number, quotient, remainder
@@ -145,8 +143,6 @@ def time_calculator(seconds):
     :precondition: seconds must be given with only positive integer
     :postcondition: convert seconds to correct day, hour, minute, and seconds
 
-    >>> time_calculator(92464)
-    '1 1 41 4'
     >>> time_calculator(361)
     '0 0 6 1'
     >>> time_calculator(777777)
@@ -239,16 +235,20 @@ def rock_paper_scissors():
 
 
 def number_generator():
-    """
+    """Generate 6 unigue numbers.
 
+    :postcondition: generate unique 6 numbers randomly between 1 and 48
+    :return: a list that contains 6 unique numbers
     """
-    return
+    numbers = random.sample(range(1, 49), 6)
+    return sorted(numbers)
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation:
-        -Abstraction/generalization:
-        -Algorithm/automation:
+        -Decomposition: get 6 unigue number from the range, and sort the list.
+        -Pattern matching/data representation: sorted random numbers
+        -Abstraction/generalization: use sample method in the random module.
+        -Algorithm/automation: assign a list of sampled numbers to a variable,
+                        and return the sorted and copied list.
     """
 
 
