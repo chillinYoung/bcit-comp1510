@@ -256,7 +256,7 @@ def number_translator():
     """Translate alphabets to corresponding numbers
 
     """
-    orig_tel = input("Enter the 10-digit phone numbers in alphabets" \
+    orig_tel = input("Enter the 10-digit phone numbers in alphabets"
                      " (e.g. ABC-DEF-GHIJ): ")
     result = ""
     for char in orig_tel:
