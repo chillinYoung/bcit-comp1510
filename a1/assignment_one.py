@@ -144,9 +144,9 @@ def time_calculator(seconds):
     :postcondition: convert seconds to correct day, hour, minute, and seconds
 
     >>> time_calculator(361)
-    '0 0 6 1'
+    0 0 6 1
     >>> time_calculator(777777)
-    '9 0 2 57'
+    9 0 2 57
     """
     # time = [day, hour, minute, second] in seconds
     time = [(60 * 60 * 24), (60 * 60), 60, 1]
@@ -205,32 +205,45 @@ def rock_paper_scissors():
     """Rock, paper, scissors game.
 
     A function that play one round of rock, paper, scissors with computer.
+
+    :precondition: the prompt input must be one of 'rock, paper, and scissors'.
+    :postcondition: print computer's choice and the play result.
     """
-    # user_choice = (input("Enter the one of the 'Rock, Paper, Scissors': ")
-    #                .replace(" ", "").lower())
-    # computer_choice = random.randint(0, 2)
-    # choice_list = ["rock", "paper", "scissors"]
+    choice_input = (input("Enter the one of the 'Rock, Paper, Scissors': ")
+                    .replace(" ", "").capitalize())
+    choice_list = ["Rock", "Paper", "Scissors"]
+    computer = random.randint(0, 2)
 
-    # if user_choice not in choice_list:
-    #     print("ERROR: Invalid Input:",
-    #           "Please enter 'rock' or 'paper' or 'scissors'")
-    # else:
-    #     user_choice = choice_list.index(user_choice)
+    if choice_input not in choice_list:
+        print("ERROR: Invalid Input")
 
-    #     if is_odd_num(add(user_choice, computer_choice)):
-            
+    else:
+        user = choice_list.index(choice_input)
 
+        if (user - computer == 1) or (user - computer == -2):
+            print(f"Computer's choice: {choice_list[computer]}")
+            print("You Won!!")
 
-    # elif user_choice == computer_choice:
-    #     print("Computer's choice is: %s" % computer_choice,
-    #           "Result: DRAW!")
+        elif (computer - user == 1) or (computer - user == -2):
+            print(f"Computer's choice: {choice_list[computer]}")
+            print("You Lost...")
+
+        else:
+            print(f"Computer's choice: {choice_list[computer]}")
+            print("DRAW")
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation:
-        -Abstraction/generalization:
-        -Algorithm/automation:
+        -Decomposition: get user input, validate input, compare data, and
+                        print result.
+        -Pattern matching/data representation: smaller number wins for 0 and 2,
+                        but bigger number wins for other cases.
+        -Abstraction/generalization: three cases which are user wins, computer
+                        wins, or draw.
+        -Algorithm/automation: clear the user input and convert it to a number
+                        using list, then compare it to genarated random number
+                        between 0 and 2. If it is same, draw.
+                        If user subtract computer is 1 or -2, user wins.
     """
 
 
@@ -261,7 +274,7 @@ def number_translator():
     :return: converted integer phone numbers
     """
     orig_tel = input("Enter the 10-character phone numbers in alphabet"
-                     " (e.g. ABC-DEF-GHIJ): ").strip().upper()
+                     " (e.g. ABC-DEF-GHIJ): ").replace(" ", "").upper()
     result = ""
     for tel in orig_tel:
         if ord(tel) in range(65, 80):
