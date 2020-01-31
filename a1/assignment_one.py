@@ -39,19 +39,19 @@ def convert_to_roman_numeral(positive_int):
         single_convert = str(positive_int)[-3:]
         thousands_convert = int(str(positive_int)[0:-3])
 
-    # for the splited (1000 > x) number, convert every place value from back
+    # for the split (1000 > x) number, convert every place value from back
     for i in range(len(single_convert)):
-        single_int = int(single_convert[-(i+1)])
-        result = (convert_single_roman(single_int, notation[i]) + result)
+        single_int = int(single_convert[-(i + 1)])    # from the back -1, -2...
+        result = convert_single_roman(single_int, notation[i]) + result
 
-    # for the splited (x >= 1000) number, multiply it to "M"
+    # for the split (x >= 1000) number, multiply it to "M"
     result = ("M" * thousands_convert) + result
     return result
 
     """
     Computational Thinking
         -Decomposition: split each place value and calculate each single number
-                        and add each palce value again in string. In case of
+                        and add each place value again in string. In case of
                         the number over thousand in this assignment, it is
                         simply multiplied to the Roman alphabet.
         -Pattern matching/data representation: The roman numbers have a pattern
@@ -62,9 +62,9 @@ def convert_to_roman_numeral(positive_int):
         -Abstraction/generalization: make the patterns to a generalized set of
                         numbers so that it can be converted to the numbers of
                         the any place value.
-        -Algorithm/automation: converting each place value of the nubmer to the
+        -Algorithm/automation: converting each place value of the number to the
                         equivalent Roman number, the function can be used for
-                        any nubmer of integer digits repeatedly if the proper
+                        any number of integer digits repeatedly if the proper
                         Roman number notation is given.
     """
 
@@ -82,18 +82,19 @@ def convert_single_roman(single_int, notation):
     :return: converted Roman number
     """
 
-    # analized = [prefix, carry_number, quotient, remainder]
+    # analyzed = [prefix, carry_number, quotient, remainder]
     # prefix is for exceptions such as 4 and 9
-    analized = [0, 0, (single_int // 5), (single_int % 5)]
+    analyzed = [0, 0, (single_int // 5), (single_int % 5)]
 
+    # in case of 4 and 9 (exceptions)
     if single_int == 4:
-        analized = [1, 0, 1, 0]
+        analyzed = [1, 0, 1, 0]
     elif single_int == 9:
-        analized = [1, 1, 0, 0]
+        analyzed = [1, 1, 0, 0]
 
     result = ""
     for i in range(4):
-        result += notation[i] * analized[i]
+        result += notation[i] * analyzed[i]
 
     return result
 
@@ -152,8 +153,8 @@ def time_calculator(seconds):
     time = [(60 * 60 * 24), (60 * 60), 60, 1]
     result = []
     for t in time:
-        result.append(str(seconds // t))
-        seconds = (seconds % t)
+        result.append(str(seconds // t))    # quotient
+        seconds = (seconds % t)             # remainder → re-divide
     print(' '.join(result))
 
     """
@@ -184,6 +185,11 @@ def compound_interest(principal, annual_interest, compounded_nums, years):
                    an integer
     :postcondition: calculate correct compound interest added to principal
     :return: the amount of money after the given time
+
+    >>> compound_interest(30000, 0.05, 2, 3)
+    34790.8025463867
+    >>> compound_interest(135000, 0.3, 5, 30)
+    843749557.7619915
     """
     final_balance = (principal * (1 + (annual_interest / compounded_nums))
                      ** (compounded_nums * years))
@@ -194,7 +200,7 @@ def compound_interest(principal, annual_interest, compounded_nums, years):
         -Decomposition: divide formula with parenthesis by paying attention to
                         the operator precedence.
         -Pattern matching/data representation: compound interest math formula.
-        -Abstraction/generalization: express a mathematical fomula in the
+        -Abstraction/generalization: express a mathematical formula in the
                         function using python operators.
         -Algorithm/automation: assign calculated result to a variable, and
                         return it.
@@ -209,21 +215,24 @@ def rock_paper_scissors():
     :precondition: the prompt input must be one of 'rock, paper, and scissors'.
     :postcondition: print computer's choice and the play result.
     """
-    choice_input = (input("Enter the one of the 'Rock, Paper, Scissors': ")
-                    .replace(" ", "").capitalize())
+    user_input = (input("Enter the one of the 'Rock, Paper, Scissors': ")
+                  .replace(" ", "").capitalize())
     choice_list = ["Rock", "Paper", "Scissors"]
     computer = random.randint(0, 2)
 
-    if choice_input not in choice_list:
+    if user_input not in choice_list:
         print("ERROR: Invalid Input")
 
     else:
-        user = choice_list.index(choice_input)
+        # change user input to a number (using in)
+        user = choice_list.index(user_input)
 
+        # the case for user wins
         if (user - computer == 1) or (user - computer == -2):
             print(f"Computer's choice: {choice_list[computer]}")
             print("You Won!!")
 
+        # the case for user loses
         elif (computer - user == 1) or (computer - user == -2):
             print(f"Computer's choice: {choice_list[computer]}")
             print("You Lost...")
@@ -241,14 +250,14 @@ def rock_paper_scissors():
         -Abstraction/generalization: three cases which are user wins, computer
                         wins, or draw.
         -Algorithm/automation: clear the user input and convert it to a number
-                        using list, then compare it to genarated random number
+                        using list, then compare it to generated random number
                         between 0 and 2. If it is same, draw.
                         If user subtract computer is 1 or -2, user wins.
     """
 
 
 def number_generator():
-    """Generate 6 unigue numbers.
+    """Generate 6 unique numbers.
 
     :postcondition: generate unique 6 numbers randomly between 1 and 48
     :return: a list that contains 6 unique numbers
@@ -257,7 +266,7 @@ def number_generator():
     return sorted(numbers)
     """
     Computational Thinking
-        -Decomposition: get 6 unigue number from the range, and sort the list.
+        -Decomposition: get 6 unique number from the range, and sort the list.
         -Pattern matching/data representation: sorted random numbers
         -Abstraction/generalization: use sample method in the random module.
         -Algorithm/automation: assign a list of sampled numbers to a variable,
@@ -277,16 +286,21 @@ def number_translator():
                      " (e.g. ABC-DEF-GHIJ): ").replace(" ", "").upper()
     result = ""
     for tel in orig_tel:
+        # 'A' to 'O'
         if ord(tel) in range(65, 80):
-            result += str(((ord(char) - 65) // 3) + 2)
+            result += str(((ord(tel) - 65) // 3) + 2)
+        # 'P, Q, R, S'
         elif ord(tel) in range(80, 84):
             result += "7"
+        # 'T, U, V'
         elif ord(tel) in range(84, 87):
             result += "8"
+        # 'W, X, Y, Z'
         elif ord(tel) in range(87, 91):
             result += "9"
+        # keep dashes
         else:
-            result += tel    # to keep dashes
+            result += tel
 
     return result
 
@@ -297,7 +311,7 @@ def number_translator():
         -Pattern matching/data representation: the alphabet has range, and each
                         range of characters corresponds to a specific number.
         -Abstraction/generalization: use ord() to range it, range(65, 80) is
-                        converted with mathemtical formula, and last of it are
+                        converted with mathematical formula, and last of it are
                         converted directly, and store it to result string.
         -Algorithm/automation: for alphabet between A and O,
                         converted number = ((ord(alphabet) - 65) // 3) + 2
@@ -308,7 +322,6 @@ def number_translator():
 def main():
     """
     Test the functions in this module.
-
     """
     doctest.testmod()
 
