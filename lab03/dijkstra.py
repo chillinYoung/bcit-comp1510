@@ -19,29 +19,29 @@ def dijkstra(list):
                    must be given.
     :postcondition: sort the list in order 'red, white, and blue'
 
-    >>> list = ['red']
-    >>> dijkstra(list)
-    >>> print(list)
+    >>> test_list = ['red']
+    >>> dijkstra(test_list)
+    >>> print(test_list)
     ['red']
-    >>> list = ['blue', 'white', 'red']
-    >>> dijkstra(list)
-    >>> print(list)
+    >>> test_list = ['blue', 'white', 'red']
+    >>> dijkstra(test_list)
+    >>> print(test_list)
     ['red', 'white', 'blue']
-    >>> list = ['red', 'red', 'red']
-    >>> dijkstra(list)
-    >>> print(list)
+    >>> test_list = ['red', 'red', 'red']
+    >>> dijkstra(test_list)
+    >>> print(test_list)
     ['red', 'red', 'red']
-    >>> list = ['red', 'white', 'blue']
-    >>> dijkstra(list)
-    >>> print(list)
+    >>> test_list = ['red', 'white', 'blue']
+    >>> dijkstra(test_list)
+    >>> print(test_list)
     ['red', 'white', 'blue']
-    >>> list = ['white', 'blue', 'red', 'red', 'white', 'blue', 'white', 'blue', 'white', 'blue', 'red', 'white']
-    >>> dijkstra(list)
-    >>> print(list)
+    >>> test_list = ['white', 'blue', 'red', 'red', 'white', 'blue', 'white', 'blue', 'white', 'blue', 'red', 'white']
+    >>> dijkstra(test_list)
+    >>> print(test_list)
     ['red', 'red', 'red', 'white', 'white', 'white', 'white', 'white', 'blue', 'blue', 'blue', 'blue']
-    >>> list = ['red', 'blue', 'red']
-    >>> dijkstra(list)
-    >>> print(list)
+    >>> test_list = ['red', 'blue', 'red']
+    >>> dijkstra(test_list)
+    >>> print(test_list)
     ['red', 'red', 'blue']
     """
     list.sort()
