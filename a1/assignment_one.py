@@ -73,7 +73,7 @@ def convert_single_roman(single_int, notation):
     """Convert single integer to Roman number.
 
     :param single_int: a single number to convert to Roman numeral
-    :param notation: the list that has 4 Roman alphabets
+    :param notation: the list that has 4 Roman alphabet
     :precondition: the list must has 4 strings which are in order
                    '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
                    e.g. ["I", "X", "V", "I"] or ["C", "M", "D", "C"]
@@ -253,21 +253,27 @@ def number_generator():
 
 
 def number_translator():
-    """Translate alphabets to corresponding numbers
+    """Translate alphabet to corresponding numbers
 
     :precondition: user input must be given in the format AAA-AAA-AAAA
-    :postcondition: the correctly converted 10-digit phone numbers as integers
+    :postcondition: the correctly converted 10-character telephone numbers
+                    as integers
     :return: converted integer phone numbers
     """
-    orig_tel = input("Enter the 10-digit phone numbers in alphabets"
-                     " (e.g. ABC-DEF-GHIJ): ").upper()
+    orig_tel = input("Enter the 10-character phone numbers in alphabet"
+                     " (e.g. ABC-DEF-GHIJ): ").strip().upper()
     result = ""
-    for char in orig_tel:
-        if char.isalpha():
-            # ord('A') = 65, ord('B'') = 66, ord('C') = 67  → all become 2
+    for tel in orig_tel:
+        if ord(tel) in range(65, 80):
             result += str(((ord(char) - 65) // 3) + 2)
+        elif ord(tel) in range(80, 84):
+            result += "7"
+        elif ord(tel) in range(84, 87):
+            result += "8"
+        elif ord(tel) in range(87, 91):
+            result += "9"
         else:
-            result += char    # to keep dashes
+            result += tel    # to keep dashes
 
     return result
 
@@ -275,13 +281,14 @@ def number_translator():
     Computational Thinking
         -Decomposition: get user input, convert it to corresponding numbers,
                         and return a result.
-        -Pattern matching/data representation: 3 alphabets are converted to one
-                        corresponding number, and the number is increased one
-                        for every 3 alphabets.
-        -Abstraction/generalization: use ord() method and "3n+65, 3n+67, 3n+68"
-                        pattern to make mathmatical formula.
-        -Algorithm/automation: for each alphabet,
+        -Pattern matching/data representation: the alphabet has range, and each
+                        range of characters corresponds to a specific number.
+        -Abstraction/generalization: use ord() to range it, range(65, 80) is
+                        converted with mathemtical formula, and last of it are
+                        converted directly, and store it to result string.
+        -Algorithm/automation: for alphabet between A and O,
                         converted number = ((ord(alphabet) - 65) // 3) + 2
+                        , and for alphabet after P is directly converted.
     """
 
 
