@@ -128,12 +128,8 @@ def colour_mixer():
 
     """
     Computational Thinking
-        -Decomposition: get user input, compare/validate data, and print
-                        correct secondary colour.
         -Pattern matching/data representation: two of primary colour are mixed
                         to a secondary colour regardless the input order.
-        -Abstraction/generalization: print result color after two prompt input
-                        colours are validated and checked.
         -Algorithm/automation: using list and list operator to check primary
                         colours regardless the order of input.
     """
@@ -161,16 +157,11 @@ def time_calculator(seconds):
 
     """
     Computational Thinking
-        -Decomposition: divide seconds until it gets 0, store data, and print
-                        result in given format.
         -Pattern matching/data representation: divide input repeatedly and get
                         quotients.
         -Abstraction/generalization: divide given number (seconds) until it
-                        gets 0, and every quotient is part of a result
-                        sequentially.
-        -Algorithm/automation: divide given number by each converted time in
-                        the time list, and append the result to result list.
-                        Combine result list items with join method.
+                        gets 0, and append the quotiont to result list. Combine
+                        result list items with join method.
     """
 
 
@@ -199,13 +190,8 @@ def compound_interest(principal, annual_interest, compounded_nums, years):
 
     """
     Computational Thinking
-        -Decomposition: divide formula with parenthesis by paying attention to
-                        the operator precedence.
-        -Pattern matching/data representation: compound interest math formula.
         -Abstraction/generalization: express a mathematical formula in the
                         function using python operators.
-        -Algorithm/automation: assign calculated result to a variable, and
-                        return it.
     """
 
 
@@ -245,12 +231,8 @@ def rock_paper_scissors():
 
     """
     Computational Thinking
-        -Decomposition: get user input, validate input, compare data, and
-                        print result.
         -Pattern matching/data representation: smaller number wins for 0 and 2,
                         but bigger number wins for other cases.
-        -Abstraction/generalization: three cases which are user wins, computer
-                        wins, or draw.
         -Algorithm/automation: clear the user input and convert it to a number
                         using list, then compare it to generated random number
                         between 0 and 2. If it is same, draw.
@@ -268,11 +250,9 @@ def number_generator():
     return sorted(numbers)
     """
     Computational Thinking
-        -Decomposition: get 6 unique number from the range, and sort the list.
-        -Pattern matching/data representation: sorted random numbers
         -Abstraction/generalization: use sample method in the random module.
-        -Algorithm/automation: assign a list of sampled numbers to a variable,
-                        and return the sorted and copied list.
+        -Algorithm/automation: get 6 unique number from the range, and return
+                        the sorted list.
     """
 
 
@@ -308,8 +288,6 @@ def number_translator():
 
     """
     Computational Thinking
-        -Decomposition: get user input, convert it to corresponding numbers,
-                        and return a result.
         -Pattern matching/data representation: the alphabet has range, and each
                         range of characters corresponds to a specific number.
         -Abstraction/generalization: use ord() to range it, range(65, 80) is
