@@ -23,29 +23,24 @@ def convert_to_roman_numeral(positive_int):
     >>> convert_to_roman_numeral(49)
     'XLIX'
     """
-
-    # Roman notation order → prefix, carry number, quotient, remainder
-    # → in order '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
-    # prefix is for exceptions of the pattern which are 4 and 9
-    notation = [["I", "X", "V", "I"],   # ones (units)
-                ["X", "C", "L", "X"],   # tens
-                ["C", "M", "D", "C"]]   # hundreds
     result = ""
 
     # split given number to (x >= 1000) and (1000 > x)
-    single_convert = str(positive_int)
     thousands_convert = 0
+    single_convert = str(positive_int)
     if positive_int >= 1000:
-        single_convert = str(positive_int)[-3:]
         thousands_convert = int(str(positive_int)[0:-3])
+        single_convert = str(positive_int)[-3:]
 
     # for the split (1000 > x) number, convert every place value from back
     for i in range(len(single_convert)):
-        single_int = int(single_convert[-(i + 1)])    # from the back -1, -2...
-        result = convert_single_roman(single_int, notation[i]) + result
+        single_int = single_convert[::-1]    # reverse given number
+        converted = convert_single_roman(int(single_int[i]), (10 ** i))
+        result = converted + result
 
     # for the split (x >= 1000) number, multiply it to "M"
     result = ("M" * thousands_convert) + result
+
     return result
 
     """
@@ -69,18 +64,24 @@ def convert_to_roman_numeral(positive_int):
     """
 
 
-def convert_single_roman(single_int, notation):
-    """Convert single integer to Roman number.
+def convert_single_roman(single_int, place_value):
+    """Convert a single integer to Roman number.
 
-    :param single_int: a single number to convert to Roman numeral
-    :param notation: the list that has 4 Roman alphabet
-    :precondition: the list must has 4 strings which are in order
-                   '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n <= 0
-                   e.g. ["I", "X", "V", "I"] or ["C", "M", "D", "C"]
-    :postcondition: converts the single integer (place value)
-                    to the correct Roman number
+    :param single_int: a single integer between 1 and 9
+    :param place_value: the integer that shows place value (e.g. 1, 10, 100)
+    :precondition: an single_int must be a positibe single integer between
+                    1 and 9, and place value must be the integer which is one
+                    of '1, 10, and 100'
+    :postcondition: converts the single integer to the correct Roman number
     :return: converted Roman number
     """
+
+    # Roman notation = [prefix, carry number, quotient, remainder]
+    # → in order '(1*10^n), (10*10^n), (5*10^n), and (1*10^n)' where n >= 0
+    # prefix is for exceptions of the pattern which are 4 and 9
+    notation = [["I", "X", "V", "I"],   # ones (units)
+                ["X", "C", "L", "X"],   # tens
+                ["C", "M", "D", "C"]]   # hundreds
 
     # analyzed = [prefix, carry_number, quotient, remainder]
     # prefix is for exceptions such as 4 and 9
@@ -94,7 +95,8 @@ def convert_single_roman(single_int, notation):
 
     result = ""
     for i in range(4):
-        result += notation[i] * analyzed[i]
+        position = len(str(place_value)) - 1    # place_value to index
+        result += notation[position][i] * analyzed[i]
 
     return result
 
