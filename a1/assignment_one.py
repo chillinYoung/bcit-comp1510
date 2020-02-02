@@ -218,12 +218,12 @@ def rock_paper_scissors():
         # the case for user wins
         if (user - computer == 1) or (user - computer == -2):
             print(f"Computer's choice: {choice_list[computer]}")
-            print("You Won!!")
+            print("You Win!!")
 
         # the case for user loses
         elif (computer - user == 1) or (computer - user == -2):
             print(f"Computer's choice: {choice_list[computer]}")
-            print("You Lost...")
+            print("You Lose...")
 
         else:
             print(f"Computer's choice: {choice_list[computer]}")
