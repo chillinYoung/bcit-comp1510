@@ -176,7 +176,8 @@ def compound_interest(principal, annual_interest, compounded_nums, years):
     :precondition: principal and annual interest must be given as an float, and
                    compound interest and the number of years must be given as
                    an integer
-    :postcondition: calculate correct compound interest added to principal
+    :postcondition: calculate correct compound interest added to principal as
+                    a float
     :return: the amount of money after the given time
 
     >>> compound_interest(30000, 0.05, 2, 3)
