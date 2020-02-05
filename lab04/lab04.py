@@ -34,6 +34,35 @@ def eratosthenes(upperbound):
     return nums
 
 
+def cash_money(canadian_money):
+    """Calculate the fewest bill and coins.
+
+    :param canadian_money: a positive floating point number
+    :precondition: the number must be a positive floating point number that has
+                    2 decimal places
+    :postcondition: a list that shows how many of each denomanation are
+                    required
+    :return: a list with the numbers broken down by denominations
+
+    >>> cash_money(66.53)
+    [0, 1, 0, 1, 1, 0, 1, 2, 0, 0, 3]
+    >>> cash_money(188.41)
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    >>> cash_money(0.01)
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+    """
+    denominations = (100, 50, 20, 10, 5, 2, 1, 0.25, 0.10, 0.05, 0.01)
+    float_handle = 100
+    dividend = int(canadian_money * float_handle)
+    result = []
+
+    for denomination in denominations:
+        denomination = int(denomination * float_handle)
+        result.append(dividend // denomination)
+        dividend = dividend % denomination
+    return result
+
+
 def main():
     doctest.testmod()
 
