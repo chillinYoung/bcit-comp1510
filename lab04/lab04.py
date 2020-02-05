@@ -23,10 +23,11 @@ def eratosthenes(upperbound):
     [2]
     """
     nums = list(range(2, upperbound + 1))
+    # to get range between 2 to root of upperbound, inclusive
     check_nums = range(2, math.floor(upperbound ** 0.5) + 1)
 
     for check_num in check_nums:
-        copy_nums = nums
+        copy_nums = nums    # shallow copy to refresh it
         for num in copy_nums:
             if (num % check_num == 0) and (num != check_num):
                 nums.remove(num)
@@ -52,12 +53,12 @@ def cash_money(canadian_money):
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
     """
     denominations = (100, 50, 20, 10, 5, 2, 1, 0.25, 0.10, 0.05, 0.01)
-    float_handle = 100
+    float_handle = 100    # convert to int to avoid floating-point error
     dividend = int(canadian_money * float_handle)
     result = []
 
     for denomination in denominations:
-        denomination = int(denomination * float_handle)
+        denomination = int(denomination * float_handle)    # convert to int
         result.append(dividend // denomination)
         dividend = dividend % denomination
     return result
