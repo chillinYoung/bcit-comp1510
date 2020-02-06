@@ -7,7 +7,7 @@ from unittest import TestCase
 from lab04 import eratosthenes
 
 
-class Test(TestCase):
+class TestEratosthenes(TestCase):
 
     def test_eratosthenes_zero(self):
         """Test an zero argument"""
@@ -17,25 +17,38 @@ class Test(TestCase):
         self.assertEqual(expected, eratosthenes(argument),
                          "Argument 0 is given.")
 
-    def test_eratosthenes_inclusive(self):
-        """Test inclusive input number"""
+    def test_eratosthenes_one(self):
+        """Test an input number one"""
 
-        argument = 41
-        expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+        argument = 1
+        expected = []
+        self.assertEqual(expected, eratosthenes(argument),
+                         "Argument 1 is given.")
+
+    def test_eratosthenes_two(self):
+        """Test an input number two"""
+
+        argument = 2
+        expected = [2]
+        self.assertEqual(expected, eratosthenes(argument),
+                         "Argument 2 is given.")
+
+    def test_eratosthenes_inclusive(self):
+        """Test the inclusive range of input number"""
+
+        argument = 31
+        expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]
         self.assertEqual(expected, eratosthenes(argument),
                          "Inclusive range from an input")
 
-    def test_eratosthenes_negative(self):
-        """Test an negative value"""
+    def test_eratosthenes_hundred(self):
+        """Test an input number hundred"""
 
-        argument = -100
-        self.assertRaises(TypeError)
-
-    def test_eratosthenes_float(self):
-        """Test float input number"""
-
-        argument = 10.35
-        self.assertRaises(TypeError)
+        argument = 100
+        expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53,
+                    59, 61, 67, 71, 73, 79, 83, 89, 97]
+        self.assertEqual(expected, eratosthenes(argument),
+                         "Argument one hundred is given.")
 
     def test_eratosthenes_big(self):
         """Test big input number"""

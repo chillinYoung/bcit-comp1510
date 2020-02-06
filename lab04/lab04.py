@@ -15,12 +15,14 @@ def eratosthenes(upperbound):
     :postcondition: gives prime numbers in the range of given positive integer
     :return: a list with prime numbers in the given range, inclusive
 
-    >>> eratosthenes(47)
-    [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+    >>> eratosthenes(0)
+    []
     >>> eratosthenes(1)
     []
     >>> eratosthenes(2)
     [2]
+    >>> eratosthenes(31)
+    [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]
     """
     nums = list(range(2, upperbound + 1))
     # to get range between 2 to root of upperbound, inclusive
@@ -48,12 +50,18 @@ def cash_money(canadian_money):
                     required for given amount of money
     :return: a list with the numbers broken down by denominations
 
-    >>> cash_money(66.53)
-    [0, 1, 0, 1, 1, 0, 1, 2, 0, 0, 3]
+    >>> cash_money(0.00)
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    >>> cash_money(0.02)
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+    >>> cash_money(1.05)
+    [0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0]
+    >>> cash_money(10.27)
+    [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2]
+    >>> cash_money(100.57)
+    [1, 0, 0, 0, 0, 0, 0, 2, 0, 1, 2]
     >>> cash_money(188.41)
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    >>> cash_money(0.01)
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
     """
     denominations = (100, 50, 20, 10, 5, 2, 1, 0.25, 0.10, 0.05, 0.01)
     FLOAT_HANDLE = 100    # convert to int to avoid floating-point error
