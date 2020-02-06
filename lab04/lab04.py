@@ -56,12 +56,12 @@ def cash_money(canadian_money):
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
     """
     denominations = (100, 50, 20, 10, 5, 2, 1, 0.25, 0.10, 0.05, 0.01)
-    float_handle = 100    # convert to int to avoid floating-point error
-    dividend = int(canadian_money * float_handle)
+    FLOAT_HANDLE = 100    # convert to int to avoid floating-point error
+    dividend = int(canadian_money * FLOAT_HANDLE)
     result = []
 
     for denomination in denominations:
-        denomination = int(denomination * float_handle)    # convert to int
+        denomination = int(denomination * FLOAT_HANDLE)    # convert to int
         result.append(dividend // denomination)
         dividend = dividend % denomination
     return result
