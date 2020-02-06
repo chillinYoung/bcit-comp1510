@@ -76,6 +76,9 @@ def cash_money(canadian_money):
 
 
 def main():
+    """
+    Drives the doctest in this module.
+    """
     doctest.testmod()
 
 

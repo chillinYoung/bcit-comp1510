@@ -1,7 +1,7 @@
 """
 COMP 1510 202010 Quiz 04
-Young Kim(A01087377)
-Li Ting Yang (Lily)
+Young Kim (A01087377)
+Partner: Li Ting Yang (Lily, A00794517)
 """
 
 
@@ -9,10 +9,10 @@ import doctest
 
 
 def statistics(number_list):
-    """Give statistics of number list.
+    """Give statistics of a number list.
 
     :param number_list: the list with numbers
-    :precondition: the list must have only numbers in it
+    :precondition: the list must have only numbers in it, integer or float
     :postcondition: show the statistics of the given number list in order to
                     [num_of_items, min_num, max_num, average, spread]
     :return: a list that has 5 different statistics
@@ -21,6 +21,8 @@ def statistics(number_list):
     [None, None, None, None, None]
     >>> statistics([0])
     [1, 0, 0, 0.0, 0]
+    >>> statistics([0, 0, 0, 0, 0, 0, 0])
+    [7, 0, 0, 0.0, 0]
     >>> statistics([15])
     [1, 15, 15, 15.0, 0]
     >>> statistics([1, 1, 1])
@@ -29,6 +31,10 @@ def statistics(number_list):
     [5, 1, 5, 3.0, 4]
     >>> statistics([5.0, 3, 15, 21.7, 5, 2, 1, 5.77])
     [8, 1, 21.7, 7.30875, 20.7]
+    >>> statistics([-1, -3, -10, -5])
+    [4, -10, -1, -4.75, 9]
+    >>> statistics([6, -1, 9, -3, 7, -20, -5])
+    [7, -20, 9, -1.0, 29]
     """
     if not number_list:
         result = [None, None, None, None, None]
@@ -44,6 +50,9 @@ def statistics(number_list):
 
 
 def main():
+    """
+    Drive the doctest in this module.
+    """
     doctest.testmod()
 
 
