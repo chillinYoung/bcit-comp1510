@@ -38,11 +38,14 @@ def eratosthenes(upperbound):
 def cash_money(canadian_money):
     """Calculate the fewest bill and coins.
 
+    A function that gives a list with the numbers of how many of each bill and
+    coins are required to be the fewest.
+
     :param canadian_money: a positive floating point number
     :precondition: the number must be a positive floating point number that has
-                    2 decimal places
+                    at most 2 decimal places
     :postcondition: a list that shows how many of each denomanation are
-                    required
+                    required for given amount of money
     :return: a list with the numbers broken down by denominations
 
     >>> cash_money(66.53)
