@@ -29,47 +29,48 @@ def roll_die(number_of_rolls, number_of_sides):
 
 
 def generate_name(syllables):
-    """
+    """Generate a name.
 
-    :param:
-    :precondition:
-    :postcondition:
-    :return:
+    :param syllables: a positive non-zero integer
+    :precondition: the number must be a positive non-zero integer
+    :postcondition: generate a name with given syllables of which each syllable
+                    is a consonant followed by a vowel
+    :return: a generated name
     """
-    return
+    generated = ""
+    idx = syllables
+    while idx > 0:
+        generated += generate_syllable()
+        idx -= 1
+    return generated.capitalize()
 
 
 def generate_vowel():
-    """
+    """Generate a single vowel.
 
-    :param:
-    :precondition:
-    :postcondition:
-    :return:
+    :postcondition: generate a single vowel including 'y'
+    :return: a single vowel
     """
-    return
+    return random.choice("aeiouy")
 
 
 def generate_consonant():
-    """
+    """Generate a single consonant.
 
-    :param:
-    :precondition:
-    :postcondition:
-    :return:
+    :postcondition: generate a single consonant including 'y'
+    :return: a single consonant
     """
-    return
+    return random.choice("bcdfghjklmnpqrstvwxyz")
 
 
 def generate_syllable():
-    """
+    """Generate the two-letter syllable.
 
-    :param:
-    :precondition:
-    :postcondition:
-    :return:
+    :postcondition: generate the two-letter syllable which is the combination
+                    of a single consonant and a single vowel
+    :return: the two-letter syllable
     """
-    return
+    return generate_consonant() + generate_vowel()
 
 
 def create_character(syllables):
