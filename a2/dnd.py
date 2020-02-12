@@ -74,14 +74,57 @@ def generate_syllable():
 
 
 def create_character(syllables):
-    """
+    """Create a character.
 
-    :param:
-    :precondition:
-    :postcondition:
-    :return:
+    Create a character that contains information such as HP, XP, Class, Race,
+    and name.
+
+    :param syllables: a non-zero positive integer
+    :precondition: the number must be a positive integer which is non-zero
+    :postcondition: provide initialized and assembled character information
+                    in a dictionary
+    :return: a dictionary that contains character information
     """
-    return
+    if syllables <= 0:
+        print("ERROR: given number is not a positive integer.")
+        return None
+
+    hit_points = {'barbarian': 12, 'bard': 8, 'cleric': 8, 'druid': 8,
+                  'fighter': 10, 'monk': 8, 'paladin': 10, 'ranger': 10,
+                  'rogue': 8, 'sorcerer': 6, 'warlock': 8, 'wizard': 6}
+
+    selected_class = select_class()
+    character_info = {'Name': generate_name(syllables),
+                      'Inventory': [],
+                      'XP': 0,
+                      'Class': selected_class,
+                      'Race': select_race(),
+                      # HP → [maxHP, currentHP]
+                      'HP': [roll_die(1, hit_points[selected_class]), 0]}
+
+    attributes = ['Strength', 'Intelligence', 'Wisdom',
+                  'Dexterity', 'Constitution', 'Charisma']
+    for attr in attributes:
+        character_info[attr] = roll_die(3, 6)
+
+    return character_info
+
+
+def select_class():
+    classes = ['barbarian', 'bard', 'cleric', 'druid', 'fighter',
+               'monk', 'paladin', 'ranger', 'rogue', 'sorcerer',
+               'warlock', 'wizard']
+    print("Classes:", ", ".join(classes))
+    class_choice = input("Choose the class for your character: ").lower()
+    return class_choice
+
+
+def select_race():
+    races = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf',
+             'halfling', 'half-orc', 'human', 'tiefling']
+    print("Races:", ", ".join(races))
+    race_choice = input("Choose the race for your character: ").lower()
+    return race_choice
 
 
 def print_character(character):
