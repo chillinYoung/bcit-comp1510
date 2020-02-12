@@ -128,14 +128,14 @@ def select_race():
 
 
 def print_character(character):
-    """
+    """Print character information.
 
-    :param:
-    :precondition:
-    :postcondition:
-    :return:
+    :param character: a dictionary
+    :precondition: character information must be a dictionary format created by
+                    create_character function in this domule
+    :postcondition: print given character's information
     """
-    return
+    print(character)
 
 
 def choose_inventory(obj):
