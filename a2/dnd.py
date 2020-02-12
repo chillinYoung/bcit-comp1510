@@ -7,6 +7,7 @@ Dungeons and Dragoons
 
 import doctest
 import random
+import itertools
 
 
 def roll_die(number_of_rolls, number_of_sides):
@@ -138,15 +139,48 @@ def print_character(character):
     print(character)
 
 
-def choose_inventory(obj):
-    """
+def choose_inventory(character_obj):
+    """Choose inventory.
 
-    :param:
-    :precondition:
-    :postcondition:
-    :return:
+    Choose the goods to be added to a given character's inventory.
+
+    :param character_obj: a character object
+    :precondition: a character object must be well-formed by create_character
+                    function in this module
+    :postcondition: add all the chosen goods to the character object
     """
-    print()
+    goods_list = ["sword", "dagger", "heavy blunt", "spear", "staff",
+                  "blade", "bow", "beam", "poison", "axe"]
+
+    print("Welcome to the Olde Tyme Merchant!\n")
+    print("Here is what we have for sale:\n")
+    print_list_with_count(goods_list)
+
+    choice_list = []
+    user_choice = 0
+    while user_choice != -1:
+        user_choice = int(input("What would you like to buy (-1 to finish): "))
+
+        if 0 < user_choice <= len(goods_list):
+            choice_list.append(goods_list[user_choice - 1])
+        elif user_choice != -1:
+            print("ERROR: invalid input. "
+                  "Please enter the number of an item.\n")
+            print_list_with_count(goods_list)
+
+    for item in choice_list:
+        character_obj['Inventory'].append(item)
+
+
+def print_list_with_count(list_to_print):
+    """Print a list with counter.
+
+    :param list_to_print: a list to print
+    :precondition: a list must be given as an argument
+    :postcondition: print the given list with counter such as '1. element'
+    """
+    for counter, elem in zip(itertools.count(1), list_to_print):
+        print(f"{counter}. {elem}")
 
 
 def combat_round(opponent_one, opponent_two):
@@ -173,6 +207,7 @@ def attack():
 
 def main():
     doctest.testmod()
+    choose_inventory(create_character(3))
 
 
 if __name__ == "__main__":
