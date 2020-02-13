@@ -91,10 +91,6 @@ def create_character(syllables):
         print("ERROR: given number is not a positive integer.")
         return None
 
-    hit_points = {'barbarian': 12, 'bard': 8, 'cleric': 8, 'druid': 8,
-                  'fighter': 10, 'monk': 8, 'paladin': 10, 'ranger': 10,
-                  'rogue': 8, 'sorcerer': 6, 'warlock': 8, 'wizard': 6}
-
     selected_class = select_class()
     character_info = {'Name': generate_name(syllables),
                       'Inventory': [],
@@ -102,7 +98,7 @@ def create_character(syllables):
                       'Class': selected_class,
                       'Race': select_race(),
                       # HP → [maxHP, currentHP]
-                      'HP': [roll_die(1, hit_points[selected_class]), 0]}
+                      'HP': [roll_die(1, get_hit_points(selected_class)), 0]}
 
     attributes = ['Strength', 'Intelligence', 'Wisdom',
                   'Dexterity', 'Constitution', 'Charisma']
@@ -110,6 +106,14 @@ def create_character(syllables):
         character_info[attr] = roll_die(3, 6)
 
     return character_info
+
+
+def get_hit_points(class_of_character):
+    hit_points = {'barbarian': 12, 'bard': 8, 'cleric': 8, 'druid': 8,
+                  'fighter': 10, 'monk': 8, 'paladin': 10, 'ranger': 10,
+                  'rogue': 8, 'sorcerer': 6, 'warlock': 8, 'wizard': 6}
+    if class_of_character in hit_points:
+        return hit_points[class_of_character]
 
 
 def select_class():
@@ -205,23 +209,91 @@ def combat_round(opponent_one, opponent_two):
 
     A function that represents a single round of combat.
 
-    :param:
-    :precondition:
+    :param opponent_one: a character object (dictionary)
+    :param opponent_two: a character object (dictionary)
+    :precondition: both parameters must be well-formed dictionaries each
+                    containing a correct character
     :postcondition:
+    """
+    set_full_hp(opponent_one)
+    set_full_hp(opponent_two)
+    print("\n----------- Combat starts! -----------")
+    print_hp_compare(opponent_one, opponent_two)
+
+    attacker, defender = choose_first_attacker(opponent_one, opponent_two)
+    print(f"\t{attacker['Name']} is the first attacker.")
+
+    game_over = False
+    while not game_over:
+        attack_success = attack(attacker, defender)
+        att_name = attacker['Name']
+        dfn_name = defender['Name']
+
+        if attack_success is True:
+            print(f"\n\t{att_name}'s attack was successful!!")
+            hit = roll_die(1, get_hit_points(attacker['Class']))
+
+            if defender['HP'][1] - hit <= 0:
+                defender['HP'][1] = 0
+                print(f"\t\t{dfn_name} is hit with {hit} point(s) and Killed.")
+                print(f"-------- {att_name} WIN!! GAME OVER. --------\n")
+                game_over = True
+
+            else:
+                defender['HP'][1] -= hit
+                print(f"\t\t{dfn_name}'s HP is reduced {hit} point(s).")
+                print("\t\tCONTINUE the round.\n\t\t", end="")
+                print_hp_compare(opponent_one, opponent_two)
+        else:
+            print(f"\n\t{att_name}'s attack was failed... CONTINUE the round.")
+
+        attacker, defender = defender, attacker
+
+
+def set_full_hp(character):
+    character['HP'][1] = character['HP'][0]
+
+
+def print_hp_compare(opponent_one, opponent_two):
+    print(f"{opponent_one['Name']} (HP {opponent_one['HP'][1]})"
+          f" vs. {opponent_two['Name']} (HP {opponent_two['HP'][1]})")
+
+
+def choose_first_attacker(opponent_one, opponent_two):
+    same_num = True
+    while same_num:
+        opp_one = roll_die(1, 20)
+        opp_two = roll_die(1, 20)
+        if opp_one != opp_two:
+            same_num = False
+
+    attack_order = {opp_one: opponent_one, opp_two: opponent_two}
+    attacker = attack_order[max(attack_order)]
+    defender = attack_order[min(attack_order)]
+
+    return attacker, defender
+
+
+def attack(attacker, defender):
+    """Attack the defender.
+
+    A function that attacker attacks the defender and find the winner.
+
+    :param attacker: a character object
+    :param defender: a character object
+    :precondition: both parameters must be well-formed dictionaries each
+                    containing a correct character
+    :postcondition: find a winner
     :return:
     """
-    print()
-
-
-def attack():
-    """
-
-    :param:
-    :precondition:
-    :postcondition:
-    :return:
-    """
-    return
+    attacker_num = roll_die(1, 20)
+    defender_num = defender['Dexterity']
+    if attacker_num > defender_num:
+        return True
+    elif attacker_num < defender_num:
+        return False
+    else:
+        return None
 
 
 def main():
