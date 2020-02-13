@@ -98,7 +98,7 @@ def create_character(syllables):
                       'Class': selected_class,
                       'Race': select_race(),    # get user input
                       # HP → [maxHP, currentHP]
-                      'HP': [roll_die(1, get_hit_points(selected_class)), 0]}
+                      'HP': [roll_die(1, get_hit_die(selected_class)), 0]}
 
     attributes = ['Strength', 'Intelligence', 'Wisdom',
                   'Dexterity', 'Constitution', 'Charisma']
@@ -108,22 +108,22 @@ def create_character(syllables):
     return character_info
 
 
-def get_hit_points(class_of_character):
-    """Give the hit-points.
+def get_hit_die(class_of_character):
+    """Give the hit-die.
 
-    A function that gives the hit-points of the given character.
+    A function that gives the hit-die of the given character.
 
     :param class_of_character: the class of character as string
     :precondition: the class of character must be given as string and a correct
                     name of one of the character classes
-    :postcondition: give an integer that indicates hit points of the character
-    :return: hit points as integer
+    :postcondition: give an integer that indicates hit die of the character
+    :return: hit die as integer
     """
-    hit_points = {'barbarian': 12, 'bard': 8, 'cleric': 8, 'druid': 8,
-                  'fighter': 10, 'monk': 8, 'paladin': 10, 'ranger': 10,
-                  'rogue': 8, 'sorcerer': 6, 'warlock': 8, 'wizard': 6}
+    hit_die = {'barbarian': 12, 'bard': 8, 'cleric': 8, 'druid': 8,
+               'fighter': 10, 'monk': 8, 'paladin': 10, 'ranger': 10,
+               'rogue': 8, 'sorcerer': 6, 'warlock': 8, 'wizard': 6}
 
-    return hit_points[class_of_character]
+    return hit_die[class_of_character]
 
 
 def select_class():
@@ -137,7 +137,7 @@ def select_class():
     classes = ['barbarian', 'bard', 'cleric', 'druid', 'fighter',
                'monk', 'paladin', 'ranger', 'rogue', 'sorcerer',
                'warlock', 'wizard']
-    print("Classes:\n", ", ".join(classes))
+    print("\nClasses:\n", ", ".join(classes), "\n")
     class_choice = (input("Choose the class for your character: ")
                     .strip().lower())
     return class_choice
@@ -153,7 +153,7 @@ def select_race():
     """
     races = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf',
              'halfling', 'half-orc', 'human', 'tiefling']
-    print("Races:\n", ", ".join(races))
+    print("\nRaces:\n", ", ".join(races), "\n")
     race_choice = input("Choose the race for your character: ").strip().lower()
     return race_choice
 
@@ -188,13 +188,13 @@ def choose_inventory(character_obj):
 
     choice_list = []
     user_choice = 0
-    while user_choice != -1:
-        user_choice = int(input("What would you like to buy (-1 to finish): "))
+    while user_choice != "-1":
+        user_choice = input("What would you like to buy (-1 to finish): ")
 
-        if 0 < user_choice <= len(goods_list):
-            choice_list.append(goods_list[user_choice - 1])
+        if user_choice.isdigit() and (0 < int(user_choice) <= len(goods_list)):
+            choice_list.append(goods_list[int(user_choice) - 1])
 
-        elif user_choice != -1:
+        elif user_choice != "-1":
             print("ERROR: invalid input. "
                   "Please enter the number of an item.\n")
             print_list_with_count(goods_list)
@@ -241,7 +241,7 @@ def combat_round(opponent_one, opponent_two):
 
         if attack_success is True:
             print(f"\n{attacker['Name']}'s attack was successful!!")
-            hit = roll_die(1, get_hit_points(attacker['Class']))
+            hit = roll_die(1, get_hit_die(attacker['Class']))
 
             if defender['HP'][1] - hit <= 0:
                 defender['HP'][1] = 0
@@ -341,9 +341,46 @@ def attack(attacker, defender):
 def main():
     """Drive the program.
 
-    A function that drives the program to test this module.
+    A function that drives the program to test this module, which will play
+    short D&D game to demonstrate it.
     """
     doctest.testmod()
+
+    # create and set up the character
+    print("Create a character.")
+    syllables1 = int(input("Enter the number of syllables for the name: "))
+    test_character_one = create_character(syllables1)
+    print()
+
+    print("This is the formed your character!")
+    print_character(test_character_one)
+    print()
+
+    print(f"Let's buy some goods for {test_character_one['Name']}")
+    choose_inventory(test_character_one)
+    print()
+
+    print("Final check for your character!")
+    print_character(test_character_one)
+    print()
+
+    # create and set up the hard-coded character
+    test_character_two = {'Name': 'Quluho',
+                          'Inventory': ['sword', 'heavy blunt'],
+                          'XP': 0,
+                          'Class': 'bard',
+                          'Race': 'gnome',
+                          'HP': [7, 0],
+                          'Strength': 9,
+                          'Intelligence': 11,
+                          'Wisdom': 12,
+                          'Dexterity': 13,
+                          'Constitution': 8,
+                          'Charisma': 16}
+
+    # test combat
+    combat_round(test_character_one, test_character_two)
+    print("Bye, see you again!")
 
 
 if __name__ == "__main__":
