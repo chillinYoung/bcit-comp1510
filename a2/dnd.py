@@ -20,7 +20,7 @@ def roll_die(number_of_rolls, number_of_sides):
     :param number_of_sides: a non-zero positive integer
     :precondition: the numbers must be a non-zero positive integer
     :postcondition: give the sum of randomly rolled die/dice
-    :return: result of rolling the die/dice
+    :return: result of rolling the die/dice as an integer
     """
     rolled = 0
     idx = number_of_rolls
@@ -37,7 +37,7 @@ def generate_name(syllables):
     :precondition: the number must be a positive non-zero integer
     :postcondition: generate a name with given syllables of which each syllable
                     is a consonant followed by a vowel
-    :return: a generated name
+    :return: a generated name as capitalized string
     """
     generated = ""
     idx = syllables
@@ -51,7 +51,7 @@ def generate_vowel():
     """Generate a single vowel.
 
     :postcondition: generate a single vowel including 'y'
-    :return: a single vowel
+    :return: a single vowel as string
     """
     return random.choice("aeiouy")
 
@@ -60,7 +60,7 @@ def generate_consonant():
     """Generate a single consonant.
 
     :postcondition: generate a single consonant including 'y'
-    :return: a single consonant
+    :return: a single consonant as string
     """
     return random.choice("bcdfghjklmnpqrstvwxyz")
 
@@ -70,7 +70,7 @@ def generate_syllable():
 
     :postcondition: generate the two-letter syllable which is the combination
                     of a single consonant and a single vowel
-    :return: the two-letter syllable
+    :return: the two-letter syllable as string
     """
     return generate_consonant() + generate_vowel()
 
@@ -91,12 +91,12 @@ def create_character(syllables):
         print("ERROR: given number is not a positive integer.")
         return None
 
-    selected_class = select_class()
+    selected_class = select_class()    # get user input
     character_info = {'Name': generate_name(syllables),
                       'Inventory': [],
                       'XP': 0,
                       'Class': selected_class,
-                      'Race': select_race(),
+                      'Race': select_race(),    # get user input
                       # HP → [maxHP, currentHP]
                       'HP': [roll_die(1, get_hit_points(selected_class)), 0]}
 
@@ -109,11 +109,21 @@ def create_character(syllables):
 
 
 def get_hit_points(class_of_character):
+    """Give the hit-points.
+
+    A function that gives the hit-points of the given character.
+
+    :param class_of_character: the class of character as string
+    :precondition: the class of character must be given as string and a correct
+                    name of one of the character classes
+    :postcondition: give an integer that indicates hit points of the character
+    :return: hit points as integer
+    """
     hit_points = {'barbarian': 12, 'bard': 8, 'cleric': 8, 'druid': 8,
                   'fighter': 10, 'monk': 8, 'paladin': 10, 'ranger': 10,
                   'rogue': 8, 'sorcerer': 6, 'warlock': 8, 'wizard': 6}
-    if class_of_character in hit_points:
-        return hit_points[class_of_character]
+
+    return hit_points[class_of_character]
 
 
 def select_class():
@@ -122,12 +132,12 @@ def select_class():
     A function to select a class of a character to play.
 
     :postcondition: make the chosen class input to lower string
-    :return: chosen class
+    :return: chosen class as string
     """
     classes = ['barbarian', 'bard', 'cleric', 'druid', 'fighter',
                'monk', 'paladin', 'ranger', 'rogue', 'sorcerer',
                'warlock', 'wizard']
-    print("Classes:", ", ".join(classes))
+    print("Classes:\n", ", ".join(classes))
     class_choice = (input("Choose the class for your character: ")
                     .strip().lower())
     return class_choice
@@ -139,11 +149,11 @@ def select_race():
     A function to select a race of a character to play.
 
     :postcondition: make the chosen race input to lower string
-    :return: chosen race
+    :return: chosen race as string
     """
     races = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf',
              'halfling', 'half-orc', 'human', 'tiefling']
-    print("Races:", ", ".join(races))
+    print("Races:\n", ", ".join(races))
     race_choice = input("Choose the race for your character: ").strip().lower()
     return race_choice
 
@@ -167,7 +177,7 @@ def choose_inventory(character_obj):
     :param character_obj: a character object
     :precondition: a character object must be well-formed by create_character
                     function in this module
-    :postcondition: add all the chosen goods to the character object
+    :postcondition: add all the chosen goods to the character object dictionary
     """
     goods_list = ["sword", "dagger", "heavy blunt", "spear", "staff",
                   "blade", "bow", "beam", "poison", "axe"]
@@ -183,6 +193,7 @@ def choose_inventory(character_obj):
 
         if 0 < user_choice <= len(goods_list):
             choice_list.append(goods_list[user_choice - 1])
+
         elif user_choice != -1:
             print("ERROR: invalid input. "
                   "Please enter the number of an item.\n")
@@ -213,53 +224,85 @@ def combat_round(opponent_one, opponent_two):
     :param opponent_two: a character object (dictionary)
     :precondition: both parameters must be well-formed dictionaries each
                     containing a correct character
-    :postcondition:
+    :postcondition: represent combat and print result of combat
     """
-    set_full_hp(opponent_one)
+    set_full_hp(opponent_one)    # set to full HP
     set_full_hp(opponent_two)
-    print("\n----------- Combat starts! -----------")
+
+    print("\n---------- Combat starts! ----------\n")
     print_hp_compare(opponent_one, opponent_two)
 
     attacker, defender = choose_first_attacker(opponent_one, opponent_two)
-    print(f"\t{attacker['Name']} is the first attacker.")
+    print(f"{attacker['Name']} is the first attacker.")
 
     game_over = False
     while not game_over:
         attack_success = attack(attacker, defender)
-        att_name = attacker['Name']
-        dfn_name = defender['Name']
 
         if attack_success is True:
-            print(f"\n\t{att_name}'s attack was successful!!")
+            print(f"\n{attacker['Name']}'s attack was successful!!")
             hit = roll_die(1, get_hit_points(attacker['Class']))
 
             if defender['HP'][1] - hit <= 0:
                 defender['HP'][1] = 0
-                print(f"\t\t{dfn_name} is hit with {hit} point(s) and Killed.")
-                print(f"-------- {att_name} WIN!! GAME OVER. --------\n")
+                print(f"\t{defender['Name']} is hit with {hit} point(s) "
+                      "and Killed.")
+                print(f"\n------ {attacker['Name']} WIN!! GAME OVER. ------\n")
                 game_over = True
 
             else:
                 defender['HP'][1] -= hit
-                print(f"\t\t{dfn_name}'s HP is reduced {hit} point(s).")
-                print("\t\tCONTINUE the round.\n\t\t", end="")
+                print(f"\t{defender['Name']}'s HP is reduced {hit} point(s).")
+                print("\tCONTINUE the round.\n\t", end="")
                 print_hp_compare(opponent_one, opponent_two)
         else:
-            print(f"\n\t{att_name}'s attack was failed... CONTINUE the round.")
+            print(f"\n{attacker['Name']}'s attack was failed... "
+                  "CONTINUE the round.")
 
-        attacker, defender = defender, attacker
+        attacker, defender = defender, attacker    # change turns
 
 
 def set_full_hp(character):
+    """Set the hp full.
+
+    Set the current hp of the given character to be full.
+
+    :param character: a character object
+    :precondition: the character object must be well-formed dictionary
+    :postcondition: change the current HP to be full (to be same with max HP of
+                    the character)
+    """
+    # current HP <= max HP
     character['HP'][1] = character['HP'][0]
 
 
 def print_hp_compare(opponent_one, opponent_two):
-    print(f"{opponent_one['Name']} (HP {opponent_one['HP'][1]})"
-          f" vs. {opponent_two['Name']} (HP {opponent_two['HP'][1]})")
+    """Print comparing current HP.
+
+    Print the comparing current HP between two given characters.
+
+    :param opponent_one: a character object
+    :param opponent_two: a character object
+    :precondition: the chracter objects must be well-formed dictionaries each
+                    containing a correct character
+    :postcondition: print the current HP of the both characters with their name
+    """
+    print(f"{opponent_one['Name']} (HP: {opponent_one['HP'][1]})"
+          f" vs. {opponent_two['Name']} (HP: {opponent_two['HP'][1]})")
 
 
 def choose_first_attacker(opponent_one, opponent_two):
+    """Choose the first attacker.
+
+    Choose the first attacker from given character objects by rolling die.
+    :param opponent_one: a character object
+    :param opponent_two: a character object
+    :precondition: both parameters must be well-formed dictionaries each
+                    containing a correct character
+    :postcondition: provide the attacker and defender as objects, which were
+                    chosen by rolling 1d20 die
+    :return: chosen attacker and defender as objects
+    """
     same_num = True
     while same_num:
         opp_one = roll_die(1, 20)
@@ -267,11 +310,10 @@ def choose_first_attacker(opponent_one, opponent_two):
         if opp_one != opp_two:
             same_num = False
 
-    attack_order = {opp_one: opponent_one, opp_two: opponent_two}
-    attacker = attack_order[max(attack_order)]
-    defender = attack_order[min(attack_order)]
+    opponents = {opp_one: opponent_one, opp_two: opponent_two}
 
-    return attacker, defender
+    # return in order to 'attacker, defender'
+    return opponents[max(opponents)], opponents[min(opponents)]
 
 
 def attack(attacker, defender):
@@ -283,20 +325,24 @@ def attack(attacker, defender):
     :param defender: a character object
     :precondition: both parameters must be well-formed dictionaries each
                     containing a correct character
-    :postcondition: find a winner
-    :return:
+    :postcondition: give true if the attacker successed to attack, and false if
+                    the attacker failed to attack
+    :return: boolean value
     """
     attacker_num = roll_die(1, 20)
     defender_num = defender['Dexterity']
+
     if attacker_num > defender_num:
         return True
-    elif attacker_num < defender_num:
-        return False
     else:
-        return None
+        return False
 
 
 def main():
+    """Drive the program.
+
+    A function that drives the program to test this module.
+    """
     doctest.testmod()
 
 
