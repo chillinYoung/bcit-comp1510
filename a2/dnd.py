@@ -13,7 +13,8 @@ import itertools
 def roll_die(number_of_rolls, number_of_sides):
     """Roll the die.
 
-    Roll the die with a given number of rolls and the number of sides of a die.
+    A function to roll the die with a given number of rolls and the number of
+    sides of a die.
 
     :param number_of_rolls: a non-zero positive integer
     :param number_of_sides: a non-zero positive integer
@@ -77,8 +78,8 @@ def generate_syllable():
 def create_character(syllables):
     """Create a character.
 
-    Create a character that contains information such as HP, XP, Class, Race,
-    and name.
+    A function to create a character that contains information such as HP, XP,
+    Class, Race, and name.
 
     :param syllables: a non-zero positive integer
     :precondition: the number must be a positive integer which is non-zero
@@ -112,19 +113,34 @@ def create_character(syllables):
 
 
 def select_class():
+    """Select a class.
+
+    A function to select a class of a character to play.
+
+    :postcondition: make the chosen class input to lower string
+    :return: chosen class
+    """
     classes = ['barbarian', 'bard', 'cleric', 'druid', 'fighter',
                'monk', 'paladin', 'ranger', 'rogue', 'sorcerer',
                'warlock', 'wizard']
     print("Classes:", ", ".join(classes))
-    class_choice = input("Choose the class for your character: ").lower()
+    class_choice = (input("Choose the class for your character: ")
+                    .strip().lower())
     return class_choice
 
 
 def select_race():
+    """Select a race.
+
+    A function to select a race of a character to play.
+
+    :postcondition: make the chosen race input to lower string
+    :return: chosen race
+    """
     races = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf',
              'halfling', 'half-orc', 'human', 'tiefling']
     print("Races:", ", ".join(races))
-    race_choice = input("Choose the race for your character: ").lower()
+    race_choice = input("Choose the race for your character: ").strip().lower()
     return race_choice
 
 
@@ -177,14 +193,17 @@ def print_list_with_count(list_to_print):
 
     :param list_to_print: a list to print
     :precondition: a list must be given as an argument
-    :postcondition: print the given list with counter such as '1. element'
+    :postcondition: print the given list with counter from 1
+                    such as '1. element'
     """
     for counter, elem in zip(itertools.count(1), list_to_print):
         print(f"{counter}. {elem}")
 
 
 def combat_round(opponent_one, opponent_two):
-    """
+    """Represent combat.
+
+    A function that represents a single round of combat.
 
     :param:
     :precondition:
@@ -207,7 +226,6 @@ def attack():
 
 def main():
     doctest.testmod()
-    choose_inventory(create_character(3))
 
 
 if __name__ == "__main__":
