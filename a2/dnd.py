@@ -226,23 +226,28 @@ def combat_round(opponent_one, opponent_two):
                     containing a correct character
     :postcondition: represent combat and print result of combat
     """
-    set_full_hp(opponent_one)    # set to full HP
+    # set to full HP
+    set_full_hp(opponent_one)
     set_full_hp(opponent_two)
 
     print("\n---------- Combat starts! ----------\n")
     print_hp_compare(opponent_one, opponent_two)
 
+    # choose first attacker
     attacker, defender = choose_first_attacker(opponent_one, opponent_two)
     print(f"{attacker['Name']} is the first attacker.")
 
+    # attack start
     game_over = False
     while not game_over:
         attack_success = attack(attacker, defender)
 
+        # if attack is succeed
         if attack_success is True:
             print(f"\n{attacker['Name']}'s attack was successful!!")
             hit = roll_die(1, get_hit_die(attacker['Class']))
 
+            # if defender died by attack
             if defender['HP'][1] - hit <= 0:
                 defender['HP'][1] = 0
                 print(f"\t{defender['Name']} is hit with {hit} point(s) "
@@ -250,20 +255,24 @@ def combat_round(opponent_one, opponent_two):
                 print(f"\n------ {attacker['Name']} WIN!! GAME OVER. ------\n")
                 game_over = True
 
+            # if defender is still alive after attack
             else:
                 defender['HP'][1] -= hit
                 print(f"\t{defender['Name']}'s HP is reduced {hit} point(s).")
                 print("\tCONTINUE the round.\n\t", end="")
                 print_hp_compare(opponent_one, opponent_two)
+
+        # if attack is failed
         else:
             print(f"\n{attacker['Name']}'s attack was failed... "
                   "CONTINUE the round.")
 
-        attacker, defender = defender, attacker    # change turns
+        # change turns
+        attacker, defender = defender, attacker
 
 
 def set_full_hp(character):
-    """Set the hp full.
+    """Set the full hp.
 
     Set the current hp of the given character to be full.
 
@@ -325,7 +334,7 @@ def attack(attacker, defender):
     :param defender: a character object
     :precondition: both parameters must be well-formed dictionaries each
                     containing a correct character
-    :postcondition: give true if the attacker successed to attack, and false if
+    :postcondition: give true if the attacker succeed to attack, and false if
                     the attacker failed to attack
     :return: boolean value
     """
@@ -333,9 +342,9 @@ def attack(attacker, defender):
     defender_num = defender['Dexterity']
 
     if attacker_num > defender_num:
-        return True
+        return True    # attack succeed
     else:
-        return False
+        return False    # attack failed
 
 
 def main():
@@ -352,14 +361,17 @@ def main():
     test_character_one = create_character(syllables1)
     print()
 
+    # print character
     print("This is the formed your character!")
     print_character(test_character_one)
     print()
 
+    # choose inventory
     print(f"Let's buy some goods for {test_character_one['Name']}")
     choose_inventory(test_character_one)
     print()
 
+    # print character again
     print("Final check for your character!")
     print_character(test_character_one)
     print()
@@ -378,7 +390,7 @@ def main():
                           'Constitution': 8,
                           'Charisma': 16}
 
-    # test combat
+    # combat
     combat_round(test_character_one, test_character_two)
     print("Bye, see you again!")
 
