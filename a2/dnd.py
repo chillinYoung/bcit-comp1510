@@ -195,8 +195,7 @@ def choose_inventory(character_obj):
             choice_list.append(goods_list[int(user_choice) - 1])
 
         elif user_choice != "-1":
-            print("ERROR: invalid input. "
-                  "Please enter the number of an item.\n")
+            print("ERROR: please enter the number of an item.\n")
             print_list_with_count(goods_list)
 
     for item in choice_list:
@@ -227,23 +226,47 @@ def combat_round(opponent_one, opponent_two):
     :postcondition: represent combat and print result of combat
     """
     # set to full HP
-    set_full_hp(opponent_one)
-    set_full_hp(opponent_two)
+    opponent_one['HP'][1] = opponent_one['HP'][0]
+    opponent_two['HP'][1] = opponent_two['HP'][0]
 
     print("\n---------- Combat starts! ----------\n")
-    print_hp_compare(opponent_one, opponent_two)
 
-    # choose first attacker
-    attacker, defender = choose_first_attacker(opponent_one, opponent_two)
+    # choose the first attacker
+    same_num = True
+    while same_num:
+        opp_one = roll_die(1, 20)
+        opp_two = roll_die(1, 20)
+        if opp_one != opp_two:
+            same_num = False
+
+    opponents = {opp_one: opponent_one, opp_two: opponent_two}
+    attacker, defender = opponents[max(opponents)], opponents[min(opponents)]
+
+    print_hp_compare(opponent_one, opponent_two)
     print(f"{attacker['Name']} is the first attacker.")
 
+    attack(attacker, defender)
+
+
+def attack(attacker, defender):
+    """Attack each other.
+
+    A function that two oppoenents attacks each other and find the winner.
+
+    :param attacker: a character object, the first attacker
+    :param defender: a character object, the first defender
+    :precondition: both parameters must be well-formed dictionaries each
+                    containing a correct character
+    :postcondition: print every attack status and the result of attack
+    """
     # attack start
     game_over = False
     while not game_over:
-        attack_success = attack(attacker, defender)
+        attacker_num = roll_die(1, 20)
+        defender_num = defender['Dexterity']
 
         # if attack is succeed
-        if attack_success is True:
+        if attacker_num > defender_num:
             print(f"\n{attacker['Name']}'s attack was successful!!")
             hit = roll_die(1, get_hit_die(attacker['Class']))
 
@@ -260,7 +283,7 @@ def combat_round(opponent_one, opponent_two):
                 defender['HP'][1] -= hit
                 print(f"\t{defender['Name']}'s HP is reduced {hit} point(s).")
                 print("\tCONTINUE the round.\n\t", end="")
-                print_hp_compare(opponent_one, opponent_two)
+                print_hp_compare(attacker, defender)
 
         # if attack is failed
         else:
@@ -269,20 +292,6 @@ def combat_round(opponent_one, opponent_two):
 
         # change turns
         attacker, defender = defender, attacker
-
-
-def set_full_hp(character):
-    """Set the full hp.
-
-    Set the current hp of the given character to be full.
-
-    :param character: a character object
-    :precondition: the character object must be well-formed dictionary
-    :postcondition: change the current HP to be full (to be same with max HP of
-                    the character)
-    """
-    # current HP <= max HP
-    character['HP'][1] = character['HP'][0]
 
 
 def print_hp_compare(opponent_one, opponent_two):
@@ -298,53 +307,6 @@ def print_hp_compare(opponent_one, opponent_two):
     """
     print(f"{opponent_one['Name']} (HP: {opponent_one['HP'][1]})"
           f" vs. {opponent_two['Name']} (HP: {opponent_two['HP'][1]})")
-
-
-def choose_first_attacker(opponent_one, opponent_two):
-    """Choose the first attacker.
-
-    Choose the first attacker from given character objects by rolling die.
-    :param opponent_one: a character object
-    :param opponent_two: a character object
-    :precondition: both parameters must be well-formed dictionaries each
-                    containing a correct character
-    :postcondition: provide the attacker and defender as objects, which were
-                    chosen by rolling 1d20 die
-    :return: chosen attacker and defender as objects
-    """
-    same_num = True
-    while same_num:
-        opp_one = roll_die(1, 20)
-        opp_two = roll_die(1, 20)
-        if opp_one != opp_two:
-            same_num = False
-
-    opponents = {opp_one: opponent_one, opp_two: opponent_two}
-
-    # return in order to 'attacker, defender'
-    return opponents[max(opponents)], opponents[min(opponents)]
-
-
-def attack(attacker, defender):
-    """Attack the defender.
-
-    A function that attacker attacks the defender and find the winner.
-
-    :param attacker: a character object
-    :param defender: a character object
-    :precondition: both parameters must be well-formed dictionaries each
-                    containing a correct character
-    :postcondition: give true if the attacker succeed to attack, and false if
-                    the attacker failed to attack
-    :return: boolean value
-    """
-    attacker_num = roll_die(1, 20)
-    defender_num = defender['Dexterity']
-
-    if attacker_num > defender_num:
-        return True    # attack succeed
-    else:
-        return False    # attack failed
 
 
 def main():
