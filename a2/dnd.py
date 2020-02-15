@@ -265,42 +265,25 @@ def choose_inventory(character_obj):
 
     print("Welcome to the Olde Tyme Merchant!\n")
     print("Here is what we have for sale:\n")
-    print_list_with_count(goods_list)
 
     choice_list = []
     user_choice = 0
     while user_choice != "-1":
+
+        for counter, elem in zip(itertools.count(1), goods_list):
+            print(f"{counter}. {elem}")
+        print()
         user_choice = input("What would you like to buy (-1 to finish): ")
 
         if user_choice.isdigit() and (0 < int(user_choice) <= len(goods_list)):
             choice_list.append(goods_list[int(user_choice) - 1])
+            print()
 
         elif user_choice != "-1":
-            print("ERROR: please enter the number of an item.\n")
-            print_list_with_count(goods_list)
+            print("ERROR: please enter the list number of an item.\n")
 
     for item in choice_list:
         character_obj["Inventory"].append(item)
-
-    """
-    Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
-    """
-
-
-def print_list_with_count(list_to_print):
-    """Print a list with counter.
-
-    :param list_to_print: a list to print
-    :precondition: a list must be given as an argument
-    :postcondition: print the given list with counter from 1
-                    such as '1. element'
-    """
-    for counter, elem in zip(itertools.count(1), list_to_print):
-        print(f"{counter}. {elem}")
 
     """
     Computational Thinking
