@@ -29,6 +29,14 @@ def roll_die(number_of_rolls, number_of_sides):
         idx -= 1
     return rolled
 
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
+
 
 def generate_name(syllables):
     """Generate a name.
@@ -46,6 +54,14 @@ def generate_name(syllables):
         idx -= 1
     return generated.capitalize()
 
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
+
 
 def generate_vowel():
     """Generate a single vowel.
@@ -54,6 +70,14 @@ def generate_vowel():
     :return: a single vowel as string
     """
     return random.choice("aeiouy")
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def generate_consonant():
@@ -64,6 +88,14 @@ def generate_consonant():
     """
     return random.choice("bcdfghjklmnpqrstvwxyz")
 
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
+
 
 def generate_syllable():
     """Generate the two-letter syllable.
@@ -73,6 +105,14 @@ def generate_syllable():
     :return: the two-letter syllable as string
     """
     return generate_consonant() + generate_vowel()
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def create_character(syllables):
@@ -92,20 +132,28 @@ def create_character(syllables):
         return None
 
     selected_class = select_class()    # get user input
-    character_info = {'Name': generate_name(syllables),
-                      'Inventory': [],
-                      'XP': 0,
-                      'Class': selected_class,
-                      'Race': select_race(),    # get user input
+    character_info = {"Name": generate_name(syllables),
+                      "Inventory": [],
+                      "XP": 0,
+                      "Class": selected_class,
+                      "Race": select_race(),    # get user input
                       # HP → [maxHP, currentHP]
-                      'HP': [roll_die(1, get_hit_die(selected_class)), 0]}
+                      "HP": [roll_die(1, get_hit_die(selected_class)), 0]}
 
-    attributes = ['Strength', 'Intelligence', 'Wisdom',
-                  'Dexterity', 'Constitution', 'Charisma']
+    attributes = ["Strength", "Intelligence", "Wisdom",
+                  "Dexterity", "Constitution", "Charisma"]
     for attr in attributes:
         character_info[attr] = roll_die(3, 6)
 
     return character_info
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def get_hit_die(class_of_character):
@@ -119,11 +167,19 @@ def get_hit_die(class_of_character):
     :postcondition: give an integer that indicates hit die of the character
     :return: hit die as integer
     """
-    hit_die = {'barbarian': 12, 'bard': 8, 'cleric': 8, 'druid': 8,
-               'fighter': 10, 'monk': 8, 'paladin': 10, 'ranger': 10,
-               'rogue': 8, 'sorcerer': 6, 'warlock': 8, 'wizard': 6}
+    hit_die = {"barbarian": 12, "bard": 8, "cleric": 8, "druid": 8,
+               "fighter": 10, "monk": 8, "paladin": 10, "ranger": 10,
+               "rogue": 8, "sorcerer": 6, "warlock": 8, "wizard": 6}
 
     return hit_die[class_of_character]
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def select_class():
@@ -134,13 +190,21 @@ def select_class():
     :postcondition: make the chosen class input to lower string
     :return: chosen class as string
     """
-    classes = ['barbarian', 'bard', 'cleric', 'druid', 'fighter',
-               'monk', 'paladin', 'ranger', 'rogue', 'sorcerer',
-               'warlock', 'wizard']
-    print("\nClasses:\n", ", ".join(classes), "\n")
+    classes = ["barbarian", "bard", "cleric", "druid", "fighter",
+               "monk", "paladin", "ranger", "rogue", "sorcerer",
+               "warlock", "wizard"]
+    print("\nClasses:\n" + ", ".join(classes), "\n")
     class_choice = (input("Choose the class for your character: ")
-                    .strip().lower())
+                    .replace(" ", "").lower())
     return class_choice
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def select_race():
@@ -151,11 +215,20 @@ def select_race():
     :postcondition: make the chosen race input to lower string
     :return: chosen race as string
     """
-    races = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf',
-             'halfling', 'half-orc', 'human', 'tiefling']
-    print("\nRaces:\n", ", ".join(races), "\n")
-    race_choice = input("Choose the race for your character: ").strip().lower()
+    races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf",
+             "halfling", "half-orc", "human", "tiefling"]
+    print("\nRaces:\n" + ", ".join(races), "\n")
+    race_choice = (input("Choose the race for your character: ")
+                   .replace(" ", "").lower())
     return race_choice
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def print_character(character):
@@ -167,6 +240,14 @@ def print_character(character):
     :postcondition: print given character's information
     """
     print(character)
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def choose_inventory(character_obj):
@@ -199,7 +280,15 @@ def choose_inventory(character_obj):
             print_list_with_count(goods_list)
 
     for item in choice_list:
-        character_obj['Inventory'].append(item)
+        character_obj["Inventory"].append(item)
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def print_list_with_count(list_to_print):
@@ -212,6 +301,14 @@ def print_list_with_count(list_to_print):
     """
     for counter, elem in zip(itertools.count(1), list_to_print):
         print(f"{counter}. {elem}")
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def combat_round(opponent_one, opponent_two):
@@ -226,8 +323,8 @@ def combat_round(opponent_one, opponent_two):
     :postcondition: represent combat and print result of combat
     """
     # set to full HP
-    opponent_one['HP'][1] = opponent_one['HP'][0]
-    opponent_two['HP'][1] = opponent_two['HP'][0]
+    opponent_one["HP"][1] = opponent_one["HP"][0]
+    opponent_two["HP"][1] = opponent_two["HP"][0]
 
     print("\n---------- Combat starts! ----------\n")
 
@@ -247,6 +344,14 @@ def combat_round(opponent_one, opponent_two):
 
     attack(attacker, defender)
 
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
+
 
 def attack(attacker, defender):
     """Attack each other.
@@ -263,16 +368,16 @@ def attack(attacker, defender):
     game_over = False
     while not game_over:
         attacker_num = roll_die(1, 20)
-        defender_num = defender['Dexterity']
+        defender_num = defender["Dexterity"]
 
         # if attack is succeed
         if attacker_num > defender_num:
             print(f"\n{attacker['Name']}'s attack was successful!!")
-            hit = roll_die(1, get_hit_die(attacker['Class']))
+            hit = roll_die(1, get_hit_die(attacker["Class"]))
 
             # if defender died by attack
-            if defender['HP'][1] - hit <= 0:
-                defender['HP'][1] = 0
+            if defender["HP"][1] - hit <= 0:
+                defender["HP"][1] = 0
                 print(f"\t{defender['Name']} is hit with {hit} point(s) "
                       "and Killed.")
                 print(f"\n------ {attacker['Name']} WIN!! GAME OVER. ------\n")
@@ -280,7 +385,7 @@ def attack(attacker, defender):
 
             # if defender is still alive after attack
             else:
-                defender['HP'][1] -= hit
+                defender["HP"][1] -= hit
                 print(f"\t{defender['Name']}'s HP is reduced {hit} point(s).")
                 print("\tCONTINUE the round.\n\t", end="")
                 print_hp_compare(attacker, defender)
@@ -292,6 +397,14 @@ def attack(attacker, defender):
 
         # change turns
         attacker, defender = defender, attacker
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def print_hp_compare(opponent_one, opponent_two):
@@ -307,6 +420,14 @@ def print_hp_compare(opponent_one, opponent_two):
     """
     print(f"{opponent_one['Name']} (HP: {opponent_one['HP'][1]})"
           f" vs. {opponent_two['Name']} (HP: {opponent_two['HP'][1]})")
+
+    """
+    Computational Thinking
+        -Decomposition: 
+        -Pattern matching/data representation: 
+        -Abstraction/generalization: 
+        -Algorithm/automation: 
+    """
 
 
 def main():
@@ -339,18 +460,18 @@ def main():
     print()
 
     # create and set up the hard-coded character
-    test_character_two = {'Name': 'Quluho',
-                          'Inventory': ['sword', 'heavy blunt'],
-                          'XP': 0,
-                          'Class': 'bard',
-                          'Race': 'gnome',
-                          'HP': [7, 0],
-                          'Strength': 9,
-                          'Intelligence': 11,
-                          'Wisdom': 12,
-                          'Dexterity': 13,
-                          'Constitution': 8,
-                          'Charisma': 16}
+    test_character_two = {"Name": "Quluho",
+                          "Inventory": ["sword", "heavy blunt"],
+                          "XP": 0,
+                          "Class": "bard",
+                          "Race": "gnome",
+                          "HP": [7, 0],
+                          "Strength": 9,
+                          "Intelligence": 11,
+                          "Wisdom": 12,
+                          "Dexterity": 13,
+                          "Constitution": 8,
+                          "Charisma": 16}
 
     # combat
     combat_round(test_character_one, test_character_two)
