@@ -127,7 +127,7 @@ def create_character(syllables):
                     in a dictionary
     :return: a dictionary that contains character information
     """
-    if syllables <= 0:
+    if (type(syllables) is not int) or (syllables <= 0):
         print("ERROR: given number is not a positive integer.")
         return None
 
