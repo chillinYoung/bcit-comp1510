@@ -9,14 +9,17 @@ from dnd import generate_consonant
 
 class TestGenerateConsonant(TestCase):
 
-    def test_generate_consonant(self):
+    def test_generate_consonant_correctness(self):
+        """Test the correctness of a generated consonant."""
         actual = generate_consonant()
         self.assertIn(actual, "bcdfghjklmnpqrstvwxyz")
 
     def test_generate_consonant_length(self):
+        """Test the lenghth of a generated consonant."""
         actual = len(generate_consonant())
         self.assertEqual(actual, 1)
 
     def test_generate_consonant_type(self):
+        """Test the type of a generated consonant."""
         actual = type(generate_consonant())
         self.assertEqual(actual, str)

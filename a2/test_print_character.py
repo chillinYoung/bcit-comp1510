@@ -12,6 +12,7 @@ from dnd import print_character
 class TestPrintCharacter(TestCase):
 
     def setUp(self):
+        """Set up a character to test this test module."""
         self.character_sample = {'Name': 'Qaba',
                                  'Inventory': [],
                                  'XP': 0,
@@ -27,6 +28,7 @@ class TestPrintCharacter(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_print_character_formed_dictionary(self, mock_stdout):
+        """Test the print of formed character dictionary."""
         actual = print_character(self.character_sample)
         expected = ("{'Name': 'Qaba', 'Inventory': [], 'XP': 0, "
                     "'Class': 'barbarian', 'Race': 'dragonborn', "
@@ -37,6 +39,7 @@ class TestPrintCharacter(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_print_character_empty_dictionary(self, mock_stdout):
+        """Test the print of empty dictionary."""
         actual = print_character({})
         expected = "{}\n"
         self.assertEqual(mock_stdout.getvalue(), expected)

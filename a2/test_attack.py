@@ -1,6 +1,8 @@
 """
 COMP 1510 202010 Assignment 2 Unit Test
 Young Kim (A01087377)
+
+The unit test for attack function in the dnd module.
 """
 
 from unittest import TestCase
@@ -12,6 +14,7 @@ import dnd
 class TestAttack(TestCase):
 
     def setUp(self):
+        """Set up characters to test this test module."""
         self.attacker = {'Name': 'Gaga',
                          'Inventory': ['axe'],
                          'XP': 0,
@@ -41,6 +44,7 @@ class TestAttack(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('random.randint', side_effect=[11, 10])
     def test_attack_one_time(self, mock_randint, mock_stdout):
+        """Test the one time attack and finished."""
         expected = ("\nGaga's attack was successful!!\n"
                     "\tJukiku is hit with 10 point(s) and Killed.\n"
                     "\n------ Gaga WIN!! GAME OVER. ------\n\n")
@@ -50,6 +54,7 @@ class TestAttack(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('random.randint', side_effect=[16, 7, 15, 7, 2, 15, 5])
     def test_attack_several_attacks(self, mock_randint, mock_stdout):
+        """Test the several times of attack and finished."""
         self.attacker['HP'][1] = 11
         self.defender['HP'][1] = 8
         expected = ("\nGaga's attack was successful!!\n"

@@ -12,6 +12,7 @@ import dnd
 class TestCombatRound(TestCase):
 
     def setUp(self):
+        """Set up opponents to test this test module."""
         self.opponent_one = {'Name': 'Gaga',
                              'Inventory': ['axe'],
                              'XP': 0,
@@ -41,6 +42,7 @@ class TestCombatRound(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('random.randint', side_effect=[10, 3, 11, 9])
     def test_combat_round_done_in_one_attack(self, mock_randint, mock_stdout):
+        """Test for one time attack and game over"""
         expected = ("\n---------- Combat starts! ----------\n\n"
                     "Gaga (HP: 11) vs. Jukiku (HP: 8)\n"
                     "Gaga is the first attacker.\n"
@@ -53,6 +55,7 @@ class TestCombatRound(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('random.randint', side_effect=[7, 10, 19, 5, 11, 3, 3, 17, 8])
     def test_combat_round_several_attacks(self, mock_randint, mock_stdout):
+        """Test for several attacks and game over"""
         expected = ("\n---------- Combat starts! ----------\n\n"
                     "Gaga (HP: 11) vs. Jukiku (HP: 8)\n"
                     "Jukiku is the first attacker.\n"

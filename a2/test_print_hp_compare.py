@@ -12,6 +12,7 @@ import dnd
 class TestPrintHpCompare(TestCase):
 
     def setUp(self):
+        """Set up the dictionaries to test this test module."""
         self.opponent_one = {'Name': 'Kiki',
                              'HP': [11, 5]}
 
@@ -20,6 +21,7 @@ class TestPrintHpCompare(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_print_hp_compare(self, mock_stdout):
+        """Test the print of hp comparing."""
         expected = "Kiki (HP: 5) vs. Huhaya (HP: 7)\n"
         dnd.print_hp_compare(self.opponent_one, self.opponent_two)
         self.assertEqual(mock_stdout.getvalue(), expected)
