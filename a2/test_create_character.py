@@ -16,6 +16,11 @@ class TestCreateCharacter(TestCase):
         self.assertIsNone(actual)
 
     @patch('builtins.input', side_effect=["druid", "elf"])
+    def test_create_character_not_integer(self, mock_input):
+        actual = create_character("test")
+        self.assertIsNone(actual)
+
+    @patch('builtins.input', side_effect=["druid", "elf"])
     def test_create_character_name_length(self, mock_input):
         actual = len(create_character(3)['Name'])
         self.assertEqual(actual, 6)

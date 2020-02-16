@@ -21,6 +21,13 @@ def roll_die(number_of_rolls, number_of_sides):
     :precondition: the numbers must be a non-zero positive integer
     :postcondition: give the sum of randomly rolled die/dice
     :return: result of rolling the die/dice as an integer
+
+    >>> roll_die(1, 1)
+    1
+    >>> 1 <= roll_die(1, 20) <= 20
+    True
+    >>> 3 <= roll_die(3, 6) <= 3 * 6
+    True
     """
     rolled = 0
     idx = number_of_rolls
@@ -31,10 +38,10 @@ def roll_die(number_of_rolls, number_of_sides):
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Pattern matching/data representation: get a random integer in the
+                        given range for the given number of times
+        -Algorithm/automation: calculate the sum of random integers using the
+                        loop with index
     """
 
 
@@ -46,6 +53,11 @@ def generate_name(syllables):
     :postcondition: generate a name with given syllables of which each syllable
                     is a consonant followed by a vowel
     :return: a generated name as capitalized string
+
+    >>> len(generate_name(2))
+    4
+    >>> len(generate_name(3))
+    6
     """
     generated = ""
     idx = syllables
@@ -56,10 +68,13 @@ def generate_name(syllables):
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Decomposition: generate a consonant, generate a vowel, combine the
+                        consonant, repeat these for given number
+        -Pattern matching/data representation: the repeated combination of one
+                        consonant and one vowel
+        -Abstraction/generalization: generate a name with given syllables
+        -Algorithm/automation: invoke generate_syllable function with the given
+                        number times, combine them, and capitalize it
     """
 
 
@@ -73,10 +88,10 @@ def generate_vowel():
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Abstraction/generalization: generate one vowel
+        -Algorithm/automation: choose one vowel in the string which is
+                        collection of vowel using choice method in random
+                        module
     """
 
 
@@ -90,10 +105,10 @@ def generate_consonant():
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Abstraction/generalization: generate one consonant
+        -Algorithm/automation: choose one consonant in the string which is
+                        collection of consonant using choice method in random
+                        module
     """
 
 
@@ -108,10 +123,12 @@ def generate_syllable():
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Decomposition: generate a consonant, generate a wowel, and combine
+                        them as a syllable
+        -Pattern matching/data representation: the syllable is the two-letter
+                        in order of one consonant and one vowel
+        -Algorithm/automation: invoke generate_consonant() and generate_vowel()
+                        and return the combination of them
     """
 
 
@@ -123,8 +140,8 @@ def create_character(syllables):
 
     :param syllables: a non-zero positive integer
     :precondition: the number must be a positive integer which is non-zero
-    :postcondition: provide initialized and assembled character information
-                    in a dictionary
+    :postcondition: provide initialized and assembled character information in
+                    a dictionary
     :return: a dictionary that contains character information
     """
     if (type(syllables) is not int) or (syllables <= 0):
@@ -132,13 +149,13 @@ def create_character(syllables):
         return None
 
     selected_class = select_class()    # get user input
-    character_info = {"Name": generate_name(syllables),
-                      "Inventory": [],
-                      "XP": 0,
-                      "Class": selected_class,
-                      "Race": select_race(),    # get user input
+    character_info = {'Name': generate_name(syllables),
+                      'Inventory': [],
+                      'XP': 0,
+                      'Class': selected_class,
+                      'Race': select_race(),    # get user input
                       # HP → [maxHP, currentHP]
-                      "HP": [roll_die(1, get_hit_die(selected_class)), 0]}
+                      'HP': [roll_die(1, get_hit_die(selected_class)), 0]}
 
     attributes = ["Strength", "Intelligence", "Wisdom",
                   "Dexterity", "Constitution", "Charisma"]
@@ -149,36 +166,50 @@ def create_character(syllables):
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Decomposition: form the dictionry by validating the argument,
+                        generating a name, getting user input for class,
+                        getting user input for race, generating numbers for HP
+                        and attributes
+        -Pattern matching/data representation: a dictionary containes the
+                        information with keys and values
+        -Abstraction/generalization: create a character
+        -Algorithm/automation: invoke roll_die to initialize attributes and HP,
+                        store information as a key and value in a dictionary
+
     """
 
 
 def get_hit_die(class_of_character):
-    """Give the hit-die.
+    """Give the hit-die number.
 
-    A function that gives the hit-die of the given character.
+    A function that gives the hit-die number of the given character.
 
     :param class_of_character: the class of character as string
     :precondition: the class of character must be given as string and a correct
                     name of one of the character classes
     :postcondition: give an integer that indicates hit die of the character
     :return: hit die as integer
+
+    >>> get_hit_die("wizard")
+    6
+    >>> get_hit_die("cleric")
+    8
+    >>> get_hit_die("paladin")
+    10
+    >>> get_hit_die("barbarian")
+    12
     """
-    hit_die = {"barbarian": 12, "bard": 8, "cleric": 8, "druid": 8,
-               "fighter": 10, "monk": 8, "paladin": 10, "ranger": 10,
-               "rogue": 8, "sorcerer": 6, "warlock": 8, "wizard": 6}
+    hit_die = {'barbarian': 12, 'bard': 8, 'cleric': 8, 'druid': 8,
+               'fighter': 10, 'monk': 8, 'paladin': 10, 'ranger': 10,
+               'rogue': 8, 'sorcerer': 6, 'warlock': 8, 'wizard': 6}
 
     return hit_die[class_of_character]
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Abstraction/generalization: get the hit-die number
+        -Algorithm/automation: find given string (character's class) in the
+                        dictionary and return the value of it
     """
 
 
@@ -200,10 +231,9 @@ def select_class():
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Abstraction/generalization: select class of a character
+        -Algorithm/automation: get user input and return it after remove any
+                        whitespaces and convert it to lowercase
     """
 
 
@@ -224,10 +254,9 @@ def select_race():
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Abstraction/generalization: select race of a character
+        -Algorithm/automation: get user input and return it after remove any
+                        whitespaces and convert it to lowercase
     """
 
 
@@ -238,15 +267,19 @@ def print_character(character):
     :precondition: character information must be a dictionary format created by
                     create_character function in this domule
     :postcondition: print given character's information
+
+    >>> print_character({})
+    {}
+    >>> print_character({'Name': 'Haha', 'HP': [10, 0]})
+    {'Name': 'Haha', 'HP': [10, 0]}
     """
     print(character)
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Pattern matching/data representation: show the dictionary data that
+                        contains key and value pairs
+        -Abstraction/generalization: print character information
     """
 
 
@@ -283,14 +316,15 @@ def choose_inventory(character_obj):
             print("ERROR: please enter the list number of an item.\n")
 
     for item in choice_list:
-        character_obj["Inventory"].append(item)
+        character_obj['Inventory'].append(item)
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Pattern matching/data representation: get user input and store choices
+        -Abstraction/generalization: a user gets goods
+        -Algorithm/automation: show goods list, get user input, add goods to
+                        local list until user input '-1', and store them to the
+                        inventory of the character dictionary
     """
 
 
@@ -306,8 +340,8 @@ def combat_round(opponent_one, opponent_two):
     :postcondition: represent combat and print result of combat
     """
     # set to full HP
-    opponent_one["HP"][1] = opponent_one["HP"][0]
-    opponent_two["HP"][1] = opponent_two["HP"][0]
+    opponent_one['HP'][1] = opponent_one['HP'][0]
+    opponent_two['HP'][1] = opponent_two['HP'][0]
 
     print("\n---------- Combat starts! ----------\n")
 
@@ -329,10 +363,10 @@ def combat_round(opponent_one, opponent_two):
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Decomposition: choose the first attacker and attack each other
+        -Abstraction/generalization: play one round of combat
+        -Algorithm/automation: assign the first attacker by getting max number
+                        in rolled die numbers and pass the result to attack()
     """
 
 
@@ -351,16 +385,16 @@ def attack(attacker, defender):
     game_over = False
     while not game_over:
         attacker_num = roll_die(1, 20)
-        defender_num = defender["Dexterity"]
+        defender_num = defender['Dexterity']
 
         # if attack is succeed
         if attacker_num > defender_num:
             print(f"\n{attacker['Name']}'s attack was successful!!")
-            hit = roll_die(1, get_hit_die(attacker["Class"]))
+            hit = roll_die(1, get_hit_die(attacker['Class']))
 
             # if defender died by attack
-            if defender["HP"][1] - hit <= 0:
-                defender["HP"][1] = 0
+            if defender['HP'][1] - hit <= 0:
+                defender['HP'][1] = 0
                 print(f"\t{defender['Name']} is hit with {hit} point(s) "
                       "and Killed.")
                 print(f"\n------ {attacker['Name']} WIN!! GAME OVER. ------\n")
@@ -368,7 +402,7 @@ def attack(attacker, defender):
 
             # if defender is still alive after attack
             else:
-                defender["HP"][1] -= hit
+                defender['HP'][1] -= hit
                 print(f"\t{defender['Name']}'s HP is reduced {hit} point(s).")
                 print("\tCONTINUE the round.\n\t", end="")
                 print_hp_compare(attacker, defender)
@@ -383,10 +417,14 @@ def attack(attacker, defender):
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Pattern matching/data representation: attack the defender, apply the
+                        result, change role, and repeat
+        -Abstraction/generalization: combat until one of opponents dies
+        -Algorithm/automation: if attacker random number is bigger then the
+                        dexterity of the defender, attack is successful and
+                        defender's HP is reduced by random number, and if the
+                        defender is still alive, change the role. In opposite
+                        case, attack is fail and change the role.
     """
 
 
@@ -400,24 +438,27 @@ def print_hp_compare(opponent_one, opponent_two):
     :precondition: the chracter objects must be well-formed dictionaries each
                     containing a correct character
     :postcondition: print the current HP of the both characters with their name
+
+    >>> print_hp_compare({'Name': "Kiki", 'HP': [4, 3]},
+    ...                  {'Name': "Tutu", 'HP': [13, 11]})
+    ...
+    Kiki (HP: 3) vs. Tutu (HP: 11)
     """
     print(f"{opponent_one['Name']} (HP: {opponent_one['HP'][1]})"
           f" vs. {opponent_two['Name']} (HP: {opponent_two['HP'][1]})")
 
     """
     Computational Thinking
-        -Decomposition: 
-        -Pattern matching/data representation: 
-        -Abstraction/generalization: 
-        -Algorithm/automation: 
+        -Abstraction/generalization: print HP information of both opponents
+        -Algorithm/automation: print HP of each chracter using its dictionary
     """
 
 
 def main():
     """Drive the program.
 
-    A function that drives the program to test this module, which will play
-    short D&D game to demonstrate it.
+    A function that drives the program to test this module, which will execute
+    doctest and play short D&D game to demonstrate it.
     """
     doctest.testmod()
 
@@ -443,18 +484,18 @@ def main():
     print()
 
     # create and set up the hard-coded character
-    test_character_two = {"Name": "Quluho",
-                          "Inventory": ["sword", "heavy blunt"],
-                          "XP": 0,
-                          "Class": "bard",
-                          "Race": "gnome",
-                          "HP": [7, 0],
-                          "Strength": 9,
-                          "Intelligence": 11,
-                          "Wisdom": 12,
-                          "Dexterity": 13,
-                          "Constitution": 8,
-                          "Charisma": 16}
+    test_character_two = {'Name': 'Quluho',
+                          'Inventory': ['sword', 'heavy blunt'],
+                          'XP': 0,
+                          'Class': 'bard',
+                          'Race': 'gnome',
+                          'HP': [7, 0],
+                          'Strength': 9,
+                          'Intelligence': 11,
+                          'Wisdom': 12,
+                          'Dexterity': 13,
+                          'Constitution': 8,
+                          'Charisma': 16}
 
     # combat
     combat_round(test_character_one, test_character_two)

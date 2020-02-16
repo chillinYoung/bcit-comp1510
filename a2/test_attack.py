@@ -13,7 +13,7 @@ class TestAttack(TestCase):
 
     def setUp(self):
         self.attacker = {'Name': 'Gaga',
-                         'Inventory': ["axe"],
+                         'Inventory': ['axe'],
                          'XP': 0,
                          'Class': 'barbarian',
                          'Race': 'dragonborn',
@@ -50,8 +50,8 @@ class TestAttack(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('random.randint', side_effect=[16, 7, 15, 7, 2, 15, 5])
     def test_attack_several_attacks(self, mock_randint, mock_stdout):
-        self.attacker["HP"][1] = 11
-        self.defender["HP"][1] = 8
+        self.attacker['HP'][1] = 11
+        self.defender['HP'][1] = 8
         expected = ("\nGaga's attack was successful!!\n"
                     "\tJukiku's HP is reduced 7 point(s)."
                     "\n\tCONTINUE the round."

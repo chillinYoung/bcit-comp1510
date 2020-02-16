@@ -12,57 +12,58 @@ import dnd
 class TestChooseInventory(TestCase):
 
     def setUp(self):
-        self.character_sample = {"Name": "Qaba",
-                                 "Inventory": [],
-                                 "XP": 0,
-                                 "Class": "barbarian",
-                                 "Race": "dragonborn",
-                                 "HP": [5, 0],
-                                 "Strength": 11,
-                                 "Intelligence": 12,
-                                 "Wisdom": 7,
-                                 "Dexterity": 14,
-                                 "Constitution": 12,
-                                 "Charisma": 12}
+        self.character_sample = {'Name': 'Qaba',
+                                 'Inventory': [],
+                                 'XP': 0,
+                                 'Class': 'barbarian',
+                                 'Race': 'dragonborn',
+                                 'HP': [5, 0],
+                                 'Strength': 11,
+                                 'Intelligence': 12,
+                                 'Wisdom': 7,
+                                 'Dexterity': 14,
+                                 'Constitution': 12,
+                                 'Charisma': 12}
 
     @patch('builtins.input', side_effect=["-1"])
     def test_choose_inventory_chose_finish(self, mock_input):
         expected = []
         dnd.choose_inventory(self.character_sample)
-        actual = self.character_sample["Inventory"]
+        actual = self.character_sample['Inventory']
         self.assertEqual(actual, expected)
 
     @patch('builtins.input', side_effect=["3", "-1"])
     def test_choose_inventory_chose_one_item(self, mock_input):
         expected = 1
         dnd.choose_inventory(self.character_sample)
-        actual = len(self.character_sample["Inventory"])
+        actual = len(self.character_sample['Inventory'])
         self.assertEqual(actual, expected)
 
     @patch('builtins.input', side_effect=["3", "2", "10", "7", "-1"])
     def test_choose_inventory_chose_one_item(self, mock_input):
         expected = 4
         dnd.choose_inventory(self.character_sample)
-        actual = len(self.character_sample["Inventory"])
+        actual = len(self.character_sample['Inventory'])
         self.assertEqual(actual, expected)
 
     @patch('builtins.input', side_effect=["23", "-1"])
     def test_choose_inventory_chose_invalid_number(self, mock_input):
         expected = []
         dnd.choose_inventory(self.character_sample)
-        actual = self.character_sample["Inventory"]
+        actual = self.character_sample['Inventory']
         self.assertEqual(actual, expected)
 
     @patch('builtins.input', side_effect=["spear", "-1"])
     def test_choose_inventory_chose_not_number(self, mock_input):
         expected = []
         dnd.choose_inventory(self.character_sample)
-        actual = self.character_sample["Inventory"]
+        actual = self.character_sample['Inventory']
         self.assertEqual(actual, expected)
 
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=["32", "-1"])
-    def test_choose_inventory_invalid_number_print(self, mock_input, mock_stdout):
+    def test_choose_inventory_invalid_number_print(self, mock_input,
+                                                   mock_stdout):
         expected = ("Welcome to the Olde Tyme Merchant!\n\n"
                     "Here is what we have for sale:\n\n"
                     "1. sword\n2. dagger\n3. heavy blunt\n4. spear\n5. staff\n"

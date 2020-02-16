@@ -13,7 +13,7 @@ class TestCombatRound(TestCase):
 
     def setUp(self):
         self.opponent_one = {'Name': 'Gaga',
-                             'Inventory': ["axe"],
+                             'Inventory': ['axe'],
                              'XP': 0,
                              'Class': 'barbarian',
                              'Race': 'dragonborn',
