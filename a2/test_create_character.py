@@ -1,6 +1,8 @@
 """
 COMP 1510 202010 Assignment 2 Unit Test
 Young Kim (A01087377)
+
+The unit test for create_character function in the dnd module.
 """
 
 from unittest import TestCase
