@@ -19,12 +19,6 @@ class TestCreateCharacter(TestCase):
         self.assertIsNone(actual)
 
     @patch('builtins.input', side_effect=["druid", "elf"])
-    def test_create_character_not_integer(self, mock_input):
-        """Test a non-integer argument for syllables."""
-        actual = create_character("test")
-        self.assertIsNone(actual)
-
-    @patch('builtins.input', side_effect=["druid", "elf"])
     def test_create_character_name_length(self, mock_input):
         """Test if the length of output is correct."""
         actual = len(create_character(3)['Name'])

@@ -146,12 +146,12 @@ def create_character(syllables):
                         store information as a key and value in a dictionary
     """
     # a warning message for anything other than a positive integer
-    if not syllables.isdigit() or int(syllables) <= 0:
+    if syllables <= 0:
         print("ERROR: given number is not a positive integer.")
         return None
 
     selected_class = select_class()    # get user input
-    character_info = {'Name': generate_name(int(syllables)),
+    character_info = {'Name': generate_name(syllables),
                       'Inventory': [],
                       'XP': 0,
                       'Class': selected_class,
@@ -441,7 +441,7 @@ def main():
 
     # create and set up the character
     print("Create a character.")
-    syllables1 = input("Enter the number of syllables for the name: ")
+    syllables1 = int(input("Enter the number of syllables for the name: "))
     test_character_one = create_character(syllables1)
     print()
 
