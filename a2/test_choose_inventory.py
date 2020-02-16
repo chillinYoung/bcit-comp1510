@@ -76,10 +76,10 @@ class TestChooseInventory(TestCase):
         expected = ("Welcome to the Olde Tyme Merchant!\n\n"
                     "Here is what we have for sale:\n\n"
                     "1. sword\n2. dagger\n3. heavy blunt\n4. spear\n5. staff\n"
-                    "6. blade\n7. bow\n8. beam\n9. poison\n10. axe\n"
-                    "ERROR: please enter the number of an item.\n\n"
+                    "6. blade\n7. bow\n8. beam\n9. poison\n10. axe\n\n"
+                    "ERROR: please enter the list number of an item.\n\n"
                     "1. sword\n2. dagger\n3. heavy blunt\n4. spear\n5. staff\n"
-                    "6. blade\n7. bow\n8. beam\n9. poison\n10. axe\n")
+                    "6. blade\n7. bow\n8. beam\n9. poison\n10. axe\n\n")
         actual = dnd.choose_inventory(self.character_sample)
         self.assertEqual(mock_stdout.getvalue(), expected)
 
@@ -90,9 +90,9 @@ class TestChooseInventory(TestCase):
         expected = ("Welcome to the Olde Tyme Merchant!\n\n"
                     "Here is what we have for sale:\n\n"
                     "1. sword\n2. dagger\n3. heavy blunt\n4. spear\n5. staff\n"
-                    "6. blade\n7. bow\n8. beam\n9. poison\n10. axe\n"
-                    "ERROR: please enter the number of an item.\n\n"
+                    "6. blade\n7. bow\n8. beam\n9. poison\n10. axe\n\n"
+                    "ERROR: please enter the list number of an item.\n\n"
                     "1. sword\n2. dagger\n3. heavy blunt\n4. spear\n5. staff\n"
-                    "6. blade\n7. bow\n8. beam\n9. poison\n10. axe\n")
+                    "6. blade\n7. bow\n8. beam\n9. poison\n10. axe\n\n")
         actual = dnd.choose_inventory(self.character_sample)
         self.assertEqual(mock_stdout.getvalue(), expected)

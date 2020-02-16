@@ -65,8 +65,7 @@ class TestAttack(TestCase):
                     "\tGaga's HP is reduced 7 point(s)."
                     "\n\tCONTINUE the round."
                     "\n\tJukiku (HP: 1) vs. Gaga (HP: 4)\n"
-                    "\nGaga's attack was failed... "
-                    "CONTINUE the round.\n"
+                    "\nGaga's attack was failed... CONTINUE the round.\n"
                     "\nJukiku's attack was successful!!\n"
                     "\tGaga is hit with 5 point(s) and Killed.\n"
                     "\n------ Jukiku WIN!! GAME OVER. ------\n\n")
