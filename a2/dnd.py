@@ -144,6 +144,7 @@ def create_character(syllables):
                     a dictionary
     :return: a dictionary that contains character information
     """
+    # a warning message for anything other than a positive integer
     if (type(syllables) is not int) or (syllables <= 0):
         print("ERROR: given number is not a positive integer.")
         return None
@@ -157,6 +158,7 @@ def create_character(syllables):
                       # HP → [maxHP, currentHP]
                       'HP': [roll_die(1, get_hit_die(selected_class)), 0]}
 
+    # initialize each attribute with rolling die
     attributes = ["Strength", "Intelligence", "Wisdom",
                   "Dexterity", "Constitution", "Charisma"]
     for attr in attributes:
@@ -268,8 +270,6 @@ def print_character(character):
                     create_character function in this domule
     :postcondition: print given character's information
 
-    >>> print_character({})
-    {}
     >>> print_character({'Name': 'Haha', 'HP': [10, 0]})
     {'Name': 'Haha', 'HP': [10, 0]}
     """
@@ -293,28 +293,32 @@ def choose_inventory(character_obj):
                     function in this module
     :postcondition: add all the chosen goods to the character object dictionary
     """
-    goods_list = ["sword", "dagger", "heavy blunt", "spear", "staff",
-                  "blade", "bow", "beam", "poison", "axe"]
+    goods_list = {1: 'sword', 2: 'dagger', 3: 'heavy blunt', 4: 'spear',
+                  5: 'staff', 6: 'blade', 7: 'bow', 8: 'beam', 9: 'poison',
+                  10: 'axe'}
 
     print("Welcome to the Olde Tyme Merchant!\n")
     print("Here is what we have for sale:\n")
 
     choice_list = []
     user_choice = 0
-    while user_choice != "-1":
+    while user_choice != "-1":    # exit input is '-1'
 
-        for counter, elem in zip(itertools.count(1), goods_list):
-            print(f"{counter}. {elem}")
-        print()
+        for key, value in goods_list.items():
+            print(f"{key}. {value}")
+        print()    # for empty line
         user_choice = input("What would you like to buy (-1 to finish): ")
 
-        if user_choice.isdigit() and (0 < int(user_choice) <= len(goods_list)):
-            choice_list.append(goods_list[int(user_choice) - 1])
+        # if input is valid, add correspond item to the choice_list
+        if user_choice.isdigit() and int(user_choice) in goods_list.keys():
+            choice_list.append(goods_list[int(user_choice)])
             print()
 
+        # if input is invalid and it is not '-1', print an error message
         elif user_choice != "-1":
             print("ERROR: please enter the list number of an item.\n")
 
+    # add chosen goods to character's inventory
     for item in choice_list:
         character_obj['Inventory'].append(item)
 
@@ -356,9 +360,11 @@ def combat_round(opponent_one, opponent_two):
     opponents = {opp_one: opponent_one, opp_two: opponent_two}
     attacker, defender = opponents[max(opponents)], opponents[min(opponents)]
 
+    # print who is the first attacker and HP status for both opponents
     print_hp_compare(opponent_one, opponent_two)
     print(f"{attacker['Name']} is the first attacker.")
 
+    # starts attack
     attack(attacker, defender)
 
     """
