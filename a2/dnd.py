@@ -495,7 +495,7 @@ def main():
                           'XP': 0,
                           'Class': 'barbarian',
                           'Race': 'gnome',
-                          'HP': [12, 0],
+                          'HP': [8, 0],
                           'Strength': 9,
                           'Intelligence': 11,
                           'Wisdom': 12,
