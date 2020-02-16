@@ -22,6 +22,12 @@ def roll_die(number_of_rolls, number_of_sides):
     :postcondition: give the sum of randomly rolled die/dice
     :return: result of rolling the die/dice as an integer
 
+    Computational Thinking
+        -Pattern matching/data representation: get a random integer in the
+                        given range for the given number of times
+        -Algorithm/automation: calculate the sum of random integers using the
+                        loop with index
+
     >>> roll_die(1, 1)
     1
     >>> 1 <= roll_die(1, 20) <= 20
@@ -36,14 +42,6 @@ def roll_die(number_of_rolls, number_of_sides):
         idx -= 1
     return rolled
 
-    """
-    Computational Thinking
-        -Pattern matching/data representation: get a random integer in the
-                        given range for the given number of times
-        -Algorithm/automation: calculate the sum of random integers using the
-                        loop with index
-    """
-
 
 def generate_name(syllables):
     """Generate a name.
@@ -53,6 +51,15 @@ def generate_name(syllables):
     :postcondition: generate a name with given syllables of which each syllable
                     is a consonant followed by a vowel
     :return: a generated name as capitalized string
+
+    Computational Thinking
+        -Decomposition: generate a consonant, generate a vowel, combine the
+                        consonant, repeat these for given number
+        -Pattern matching/data representation: the repeated combination of one
+                        consonant and one vowel
+        -Abstraction/generalization: generate a name with given syllables
+        -Algorithm/automation: invoke generate_syllable function with the given
+                        number times, combine them, and capitalize it
 
     >>> len(generate_name(2))
     4
@@ -66,33 +73,20 @@ def generate_name(syllables):
         idx -= 1
     return generated.capitalize()
 
-    """
-    Computational Thinking
-        -Decomposition: generate a consonant, generate a vowel, combine the
-                        consonant, repeat these for given number
-        -Pattern matching/data representation: the repeated combination of one
-                        consonant and one vowel
-        -Abstraction/generalization: generate a name with given syllables
-        -Algorithm/automation: invoke generate_syllable function with the given
-                        number times, combine them, and capitalize it
-    """
-
 
 def generate_vowel():
     """Generate a single vowel.
 
     :postcondition: generate a single vowel including 'y'
     :return: a single vowel as string
-    """
-    return random.choice("aeiouy")
 
-    """
     Computational Thinking
         -Abstraction/generalization: generate one vowel
         -Algorithm/automation: choose one vowel in the string which is
                         collection of vowel using choice method in random
                         module
     """
+    return random.choice("aeiouy")
 
 
 def generate_consonant():
@@ -100,16 +94,14 @@ def generate_consonant():
 
     :postcondition: generate a single consonant including 'y'
     :return: a single consonant as string
-    """
-    return random.choice("bcdfghjklmnpqrstvwxyz")
 
-    """
     Computational Thinking
         -Abstraction/generalization: generate one consonant
         -Algorithm/automation: choose one consonant in the string which is
                         collection of consonant using choice method in random
                         module
     """
+    return random.choice("bcdfghjklmnpqrstvwxyz")
 
 
 def generate_syllable():
@@ -118,10 +110,7 @@ def generate_syllable():
     :postcondition: generate the two-letter syllable which is the combination
                     of a single consonant and a single vowel
     :return: the two-letter syllable as string
-    """
-    return generate_consonant() + generate_vowel()
 
-    """
     Computational Thinking
         -Decomposition: generate a consonant, generate a wowel, and combine
                         them as a syllable
@@ -130,6 +119,7 @@ def generate_syllable():
         -Algorithm/automation: invoke generate_consonant() and generate_vowel()
                         and return the combination of them
     """
+    return generate_consonant() + generate_vowel()
 
 
 def create_character(syllables):
@@ -143,6 +133,17 @@ def create_character(syllables):
     :postcondition: provide initialized and assembled character information in
                     a dictionary
     :return: a dictionary that contains character information
+
+    Computational Thinking
+        -Decomposition: form the dictionry by validating the argument,
+                        generating a name, getting user input for class,
+                        getting user input for race, generating numbers for HP
+                        and attributes
+        -Pattern matching/data representation: a dictionary containes the
+                        information with keys and values
+        -Abstraction/generalization: create a character
+        -Algorithm/automation: invoke roll_die to initialize attributes and HP,
+                        store information as a key and value in a dictionary
     """
     # a warning message for anything other than a positive integer
     if not syllables.isdigit() or int(syllables) <= 0:
@@ -166,20 +167,6 @@ def create_character(syllables):
 
     return character_info
 
-    """
-    Computational Thinking
-        -Decomposition: form the dictionry by validating the argument,
-                        generating a name, getting user input for class,
-                        getting user input for race, generating numbers for HP
-                        and attributes
-        -Pattern matching/data representation: a dictionary containes the
-                        information with keys and values
-        -Abstraction/generalization: create a character
-        -Algorithm/automation: invoke roll_die to initialize attributes and HP,
-                        store information as a key and value in a dictionary
-
-    """
-
 
 def get_hit_die(class_of_character):
     """Give the hit-die number.
@@ -191,6 +178,11 @@ def get_hit_die(class_of_character):
                     name of one of the character classes
     :postcondition: give an integer that indicates hit die of the character
     :return: hit die as integer
+
+    Computational Thinking
+        -Abstraction/generalization: get the hit-die number
+        -Algorithm/automation: find given string (character's class) in the
+                        dictionary and return the value of it
 
     >>> get_hit_die("wizard")
     6
@@ -207,13 +199,6 @@ def get_hit_die(class_of_character):
 
     return hit_die[class_of_character]
 
-    """
-    Computational Thinking
-        -Abstraction/generalization: get the hit-die number
-        -Algorithm/automation: find given string (character's class) in the
-                        dictionary and return the value of it
-    """
-
 
 def select_class():
     """Select a class.
@@ -222,6 +207,11 @@ def select_class():
 
     :postcondition: make the chosen class input to lower string
     :return: chosen class as string
+
+    Computational Thinking
+        -Abstraction/generalization: select class of a character
+        -Algorithm/automation: get user input and return it after remove any
+                        whitespaces and convert it to lowercase
     """
     classes = ["barbarian", "bard", "cleric", "druid", "fighter",
                "monk", "paladin", "ranger", "rogue", "sorcerer",
@@ -231,13 +221,6 @@ def select_class():
                     .replace(" ", "").lower())
     return class_choice
 
-    """
-    Computational Thinking
-        -Abstraction/generalization: select class of a character
-        -Algorithm/automation: get user input and return it after remove any
-                        whitespaces and convert it to lowercase
-    """
-
 
 def select_race():
     """Select a race.
@@ -246,6 +229,11 @@ def select_race():
 
     :postcondition: make the chosen race input to lower string
     :return: chosen race as string
+
+    Computational Thinking
+        -Abstraction/generalization: select race of a character
+        -Algorithm/automation: get user input and return it after remove any
+                        whitespaces and convert it to lowercase
     """
     races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf",
              "halfling", "half-orc", "human", "tiefling"]
@@ -253,13 +241,6 @@ def select_race():
     race_choice = (input("Choose the race for your character: ")
                    .replace(" ", "").lower())
     return race_choice
-
-    """
-    Computational Thinking
-        -Abstraction/generalization: select race of a character
-        -Algorithm/automation: get user input and return it after remove any
-                        whitespaces and convert it to lowercase
-    """
 
 
 def print_character(character):
@@ -270,17 +251,15 @@ def print_character(character):
                     create_character function in this domule
     :postcondition: print given character's information
 
-    >>> print_character({'Name': 'Haha', 'HP': [10, 0]})
-    {'Name': 'Haha', 'HP': [10, 0]}
-    """
-    print(character)
-
-    """
     Computational Thinking
         -Pattern matching/data representation: show the dictionary data that
                         contains key and value pairs
         -Abstraction/generalization: print character information
+
+    >>> print_character({'Name': 'Haha', 'HP': [10, 0]})
+    {'Name': 'Haha', 'HP': [10, 0]}
     """
+    print(character)
 
 
 def choose_inventory(character_obj):
@@ -292,6 +271,13 @@ def choose_inventory(character_obj):
     :precondition: a character object must be well-formed by create_character
                     function in this module
     :postcondition: add all the chosen goods to the character object dictionary
+
+    Computational Thinking
+        -Pattern matching/data representation: get user input and store choices
+        -Abstraction/generalization: a user gets goods
+        -Algorithm/automation: show goods list, get user input, add goods to
+                        local list until user input '-1', and store them to the
+                        inventory of the character dictionary
     """
     goods_list = {1: 'sword', 2: 'dagger', 3: 'heavy blunt', 4: 'spear',
                   5: 'staff', 6: 'blade', 7: 'bow', 8: 'beam', 9: 'poison',
@@ -322,15 +308,6 @@ def choose_inventory(character_obj):
     for item in choice_list:
         character_obj['Inventory'].append(item)
 
-    """
-    Computational Thinking
-        -Pattern matching/data representation: get user input and store choices
-        -Abstraction/generalization: a user gets goods
-        -Algorithm/automation: show goods list, get user input, add goods to
-                        local list until user input '-1', and store them to the
-                        inventory of the character dictionary
-    """
-
 
 def combat_round(opponent_one, opponent_two):
     """Represent combat.
@@ -342,6 +319,12 @@ def combat_round(opponent_one, opponent_two):
     :precondition: both parameters must be well-formed dictionaries each
                     containing a correct character
     :postcondition: represent combat and print result of combat
+
+    Computational Thinking
+        -Decomposition: choose the first attacker and attack each other
+        -Abstraction/generalization: play one round of combat
+        -Algorithm/automation: assign the first attacker by getting max number
+                        in rolled die numbers and pass the result to attack()
     """
     # set to full HP
     opponent_one['HP'][1] = opponent_one['HP'][0]
@@ -367,14 +350,6 @@ def combat_round(opponent_one, opponent_two):
     # starts attack
     attack(attacker, defender)
 
-    """
-    Computational Thinking
-        -Decomposition: choose the first attacker and attack each other
-        -Abstraction/generalization: play one round of combat
-        -Algorithm/automation: assign the first attacker by getting max number
-                        in rolled die numbers and pass the result to attack()
-    """
-
 
 def attack(attacker, defender):
     """Attack each other.
@@ -386,6 +361,16 @@ def attack(attacker, defender):
     :precondition: both parameters must be well-formed dictionaries each
                     containing a correct character
     :postcondition: print every attack status and the result of attack
+
+    Computational Thinking
+        -Pattern matching/data representation: attack the defender, apply the
+                        result, change role, and repeat
+        -Abstraction/generalization: combat until one of opponents dies
+        -Algorithm/automation: if attacker random number is bigger then the
+                        dexterity of the defender, attack is successful and
+                        defender's HP is reduced by random number, and if the
+                        defender is still alive, change the role. In opposite
+                        case, attack is fail and change the role.
     """
     # attack start
     game_over = False
@@ -421,18 +406,6 @@ def attack(attacker, defender):
         # change turns
         attacker, defender = defender, attacker
 
-    """
-    Computational Thinking
-        -Pattern matching/data representation: attack the defender, apply the
-                        result, change role, and repeat
-        -Abstraction/generalization: combat until one of opponents dies
-        -Algorithm/automation: if attacker random number is bigger then the
-                        dexterity of the defender, attack is successful and
-                        defender's HP is reduced by random number, and if the
-                        defender is still alive, change the role. In opposite
-                        case, attack is fail and change the role.
-    """
-
 
 def print_hp_compare(opponent_one, opponent_two):
     """Print comparing current HP.
@@ -445,6 +418,10 @@ def print_hp_compare(opponent_one, opponent_two):
                     containing a correct character
     :postcondition: print the current HP of the both characters with their name
 
+    Computational Thinking
+        -Abstraction/generalization: print HP information of both opponents
+        -Algorithm/automation: print HP of each chracter using its dictionary
+
     >>> print_hp_compare({'Name': "Kiki", 'HP': [4, 3]},
     ...                  {'Name': "Tutu", 'HP': [13, 11]})
     ...
@@ -452,12 +429,6 @@ def print_hp_compare(opponent_one, opponent_two):
     """
     print(f"{opponent_one['Name']} (HP: {opponent_one['HP'][1]})"
           f" vs. {opponent_two['Name']} (HP: {opponent_two['HP'][1]})")
-
-    """
-    Computational Thinking
-        -Abstraction/generalization: print HP information of both opponents
-        -Algorithm/automation: print HP of each chracter using its dictionary
-    """
 
 
 def main():
