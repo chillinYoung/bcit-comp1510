@@ -44,6 +44,14 @@ class TestChooseInventory(TestCase):
         actual = len(self.character_sample['Inventory'])
         self.assertEqual(actual, expected)
 
+    @patch('builtins.input', side_effect=["10", "-1"])
+    def test_choose_inventory_item_correctness(self, mock_input):
+        """Test for correctness of a choosing item"""
+        expected = "axe"
+        dnd.choose_inventory(self.character_sample)
+        actual = self.character_sample['Inventory'][0]
+        self.assertEqual(actual, expected)
+
     @patch('builtins.input', side_effect=["3", "2", "10", "7", "-1"])
     def test_choose_inventory_chose_several_items(self, mock_input):
         """Test for choosing several goods"""
