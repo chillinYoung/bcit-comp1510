@@ -7,6 +7,9 @@ Young Kim (A01087377)
 def sparse_add(sparse_vector1, sparse_vector2):
     """
     """
+    if sparse_vector1['length'] != sparse_vector2['length']:
+        return None
+
     vector1 = [sparse_vector1[key] if key in sparse_vector1 else 0
                for key in range(sparse_vector1['length'])]
     vector2 = [sparse_vector2[key] if key in sparse_vector2 else 0
@@ -26,6 +29,9 @@ def sparse_add(sparse_vector1, sparse_vector2):
 def sparse_dot_product(sparse_vector1, sparse_vector2):
     """
     """
+    if sparse_vector1['length'] != sparse_vector2['length']:
+        return None
+
     vector1 = [sparse_vector1[key] if key in sparse_vector1 else 0
                for key in range(sparse_vector1['length'])]
     vector2 = [sparse_vector2[key] if key in sparse_vector2 else 0
@@ -36,7 +42,10 @@ def sparse_dot_product(sparse_vector1, sparse_vector2):
 
 
 def main():
-    pass
+    test_vec1 = {2: 5, 5: 1, 9: 1, 'length': 10}
+    test_vec2 = {'length': 10, 3: 2, 7: 5, 9: 2}
+    print(sparse_dot_product(test_vec1, test_vec2))
+    # print(sparse_add(test_vec1, test_vec2))
 
 
 if __name__ == "__main__":
