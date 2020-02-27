@@ -4,6 +4,7 @@ Young Kim (A01087377)
 """
 
 import doctest
+from typing import Union
 
 
 def sparse_add(sparse_vector1: dict, sparse_vector2: dict) -> dict:
@@ -45,7 +46,8 @@ def sparse_add(sparse_vector1: dict, sparse_vector2: dict) -> dict:
     return convert_vector_list_to_dict(added_vector_in_list)
 
 
-def sparse_dot_product(sparse_vector1: dict, sparse_vector2: dict):
+def sparse_dot_product(sparse_vector1: dict,
+                       sparse_vector2: dict) -> Union[int, float]:
     """Calculate dot product of two vectors.
 
     A function that calculates dot product of two vectors.
