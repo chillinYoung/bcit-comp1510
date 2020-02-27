@@ -36,7 +36,8 @@ def sparse_add(sparse_vector1: dict, sparse_vector2: dict) -> dict:
     >>> sparse_add(test_vec1, test_vec2)
     {'length': 2}
     """
-    if (sparse_vector1['length'] != sparse_vector2['length']):
+    if ((sparse_vector1['length'] != sparse_vector2['length'])
+            or sparse_vector1['length'] == 0 or sparse_vector2['length'] == 0):
         return None
 
     vector1 = convert_vector_dict_to_list(sparse_vector1)
@@ -46,8 +47,7 @@ def sparse_add(sparse_vector1: dict, sparse_vector2: dict) -> dict:
     return convert_vector_list_to_dict(added_vector_in_list)
 
 
-def sparse_dot_product(sparse_vector1: dict,
-                       sparse_vector2: dict) -> Union[int, float]:
+def sparse_dot_product(sparse_vector1: dict, sparse_vector2: dict) -> int:
     """Calculate dot product of two vectors.
 
     A function that calculates dot product of two vectors.
@@ -57,7 +57,7 @@ def sparse_dot_product(sparse_vector1: dict,
     :precondition: the sparse vectors must be given as a dictionary including
                     vector's length in key and value pair
     :postcondition: calculate dot product of two sparse vectors correctly
-    :return: a number (integer or float)
+    :return: an integer
 
     >>> test_vec1 = {'length': 8, 1: -1, 3: 2, 6: 1}
     >>> test_vec2 = {'length': 8, 3: -2, 4: 1, 6: -4}
@@ -76,7 +76,8 @@ def sparse_dot_product(sparse_vector1: dict,
     >>> sparse_dot_product(test_vec1, test_vec2)
     0
     """
-    if sparse_vector1['length'] != sparse_vector2['length']:
+    if (sparse_vector1['length'] != sparse_vector2['length']
+            or sparse_vector1['length'] == 0 or sparse_vector2['length'] == 0):
         return None
 
     vector1 = convert_vector_dict_to_list(sparse_vector1)
@@ -104,6 +105,8 @@ def convert_vector_dict_to_list(vector_in_dict: dict) -> list:
     >>> convert_vector_dict_to_list({'length': 6, 2: 1, 1: -4, 0: 1, 5: -3 })
     [1, -4, 1, 0, 0, -3]
     """
+    if vector_in_dict['length'] == 0:
+        return None
     return [vector_in_dict[index] if index in vector_in_dict else 0
             for index in range(vector_in_dict['length'])]
 
@@ -126,6 +129,8 @@ def convert_vector_list_to_dict(vector_in_list: list) -> dict:
     >>> convert_vector_list_to_dict([1, 0, 0, 0])
     {'length': 4, 0: 1}
     """
+    if vector_in_list == []:
+        return None
     dict_converted = {'length': len(vector_in_list)}
     counter = 0
     while counter < len(vector_in_list):

@@ -9,8 +9,8 @@ from sparse_vector import convert_vector_list_to_dict
 
 class TestSparseVector(TestCase):
     def test_convert_vector_list_to_dict_empty(self):
-        """Test empty vector list."""
-        expected = {'length': 0}
+        """Test the empty vector list."""
+        expected = None
         test_list = []
         actual = convert_vector_list_to_dict(test_list)
         self.assertEqual(actual, expected)

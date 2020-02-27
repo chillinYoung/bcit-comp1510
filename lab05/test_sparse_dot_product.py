@@ -8,6 +8,14 @@ from sparse_vector import sparse_dot_product
 
 
 class TestSparseVector(TestCase):
+    def test_sparse_dot_product_empty_vectors(self):
+        """Test the empty vectors."""
+        expected = None
+        test_vec1 = {'length': 0}
+        test_vec2 = {'length': 0}
+        actual = sparse_dot_product(test_vec1, test_vec2)
+        self.assertEqual(actual, expected)
+
     def test_sparse_dot_product_all_zeros(self):
         """Test the vectors with all zeros."""
         expected = 0

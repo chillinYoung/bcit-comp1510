@@ -8,6 +8,14 @@ from sparse_vector import sparse_add
 
 
 class TestSparseVector(TestCase):
+    def test_sparse_add_empty_vector_vectors(self):
+        """Test the empty vectors."""
+        expected = None
+        test_vec1 = {'length': 0}
+        test_vec2 = {'length': 0}
+        actual = sparse_add(test_vec1, test_vec2)
+        self.assertEqual(actual, expected)
+
     def test_sparse_add_all_zeros(self):
         """Test adding two vectors with all zeros."""
         expected = {'length': 2}
