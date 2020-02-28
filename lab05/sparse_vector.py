@@ -55,7 +55,8 @@ def sparse_dot_product(sparse_vector1: dict, sparse_vector2: dict) -> int:
     :param sparse_vector1: a sparse vector as a dictionary
     :param sparse_vector2: a sparse vector as a dictionary
     :precondition: the sparse vectors must be given as a dictionary including
-                    vector's length in key and value pair
+                    vector's length in key and value pair, and elements must be
+                    the integers
     :postcondition: calculate dot product of two sparse vectors correctly
     :return: an integer
 
@@ -107,6 +108,7 @@ def convert_vector_dict_to_list(vector_in_dict: dict) -> list:
     """
     if vector_in_dict['length'] == 0:
         return None
+
     return [vector_in_dict[index] if index in vector_in_dict else 0
             for index in range(vector_in_dict['length'])]
 
@@ -131,6 +133,7 @@ def convert_vector_list_to_dict(vector_in_list: list) -> dict:
     """
     if vector_in_list == []:
         return None
+
     dict_converted = {'length': len(vector_in_list)}
     counter = 0
     while counter < len(vector_in_list):
