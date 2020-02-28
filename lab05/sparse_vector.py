@@ -31,10 +31,10 @@ def sparse_add(sparse_vector1: dict, sparse_vector2: dict) -> dict:
     >>> test_vec2 = {'length': 2, 1: -1}
     >>> sparse_add(test_vec1, test_vec2)
     {'length': 2}
-    >>> test_vec1 = {'length': 2}
-    >>> test_vec2 = {'length': 2}
+    >>> test_vec1 = {'length': 1}
+    >>> test_vec2 = {'length': 1}
     >>> sparse_add(test_vec1, test_vec2)
-    {'length': 2}
+    {'length': 1}
     """
     if ((sparse_vector1['length'] != sparse_vector2['length'])
             or sparse_vector1['length'] == 0 or sparse_vector2['length'] == 0):
