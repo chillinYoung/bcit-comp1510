@@ -15,7 +15,7 @@ def timer(func):
         end_time = time.perf_counter()
         run_time = end_time - start_time
         print(f"Finished {func.__name__!r} in {run_time:.5f} seconds.")
-        return executed_func
+        return [f"{run_time:.5f}", func.__name__]
     return wrapper
 
 
@@ -74,11 +74,17 @@ def is_prime_lily(number):
 
 def main():
     print("Young Version: ", end="")
-    eratosthenes_young(1000)
+    young = eratosthenes_young(1000)
     print("Lily Version: ", end="")
-    eratosthenes_lily(1000)
+    lily = eratosthenes_lily(1000)
     print("HyungJoon Version: ", end="")
-    eratosthenes_hyungjoon(1000)
+    hyungjoon = eratosthenes_hyungjoon(1000)
+
+    versions = [young, lily, hyungjoon]
+    run_time_dict = {time: name for time, name in versions}
+    fastest_name = run_time_dict[min(run_time_dict)]
+
+    print(f"\nThe fastest one is {fastest_name!r}.")
 
 
 if __name__ == "__main__":
