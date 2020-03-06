@@ -41,9 +41,9 @@ def make_board() -> list:
 
     board = []
     for x in range(0, BOARD_SIZE):
-        board.append([])
+        board.append([])    # to make each row in a list
         for y in range(0, BOARD_SIZE):
-            board[x].append((x, y))
+            board[x].append((x, y))    # add column positions to the row
     return board
 
 
@@ -99,6 +99,7 @@ def move_character(character: list, direction: str):
     >>> character
     [2, 1]
     """
+    # 'direction': [axis index for character, number to add]
     directions = {'right': [0, 1], 'left': [0, -1],
                   'up': [1, -1], 'down': [1, 1]}
 
@@ -128,10 +129,13 @@ def validate_move(board: list, character: list, direction: str) -> bool:
     >>> validate_move(board, character, "down")
     True
     """
+    # 'direction': [axis index for character, number to add]
     directions = {'left': [0, -1], 'right': [0, 1],
                   'up': [1, -1], 'down': [1, 1]}
     expected_position = (character[directions[direction][0]]
                          + directions[direction][1])
+
+    # if the expected_position is in valid range, return True
     if direction in directions:
         if 0 <= expected_position < len(board):
             return True
@@ -158,6 +162,7 @@ def check_reached_goal(board: list, character: list) -> bool:
     >>> check_reached_goal(board, character)
     True
     """
+    # goal position is lower right side of the game board
     goal_pos = [len(board[0]) - 1, len(board) - 1]
     return True if character == goal_pos else False
 
