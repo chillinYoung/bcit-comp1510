@@ -45,9 +45,15 @@ def find_an_even(input_list: list) -> int:
     >>> test_list = [3, 1, 4, 6, 2]
     >>> find_an_even(test_list)
     2
-    >>> test_list = [3, 1, 5, 9, 10, 7, 11]
+    >>> test_list = [3, 1, -5, 9, -10, 7, 11]
     >>> find_an_even(test_list)
-    10
+    -10
+    >>> test_list = [-3, -7, -2, -9, -8]
+    >>> find_an_even(test_list)
+    -8
+    >>> test_list = [0, 1, 3]
+    >>> find_an_even(test_list)
+    0
     """
     even_list = [num for num in input_list if num % 2 == 0]
     try:
