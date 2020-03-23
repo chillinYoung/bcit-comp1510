@@ -13,28 +13,28 @@ import io
 
 class TestFindAnEven(TestCase):
     def test_test_an_even_zero(self):
-        """Test the list with mixed numbers."""
+        """Test the list only with zero."""
         expected = 0
         test_list = [0]
         actual = find_an_even(test_list)
         self.assertEqual(actual, expected)
 
     def test_test_an_even_positive_numbers(self):
-        """Test the list with mixed numbers."""
+        """Test the list with positive numbers."""
         expected = 2
         test_list = [5, 2, 3, 1, 4, 8]
         actual = find_an_even(test_list)
         self.assertEqual(actual, expected)
 
     def test_test_an_even_negative_numbers(self):
-        """Test the list with mixed numbers."""
+        """Test the list with negative numbers."""
         expected = -10
         test_list = [-5, -2, -3, -8, -10]
         actual = find_an_even(test_list)
         self.assertEqual(actual, expected)
 
     def test_test_an_even_mixed_list(self):
-        """Test the list with mixed numbers."""
+        """Test the list with both positive and negative numbers."""
         expected = -4
         test_list = [-1, 0, 3, 7, -4, 10]
         actual = find_an_even(test_list)
