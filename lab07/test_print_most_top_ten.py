@@ -44,3 +44,15 @@ class TestPrintMostTopTen(TestCase):
         expected = "this - 3\nthe - 3\nhi - 3\na - 3\n"
         print_most_top_ten(test_dict)
         self.assertEqual(mock_stdout.getvalue(), expected)
+
+    @patch("sys.stdout", new_callable=io.StringIO)
+    def test_print_most_top_ten_many_elements(self, mock_stdout):
+        """Test the dictionary with more than ten elements."""
+        test_dict = {'test': 1, 'a': 3, 'the': 7, 'this': 2, 'hi': 10,
+                     'please': 7, 'no': 2, 'more': 15, 'moving': 1,
+                     'apple': 9, 'orange': 17, 'and': 27, 'today': 3,
+                     'one': 1, 'two': 2}
+        expected = ("and - 27\norange - 17\nmore - 15\nhi - 10\napple - 9\n"
+                    "the - 7\nplease - 7\ntoday - 3\na - 3\ntwo - 2\n")
+        print_most_top_ten(test_dict)
+        self.assertEqual(mock_stdout.getvalue(), expected)
