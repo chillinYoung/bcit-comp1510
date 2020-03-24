@@ -22,3 +22,11 @@ class TestStr(TestCase):
                     "square kilometres.\n")
         print(self.canada)
         self.assertEqual(mock_stdout.getvalue(), expected)
+
+    def test___str___invoke_builtin_str_function(self):
+        """Test invoke __str__ using builtin str function."""
+        expected = ("Canada has a population of 37590000 and is 9985000 "
+                    "square kilometres.")
+        actual = str(self.canada)
+        self.assertEqual(actual, expected)
+
