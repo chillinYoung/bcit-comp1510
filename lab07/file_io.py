@@ -14,8 +14,17 @@ def clean_text(string_contents: str) -> list:
     :precondition: string_contents must be given as string
     :postconsition: correctly clean the text to have only alphabets
     :return: the list with cleaned and splited words
+
+    >>> clean_text("PLEASE CLEAN THIS")
+    ['please', 'clean', 'this']
+    >>> clean_text("hey@@ there## :) hi()*@&$^")
+    ['hey', 'there', 'hi']
+    >>> clean_text("may          be")
+    ['may', 'be']
+    >>> clean_text("Almost,,..!@#   THerE(@)($))%   wait....   !!")
+    ['almost', 'there', 'wait']
     """
-    filtered = re.sub("[^ a-z\n]+", "", string_contents)
+    filtered = re.sub("[^ a-z\n]+", "", string_contents.lower())
     return filtered.split()
 
 
@@ -28,6 +37,16 @@ def count_words_in_list(words_list: list) -> dict:
     :postcondition: correctly create a new dictionary contains counted words
             information
     :return: the dictionary contains counted words
+
+    >>> test_list = []
+    >>> count_words_in_list(test_list)
+    {}
+    >>> test_list = ['almost', 'there', 'wait']
+    >>> count_words_in_list(test_list)
+    {'almost': 1, 'there': 1, 'wait': 1}
+    >>> test_list = ['hello', 'hello', 'hello', 'hi']
+    >>> count_words_in_list(test_list)
+    {'hello': 3, 'hi': 1}
     """
     word_counts = dict()
     for word in words_list:
@@ -43,6 +62,27 @@ def print_most_top_ten(word_counts: dict):
     :precondition: the wood_counts dict must be correctly formed with
             count_words_in_list function in this module
     :postcondition: correctly print the most top ten words
+
+    >>> test_dict = {'hello': 3, 'hi': 1}
+    >>> print_most_top_ten(test_dict)
+    hello - 3
+    hi - 1
+
+    >>> test_dict = {'test': 1, 'a': 3, 'the': 7, 'this': 2, 'hi': 10,
+    ...              'please': 7, 'no': 2, 'more': 15, 'moving': 1,
+    ...              'apple': 9, 'orange': 17, 'and': 27, 'today': 3,
+    ...              'one': 1, 'two': 2}
+    >>> print_most_top_ten(test_dict)
+    and - 27
+    orange - 17
+    more - 15
+    hi - 10
+    apple - 9
+    the - 7
+    please - 7
+    today - 3
+    a - 3
+    two - 2
     """
     count_list = [(value, key) for key, value in word_counts.items()]
     count_list.sort(reverse=True)
