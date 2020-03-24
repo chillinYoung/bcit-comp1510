@@ -29,7 +29,7 @@ def heron(num: int) -> float:
             approx = (approx + num / approx) / 2
         return approx
     except ZeroDivisionError as zde:
-        print(f"# Calculation Error: negative number input")
+        print("# Calculation Error: negative number input")
         return -1
 
 
@@ -59,7 +59,7 @@ def find_an_even(input_list: list) -> int:
     try:
         return min(even_list)
     except ValueError as ve:
-        print(f"# Not Found Error: no even numbers in the list")
+        print("# Not Found Error: no even numbers in the list")
 
 
 def main():
