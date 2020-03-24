@@ -38,13 +38,20 @@ class TestCleanText(TestCase):
         actual = clean_text(contents)
         self.assertEqual(actual, expected)
 
+    def test_clean_text_new_line(self):
+        """Test contents with the new lines."""
+        contents = "new line\n test is important\n"
+        expected = ['new', 'line', 'test', 'is', 'important']
+        actual = clean_text(contents)
+        self.assertEqual(actual, expected)
+
     def test_clean_text_all_upper_special_whitespce_mixed(self):
         """Test totally tainted contents.
 
         A test that cleans contents tainted with all upper cases, special
-        characters, and multiple whitespaces.
+        characters, multiple whitespaces, and a new line.
         """
-        contents = "#$Oh, my, GOD!!    ++TOtally~#@ Tainted@! :(  :(    :("
+        contents = "#$Oh, my, GOD!!    \n++TOtally~#@ Tainted@! :(  :(    :("
         expected = ['oh', 'my', 'god', 'totally', 'tainted']
         actual = clean_text(contents)
         self.assertEqual(actual, expected)
