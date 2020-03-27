@@ -19,9 +19,9 @@ class Tree:
         :param circumference: a trunk circumference of the tree measured
                 in centimetres as a float
         :precondition: the arguments must be given with proper types
-        :raise ValueError:
-        :raise ValueError:
-        :raise ValueError:
+        :raise ValueError: if species string is empty or only-whitespace
+        :raise ValueError: if age is negative number
+        :raise ValueError: if circumference is negative number
         :postcondition: correctly form a tree object
         """
         if species.strip() == "":
@@ -41,16 +41,55 @@ class Tree:
             self.circumference = circumference
 
     def set_species(self, species: str):
+        """Set species of the tree.
+
+        :param species: the species as a string
+        :precondition: species must be a string
+        :postcondition: correctly set tree's species
+        """
         if species.strip() != "":
             self.species = species
 
     def set_age(self, age: int):
+        """Set age of the tree.
+
+        :param age: the age as an integer
+        :precondition: age must be an positive integer
+        :postcondition: correctly set tree's age
+        """
         if age >= 0:
             self.age = age
 
     def set_circumference(self, circumference: float):
+        """Set circumfernce of the tree.
+
+        :param circumference: the circumference in centimetres
+        :precondition: circumference must be a positive float
+        :postcondition: correcly set tree's circumference
+        """
         if circumference >= 0:
             self.circumference = circumference
+
+    def get_species(self):
+        """Return the species.
+
+        :return: species as a string
+        """
+        return self.species
+
+    def get_age(self):
+        """Return the age.
+
+        :return: age as an integer
+        """
+        return self.age
+
+    def get_circumference(self):
+        """Return the circumference.
+
+        :return: circumference as a float
+        """
+        return self.circumference
 
     def __str__(self) -> str:
         """Return the object in informal representation.
@@ -71,9 +110,6 @@ class Tree:
 def main():
     """Drive the doctest in this module."""
     doctest.testmod()
-
-    test = Tree("Oak", 1, 1.0)
-    test.set_age(-2)
 
 
 if __name__ == "__main__":
