@@ -34,7 +34,7 @@ class Tree:
         else:
             self.age = age
 
-        if circumference < 0:
+        if circumference <= 0:
             raise ValueError("# Value Error: the circumference must be"
                              " positive number")
         else:
