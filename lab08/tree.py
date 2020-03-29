@@ -145,6 +145,7 @@ class Tree:
         >>> new_tree = Tree("Maple", 3, 23.2)
         >>> new_tree
         Tree("Maple", 3, 23.2)
+
         >>> new_tree = Tree("Cacao", 8, 60.1)
         >>> new_tree
         Tree("Cacao", 8, 60.1)
