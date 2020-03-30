@@ -25,7 +25,7 @@ def timer(func):
 
 
 @timer
-def factorial_iterative(number):
+def factorial_iterative(number: int) -> int:
     """Calculate factorial with a plain loop.
 
     :param number: an positive integer to calculate factorial
@@ -40,7 +40,7 @@ def factorial_iterative(number):
 
 
 @timer
-def factorial_recursive(number):
+def factorial_recursive(number: int) -> int:
     """Wrap the recursive factorial helper function.
 
     A function that wraps the factorial_recursive_helper so that timer can
@@ -54,7 +54,7 @@ def factorial_recursive(number):
     return factorial_recursive_helper(number)
 
 
-def factorial_recursive_helper(number):
+def factorial_recursive_helper(number: int) -> int:
     """Calculate factorial by recursion.
 
     :param number: an positive integer to calculate factorial

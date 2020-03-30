@@ -78,7 +78,7 @@ class Tree:
         if circumference > 0:
             self.__circumference = circumference
 
-    def get_species(self):
+    def get_species(self) -> str:
         """Return the species.
 
         :return: species as a string
@@ -92,7 +92,7 @@ class Tree:
         """
         return self.__species
 
-    def get_age(self):
+    def get_age(self) -> int:
         """Return the age.
 
         :return: age as an integer
@@ -106,7 +106,7 @@ class Tree:
         """
         return self.__age
 
-    def get_circumference(self):
+    def get_circumference(self) -> float:
         """Return the circumference.
 
         :return: circumference as a float
