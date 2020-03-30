@@ -78,7 +78,20 @@ def print_foods_info(food_dict: dict):
           f"{total_calories(food_dict) / len(food_dict): .1f}\n")
 
 
-def check_quit(user_input):
+def add_food_item(food_dict: dict):
+    """Add new food item.
+
+    :param food_dict: a foods dictionary with food items as keys and calories
+            as values
+    :precondition: food_dict must be a dictionary type
+    :postcondition: correctly add the new food item to the food dictionary
+    """
+    new_item = input("Enter food item to add, or 'q' to exit: ")
+    check_quit(new_item)
+    food_dict[new_item] = int(input("Enter calories for " + new_item + ": "))
+
+
+def check_quit(user_input: str):
     """Check if user wants quit.
 
     :param user_input: a string that user input
@@ -95,10 +108,7 @@ def main():
 
     foods = init_foods()
     while True:
-        new_item = input("Enter food item to add, or 'q' to exit: ")
-        check_quit(new_item)
-
-        foods[new_item] = int(input("Enter calories for " + new_item + ": "))
+        add_food_item(foods)
         print_foods_info(foods)
 
 
