@@ -11,10 +11,17 @@ from tree import Tree
 
 class TestTree(TestCase):
 
-    def test___init___create_tree(self):
-        """Test created tree by __init__."""
+    def test___init___create_tree_instance(self):
+        """Test identity of the created tree by __init__."""
         new_tree = Tree("Oak", 3, 42.1)
         self.assertIsInstance(new_tree, Tree)
+
+    def test___init___create_tree_equality(self):
+        """Test equality of the created tree by __init__."""
+        expected = 'Tree("Oak", 3, 42.1)'
+        new_tree = Tree("Oak", 3, 42.1)
+        actual = repr(new_tree)
+        self.assertEqual(actual, expected)
 
     def test___init___empty_species(self):
         """Test creating tree with empty species."""
