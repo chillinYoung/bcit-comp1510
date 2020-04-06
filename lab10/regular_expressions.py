@@ -73,7 +73,7 @@ def is_poker(hand: str) -> bool:
     False
     >>> is_poker("5544t")
     True
-    >>> is_poker("t5544")
+    >>> is_poker("77777")
     False
     """
     poker_regex = re.compile(r'''
