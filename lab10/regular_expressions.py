@@ -4,6 +4,7 @@ Young Kim (A01087377)
 """
 
 import doctest
+import re
 
 
 def is_email(address: str) -> bool:
@@ -24,8 +25,11 @@ def is_email(address: str) -> bool:
     False
     >>> is_email("ykim333@bc00it.com")
     True
+    >>> is_email("ykim222_13kj@bcit.comcomcom")
+    False
     """
-    pass
+    email_regex = re.compile(r"\w+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$")
+    return True if email_regex.match(address) else False
 
 
 def is_nakamoto(name: str) -> bool:
@@ -47,23 +51,60 @@ def is_nakamoto(name: str) -> bool:
     >>> is_nakamoto("Satoshi nakamoto")
     False
     """
-    pass
+    nakamoto_regex = re.compile(r"[A-Z][a-z]+ Nakamoto$")
+    return True if nakamoto_regex.match(name) else False
 
 
 def is_poker(hand: str) -> bool:
-    """
+    """Determine if hand is valid poker cards.
 
     :param hand: 5-character string with each character representing a card
-    :precondition: hand must have the charancters among 'akqjt23456789'
+    :precondition: hand must have the charancters among 'akqjt98765432'
     :postcondition: determine if given hand is valid cards for the poker
     :return: a boolean value
+
+    >>> is_poker("55552")
+    True
+    >>> is_poker("222qq")
+    True
+    >>> is_poker("2q2q2")
+    False
+    >>> is_poker("98765")
+    True
+    >>> is_poker("jjj32")
+    True
+    >>> is_poker("5544t")
+    True
+    >>> is_poker("tt874")
+    True
+    >>> is_poker("t7632")
+    True
+    >>> is_poker("22333")
+    False
+    >>> is_poker("77777")
+    False
     """
-    pass
+    poker_regex = re.compile(r'''
+        # Four of a kind
+        ([akqjt2-9a])\1\1\1(?!\1)[akqjt2-9a]$
+        # Full house
+        |([akqjt2-9a])\2\2(?!\2)([akqjt2-9a])\3$
+        # Straight OR High card
+        |(?=[akqjt2-9a]{5}$)a?k?q?j?t?9?8?7?6?5?4?3?2?a?$
+        # Three of a kind
+        |([akqjt2-9a])\4\4(?!\4)([akqjt2-9a])(?!\5)[akqjt2-9a]$
+        # Two pair
+        |(?:([akqjt2-9a])\6(?!\6)){2}[akqjt2-9a]$
+        # One pair
+        |([akqjt2-9a])\7(?!\7)([akqjt2-9a])(?!\8)([akqjt2-9a])(?!\9)
+        [akqjt2-9a]$
+        ''', re.VERBOSE)
+    return True if poker_regex.match(hand) else False
 
 
 def main():
     """Drive the program and the doctest in this module."""
-    pass
+    doctest.testmod()
 
 
 if __name__ == "__main__":
