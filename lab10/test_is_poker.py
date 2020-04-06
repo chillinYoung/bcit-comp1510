@@ -24,6 +24,12 @@ class TestIsPoker(TestCase):
         actual = is_poker("222qq")
         self.assertEqual(actual, expected)
 
+    def test_is_poker_full_house_pair_and_pair_of_three_false(self):
+        """Test full house not in order which has pair and pair of three."""
+        expected = False
+        actual = is_poker("qq222")
+        self.assertEqual(actual, expected)
+
     def test_is_poker_straight_reversed_order_false(self):
         """Test straight in reversed order."""
         expected = False
