@@ -63,16 +63,14 @@ def is_poker(hand: str) -> bool:
     :postcondition: determine if given hand is valid cards for the poker
     :return: a boolean value
 
-    >>> is_poker("55552")
-    True
     >>> is_poker("222qq")
     True
     >>> is_poker("2q2q2")
     False
     >>> is_poker("98765")
     True
-    >>> is_poker("jjj32")
-    True
+    >>> is_poker("56789")
+    False
     >>> is_poker("5544t")
     True
     >>> is_poker("tt874")
@@ -86,18 +84,18 @@ def is_poker(hand: str) -> bool:
     """
     poker_regex = re.compile(r'''
         # Four of a kind
-        ([akqjt2-9a])\1\1\1(?!\1)[akqjt2-9a]$
+        ([akqjt2-9])\1\1\1(?!\1)[akqjt2-9]$
         # Full house
-        |([akqjt2-9a])\2\2(?!\2)([akqjt2-9a])\3$
+        |([akqjt2-9])\2\2(?!\2)([akqjt2-9])\3$
         # Straight OR High card
-        |(?=[akqjt2-9a]{5}$)a?k?q?j?t?9?8?7?6?5?4?3?2?a?$
+        |(?=[akqjt2-9]{5}$)a?k?q?j?t?9?8?7?6?5?4?3?2?a?$
         # Three of a kind
-        |([akqjt2-9a])\4\4(?!\4)([akqjt2-9a])(?!\5)[akqjt2-9a]$
+        |([akqjt2-9])\4\4(?!\4)([akqjt2-9])(?!\5)[akqjt2-9]$
         # Two pair
-        |(?:([akqjt2-9a])\6(?!\6)){2}[akqjt2-9a]$
+        |(?:([akqjt2-9])\6(?!\6)){2}[akqjt2-9]$
         # One pair
-        |([akqjt2-9a])\7(?!\7)([akqjt2-9a])(?!\8)([akqjt2-9a])(?!\9)
-        [akqjt2-9a]$
+        |([akqjt2-9])\7(?!\7)([akqjt2-9])(?!\8)([akqjt2-9])(?!\9)
+        [akqjt2-9]$
         ''', re.VERBOSE)
     return True if poker_regex.match(hand) else False
 
