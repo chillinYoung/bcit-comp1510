@@ -12,14 +12,15 @@ import doctest
 class Tree:
     """ a class to model a tree"""
 
-    def __init__(self, species: str, age: int, circumference):
+    def __init__(self, species: str, age: int, circumference: float):
         """
         Instantiate an instance of Tree.
 
         :param species: a string
         :param age: an int or a float
         :param circumference: an int or a float
-        :precondition: The parameters must be the indicated type and species must be a meaningful
+        :precondition: The parameters must be the indicated type and species
+        must be a meaningful
         tree specie name
         :postcondition: Correctly creates an instance of a Tree
         :raise ValueError: if the species has less than 1 character
@@ -29,28 +30,30 @@ class Tree:
         >>> print(Tree("willow", 5, 123.24))
         Tree specie: 'willow', age: 5, circumference: 123.24
 
-        >>> Tree("happy tree", 10.12, 125)
-        Tree('happy tree', 10, 125.0)
+        >>> Tree("happy tree", 10, 125)
+        Tree('happy tree', 10, 125)
         """
         if len(species.strip()) > 0:
             self.__species = species.strip()
         else:
-            raise ValueError("Tree species cannot be empty or only have white spaces")
+            raise ValueError("Tree species cannot be empty or "
+                             "only have white spaces")
 
-        if int(age) > 0:
-            self.__age = int(age)
+        if age >= 0:
+            self.__age = age
         else:
             raise ValueError("The age cannot be negative or zero")
 
-        if float(circumference) > 0:
-            self.__circumference = float(circumference)
+        if circumference >= 0:
+            self.__circumference = circumference
         else:
             raise ValueError("The circumference cannot be negative or zero")
 
     def get_species(self) -> str:
         """Return Tree instance species.
 
-        :postcondition: correctly returns the tree instance species value as a string.
+        :postcondition: correctly returns the tree instance species value as a
+        string.
         :return: tree instance species value as a string
 
         >>> tree = Tree("willow", 5, 123.24)
@@ -63,7 +66,7 @@ class Tree:
         """
         return self.__species
 
-    def get_age(self) -> float:
+    def get_age(self) -> int:
         """Return Tree instance age.
 
         :postcondition: correctly returns the age of the tree instance as a float
@@ -75,7 +78,7 @@ class Tree:
 
         >>> tree = Tree("willow", 1.2, 123.24)
         >>> tree.get_age()
-        1
+        1.2
         """
         return self.__age
 
@@ -91,40 +94,36 @@ class Tree:
 
         >>> tree = Tree("happy tree", 10, 125)
         >>> tree.get_circumference()
-        125.0
+        125
         """
         return self.__circumference
 
-    def set_age(self, age):
+    def set_age(self, age: int):
         """Update age of tree instance.
 
         :param age: an int or a float
-        :precondition: age must be > 0
+        :precondition: age must be >= 0
         :postcondition: correctly updates the age of the tree instance
-        :raise ValueError: if the age is <= 0
 
         >>> tree = Tree("happy tree", 10, 125)
         >>> tree.set_age(6)
         >>> print(tree)
-        Tree specie: 'happy tree', age: 6, circumference: 125.0
+        Tree specie: 'happy tree', age: 6, circumference: 125
 
         >>> tree = Tree("happy tree", 10, 125)
         >>> tree.set_age(12.9)
         >>> print(tree)
-        Tree specie: 'happy tree', age: 12, circumference: 125.0
+        Tree specie: 'happy tree', age: 12, circumference: 125
         """
-        if int(age) > 0:
+        if age >= 0:
             self.__age = int(age)
-        else:
-            raise ValueError("The age cannot be negative or zero")
 
-    def set_circumference(self, circumference):
+    def set_circumference(self, circumference: float):
         """Update age of tree instance.
 
         :param circumference: an int or a float
         :precondition: circumference must be > 0
         :postcondition: correctly updates the circumference of the tree instance
-        :raise ValueError: if the circumference is <= 0
 
         >>> tree = Tree("happy tree", 10, 125)
         >>> tree.set_circumference(123.34)
@@ -132,10 +131,8 @@ class Tree:
         Tree specie: 'happy tree', age: 10, circumference: 123.34
         """
 
-        if float(circumference) > 0:
-            self.__circumference = float(circumference)
-        else:
-            raise ValueError("The circumference cannot be negative or zero")
+        if circumference > 0:
+            self.__circumference = circumference
 
     def __str__(self) -> str:
         """

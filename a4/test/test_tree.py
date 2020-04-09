@@ -52,19 +52,11 @@ class TestTree(TestCase):
         expected = "Tree('willow', 12, 123.456)"
         self.assertEqual(actual, expected)
 
-    def test_set_age_fail_valueError(self):
-        with self.assertRaises(ValueError):
-            self.willow_tree.set_age(-10)
-
     def test_set_circumference_success(self):
         self.willow_tree.set_circumference(500.1534)
         actual = repr(self.willow_tree)
         expected = "Tree('willow', 10, 500.1534)"
         self.assertEqual(actual, expected)
-
-    def test_set_circumference_fail_valueError(self):
-        with self.assertRaises(ValueError):
-            self.willow_tree.set_circumference(-102)
 
     def test__str__(self):
         actual = str(self.willow_tree)
