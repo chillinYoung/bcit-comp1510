@@ -7,15 +7,16 @@ import json
 import requests
 import time
 import datetime
+import doctest
 
 
-def get_weather_info() -> list:
+def get_weather_info() -> dict:
     """Load the weather data from openweathermap.org.
 
     A function that loads Vancouver's weather data from
     https://openweathermap.org.
 
-    :return: the list of the data if the data were correctly loaded
+    :return: the raw weather data as a dict if the data were correctly loaded
     """
     weather_source = ("https://api.openweathermap.org/data/2.5/onecall?"
                       "lat=49.2497&lon=-123.1193&units=metric"
@@ -37,6 +38,11 @@ def convert_utc_time(utc_time: int) -> str:
     :param utc_time: the integer as a UTC time format
     :precondition: utc_time must be an positive integer
     :return: 24-hour format of the time as a string
+
+    >>> convert_utc_time(1586462760)
+    '13:06'
+    >>> convert_utc_time(1600762760)
+    '01:19'
     """
     return time.strftime('%H:%M', time.localtime(utc_time))
 
@@ -47,18 +53,23 @@ def convert_utc_date(utc_time: int) -> str:
     :param utc_time: the integer as a UTC time format
     :precondition: utc_time must be an positive integer
     :return: yyyy-mm-dd format of the date as a string
+
+    >>> convert_utc_date(1586462760)
+    '2020-04-09'
+    >>> convert_utc_date(1600468736)
+    '2020-09-18'
     """
     return time.strftime('%Y-%m-%d', time.localtime(utc_time))
 
 
-def parse_weather_data(data: dict):
+def parse_weather_data(data: dict) -> list:
     """Parse the weather list data to formed data.
 
     :param data: a dict contains raw weather data gotten by get_weather_info
             function in this module
-    :precondition:
-    :postcondition:
-    :return:
+    :precondition: data must be gotten by the get_weather_info function
+    :postcondition: correctly form the essential data to be shown to the user
+    :return: parsed data as a list
     """
     reformed = []
     for day in data:
@@ -67,9 +78,9 @@ def parse_weather_data(data: dict):
             'weather': day['weather'][0]['main'],
             'sunrise': convert_utc_time(day['sunrise']),
             'sunset': convert_utc_time(day['sunset']),
-            'temp': day['temp']['day'],
-            'feels_like': day['feels_like']['day'],
-            'humidity': day['humidity']
+            'temp': f"{day['temp']['day']}{chr(176)}C",
+            'feels_like': f"{day['feels_like']['day']}{chr(176)}C",
+            'humidity': f"{day['humidity']}%"
         })
     return reformed
 
@@ -110,8 +121,12 @@ def get_user_input_days() -> int:
 
 
 def main():
-    """Drive the program."""
+    """Drive the program and the doctest in this module."""
+    doctest.testmod()
+
+    # drives the weather program from here
     weather_info = get_weather_info()
+    # if weather info was loaded correctly, drive the rest of the program.
     if weather_info is not None:
         days = get_user_input_days()
         data = parse_weather_data(weather_info)
