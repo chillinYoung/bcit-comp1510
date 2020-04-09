@@ -18,7 +18,7 @@ def get_weather_info() -> list:
     :return: the list of the data if the data were correctly loaded
     """
     weather_source = ("https://api.openweathermap.org/data/2.5/onecall?"
-                      "lat=49.2497&lon=-123.1193"
+                      "lat=49.2497&lon=-123.1193&units=metric"
                       "&appid=b9c2a82ac031adfa45f6cb2800cbb30c")
     res = requests.get(weather_source)
 
@@ -31,7 +31,7 @@ def get_weather_info() -> list:
         return weather_data
 
 
-def convert_clock_time(utc_time: int) -> str:
+def convert_utc_time(utc_time: int) -> str:
     """Convert UTC time to 24-hour form of the clock time.
 
     :param utc_time: the integer as a UTC time format
@@ -41,7 +41,7 @@ def convert_clock_time(utc_time: int) -> str:
     return time.strftime('%H:%M', time.localtime(utc_time))
 
 
-def convert_date(utc_time: int) -> str:
+def convert_utc_date(utc_time: int) -> str:
     """Convert UTC time to yyyy-mm-dd date form.
 
     :param utc_time: the integer as a UTC time format
@@ -49,6 +49,46 @@ def convert_date(utc_time: int) -> str:
     :return: yyyy-mm-dd format of the date as a string
     """
     return time.strftime('%Y-%m-%d', time.localtime(utc_time))
+
+
+def parse_weather_data(data: dict):
+    """Parse the weather list data to formed data.
+
+    :param data: a dict contains raw weather data gotten by get_weather_info
+            function in this module
+    :precondition:
+    :postcondition:
+    :return:
+    """
+    reformed = []
+    for day in data:
+        reformed.append({
+            'date': convert_utc_date(day['dt']),
+            'weather': day['weather'][0]['main'],
+            'sunrise': convert_utc_time(day['sunrise']),
+            'sunset': convert_utc_time(day['sunset']),
+            'temp': day['temp']['day'],
+            'feels_like': day['feels_like']['day'],
+            'humidity': day['humidity']
+        })
+    return reformed
+
+
+def print_weather_data(data: list, days: int):
+    """Print the weather data for given days.
+
+    :param data: a dictionary contains formed weather data
+    :param days: a positive integer less than or equal to five
+    :precondition: data must be formed by parse_weather_data in this module,
+            and days must be an integer between 1 and 7
+    :postcondition: print the correctly formed data
+    """
+    counter = 0
+    while counter < days:
+        print()
+        for title, detail in data[counter].items():
+            print(f"{title}: {detail}")
+        counter += 1
 
 
 def get_user_input_days() -> int:
@@ -72,7 +112,12 @@ def get_user_input_days() -> int:
 def main():
     """Drive the program."""
     weather_info = get_weather_info()
-    print(weather_info)
+    if weather_info is not None:
+        days = get_user_input_days()
+        data = parse_weather_data(weather_info)
+        print_weather_data(data, days)
+
+    print("\n=== Thank you for using our service. See you again! ===")
 
 
 if __name__ == "__main__":
