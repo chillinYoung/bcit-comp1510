@@ -4,7 +4,10 @@ Young Kim (A01087377)
 """
 
 import requests
+import time
+import datetime
 import json
+import random
 
 
 def get_nasa_data(date):
@@ -28,6 +31,23 @@ def get_nasa_data(date):
         apod_data = None
     else:
         return apod_data
+
+
+def random_date_generator():
+    """Generate a valid random date for apod data.
+
+    :postcondition: genrate a valid random date which is valid to get a apod
+            data from the source
+    :return: yyyy-mm-dd format of a date as a string
+    """
+    # FIRST_DATE is the date the first picture took (available start point).
+    FIRST_DATE = datetime.date(1996, 6, 20)
+    start_date = FIRST_DATE.toordinal()
+    end_date = datetime.datetime.today().toordinal()
+    random_date = datetime.date.fromordinal(
+        random.randint(start_date, end_date))
+
+    return random_date.strftime("%Y-%m-%d")
 
 
 def main():
