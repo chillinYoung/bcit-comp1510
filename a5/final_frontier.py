@@ -50,10 +50,34 @@ def random_date_generator():
     return random_date.strftime("%Y-%m-%d")
 
 
+def print_apod(apod_data):
+    """Print apod data.
+
+    :param apod_data: one apod data returned by get_nasa_data function in
+            this module
+    :precondition: apod_data must be gotten by get_nasa_data function
+    """
+    art = apod_data[0]
+    print(f"Title: {art['title']}\nDate: {art['date']}")
+    try:
+        print(f"Author: {art['copyright']}")
+    except KeyError:
+        pass
+    print(f"Explanation: \n\t{art['explanation']}\n")
+
+
 def main():
     """Drive the program."""
     print("Welcome to online exhibition of Astronomy Picture of the Day.\n"
           "(Press 'ctrl + c' to exit this program.)\n")
+    try:
+        while True:
+            random_date = random_date_generator()
+            apod = get_nasa_data(random_date)
+            print_apod(apod)
+            time.sleep(20)
+    except KeyboardInterrupt:
+        print("\n=== Thank you. Bye. ===")
 
 
 if __name__ == "__main__":
