@@ -8,8 +8,7 @@ import time
 import datetime
 import json
 import random
-import numpy
-import cv2
+import subprocess
 
 
 def get_nasa_data(date):
@@ -66,42 +65,52 @@ def print_apod(apod_data):
     except KeyError:
         pass
     print(f"Explanation: \n\t{art['explanation']}\n")
-    # url = art['url']
-    # image_show(url)
 
 
 def image_show(apod_data):
+    """Show image for the apod data.
+
+    :param apod_data: one apod data returned by get_nasa_data function in
+            this module
+    :precondition: apod_data must be gotten by get_nasa_data function
+    :postcondition: show the linked image in apod data in the Chrome window
     """
-    """
+    # 'ERROR:browser_switcher_service' will occur for every time window
+    # is terminated and opened new one because it is considered as a abnomal
+    # exit of the program by Google Chrome itself.
     url = apod_data[0]['url']
-    photo = requests.get(url, stream=True).raw
-    img = numpy.asarray(bytearray(photo.read()), dtype="uint8")
-    img = cv2.imdecode(img, cv2.IMREAD_COLOR)
-    cv2.imshow('APOD', img)
-    cv2.waitKey(3000)    # 1000 miliseconds → 1 sec
-    cv2.destroyWindow("APOD")
-    cv2.waitKey(1)
-    # cv2.destroyAllWindows()
+    exe_app = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+    option = '--window-size=700,700'
+    status = subprocess.Popen([exe_app, option, url])
+    time.sleep(5)    # show image for 5 seconds
+    subprocess.check_call(['kill', str(status.pid)])
 
 
 def main():
     """Drive the program."""
+    # to terminate existing chrome windows to prevent error occurred
+    # → cannot get PID of specific window
+    # because of Chrome itself's PID management system
+    subprocess.Popen(['killall', 'Google Chrome'])
+    time.sleep(1)
+
+    # main program starts here
     print("Welcome to online exhibition of Astronomy Picture of the Day.\n"
+          "This program is written for MacOS.\n\n"
           "(Press 'ctrl + c' to exit this program.)\n")
     try:
         while True:
             random_date = random_date_generator()
             apod = get_nasa_data(random_date)
             print_apod(apod)
-            image_show(apod)
-            time.sleep(20)    # should be 300 for the instruction
+            try:
+                image_show(apod)
+            except FileNotFoundError:
+                print("# Sorry, cannot show the image due to "
+                      "Google Chrome couldn't be found on your Mac.\n")
+            time.sleep(10)    # wait 10 seconds for the next image and data
     except KeyboardInterrupt:
         print("\n=== Thank you. Bye. ===")
-
-    # random_date = random_date_generator()
-    # apod = get_nasa_data(random_date)
-    # image_show(apod)
-    # time.sleep(20)
 
 
 if __name__ == "__main__":
