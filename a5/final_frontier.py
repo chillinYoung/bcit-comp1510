@@ -8,6 +8,8 @@ import time
 import datetime
 import json
 import random
+import numpy
+import cv2
 
 
 def get_nasa_data(date):
@@ -64,6 +66,22 @@ def print_apod(apod_data):
     except KeyError:
         pass
     print(f"Explanation: \n\t{art['explanation']}\n")
+    # url = art['url']
+    # image_show(url)
+
+
+def image_show(apod_data):
+    """
+    """
+    url = apod_data[0]['url']
+    photo = requests.get(url, stream=True).raw
+    img = numpy.asarray(bytearray(photo.read()), dtype="uint8")
+    img = cv2.imdecode(img, cv2.IMREAD_COLOR)
+    cv2.imshow('APOD', img)
+    cv2.waitKey(3000)    # 1000 miliseconds → 1 sec
+    cv2.destroyWindow("APOD")
+    cv2.waitKey(1)
+    # cv2.destroyAllWindows()
 
 
 def main():
@@ -75,9 +93,15 @@ def main():
             random_date = random_date_generator()
             apod = get_nasa_data(random_date)
             print_apod(apod)
-            time.sleep(20)
+            image_show(apod)
+            time.sleep(20)    # should be 300 for the instruction
     except KeyboardInterrupt:
         print("\n=== Thank you. Bye. ===")
+
+    # random_date = random_date_generator()
+    # apod = get_nasa_data(random_date)
+    # image_show(apod)
+    # time.sleep(20)
 
 
 if __name__ == "__main__":
