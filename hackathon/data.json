@@ -1,0 +1,826 @@
+{
+   "France": [
+      {
+         "name": "Luxembourg Palace",
+         "address": "15 Rue de Vaugirard, 75291 Paris, France",
+         "phone_number": "01 42 34 20 00",
+         "website": "http://www.senat.fr/lng/en/the_luxembourg_palace.html",
+         "coordinates": [
+            48.84827110000001,
+            2.337293400000001
+         ]
+      },
+      {
+         "name": "Mus\u00e9e d'Orsay",
+         "address": "1 Rue de la L\u00e9gion d'Honneur, 75007 Paris, France",
+         "phone_number": "01 40 49 48 14",
+         "website": "https://www.musee-orsay.fr/",
+         "coordinates": [
+            48.8599614,
+            2.3265614
+         ]
+      },
+      {
+         "name": "Mus\u00e9e de l'Orangerie",
+         "address": "Jardin Tuileries, 75001 Paris, France",
+         "phone_number": "01 44 50 43 00",
+         "website": "https://www.musee-orangerie.fr/",
+         "coordinates": [
+            48.86378839999999,
+            2.3226724
+         ]
+      },
+      {
+         "name": "Metiers Art Museum",
+         "address": "60 Rue R\u00e9aumur, 75003 Paris, France",
+         "phone_number": "01 53 01 82 00",
+         "website": "https://www.arts-et-metiers.net/",
+         "coordinates": [
+            48.86663919999999,
+            2.3554383
+         ]
+      },
+      {
+         "name": "Palais Garnier",
+         "address": "Place de l'Op\u00e9ra, 75009 Paris, France",
+         "phone_number": "01 71 25 24 23",
+         "website": "https://www.operadeparis.fr/",
+         "coordinates": [
+            48.8719697,
+            2.3316014
+         ]
+      }
+   ],
+   "South Korea": [
+      {
+         "name": "National Museum of Modern and Contemporary Art, Deoksugung",
+         "address": "South Korea, Seoul, Jung-gu, Jeong-dong, Sejong-daero, 99",
+         "phone_number": "02-2022-0600",
+         "website": "https://www.mmca.go.kr/eng/contents.do?menuId=5050011521",
+         "coordinates": [
+            37.5658959,
+            126.9736922
+         ]
+      },
+      {
+         "name": "National Museum of Modern and Contemporary Art, Gwacheon",
+         "address": "South Korea, Gyeonggi-do, Gwacheon-si, Munwon-dong, Gwangmyeong-ro, 313 KR",
+         "phone_number": "02-2188-6000",
+         "website": "https://www.mmca.go.kr/",
+         "coordinates": [
+            37.43103730000001,
+            127.019961
+         ]
+      },
+      {
+         "name": "National Palace Museum of Korea",
+         "address": "12 Hyoja-ro, Cheongunhyoja-dong, Jongno-gu, Seoul, South Korea",
+         "phone_number": "02-3701-7500",
+         "website": "http://www.gogung.go.kr/",
+         "coordinates": [
+            37.5765793,
+            126.9750965
+         ]
+      },
+      {
+         "name": "National Museum of Korea",
+         "address": "137 Seobinggo-ro, Seobinggo-dong, Yongsan-gu, \uc11c\uc6b8\ud2b9\ubcc4\uc2dc South Korea",
+         "phone_number": "02-2077-9000",
+         "website": "http://www.museum.go.kr/",
+         "coordinates": [
+            37.5238506,
+            126.9804702
+         ]
+      },
+      {
+         "name": "The National Folk Museum of Korea",
+         "address": "37 Samcheong-ro, Jongno 1(il).2(i).3(sam).4(sa), Jongno-gu, Seoul, South Korea",
+         "phone_number": "02-3704-3114",
+         "website": "https://www.nfm.go.kr/home/index.do/",
+         "coordinates": [
+            37.5816456,
+            126.9789948
+         ]
+      }
+   ],
+   "United States": [
+      {
+         "name": "The Metropolitan Museum of Art",
+         "address": "1000 5th Ave, New York, NY 10028, USA",
+         "phone_number": "(212) 535-7710",
+         "website": "https://www.metmuseum.org/",
+         "coordinates": [
+            40.7794366,
+            -73.963244
+         ]
+      },
+      {
+         "name": "Solomon R. Guggenheim Museum",
+         "address": "1071 5th Ave, New York, NY 10128, USA",
+         "phone_number": "(212) 423-3500",
+         "website": "https://www.guggenheim.org/",
+         "coordinates": [
+            40.7829796,
+            -73.9589706
+         ]
+      },
+      {
+         "name": "Smithsonian American Art Museum",
+         "address": "F St NW &, 8th St NW, Washington, DC 20004, USA",
+         "phone_number": "(202) 633-1000",
+         "website": "https://americanart.si.edu/",
+         "coordinates": [
+            38.8982044,
+            -77.0229925
+         ]
+      },
+      {
+         "name": "Nasher Sculpture Center",
+         "address": "2001 Flora St, Dallas, TX 75201, USA",
+         "phone_number": "(214) 242-5100",
+         "website": "http://www.nashersculpturecenter.org/",
+         "coordinates": [
+            32.7883225,
+            -96.80017649999999
+         ]
+      },
+      {
+         "name": "Frederic Remington Art Museum",
+         "address": "303 Washington St, Ogdensburg, NY 13669, USA",
+         "phone_number": "(315) 393-2425",
+         "website": "http://www.fredericremington.org/",
+         "coordinates": [
+            44.698484,
+            -75.493189
+         ]
+      },
+      {
+         "name": "Michener Art Museum",
+         "address": "138 S Pine St, Doylestown, PA 18901, USA",
+         "phone_number": "(215) 340-9800",
+         "website": "http://www.michenerartmuseum.org/",
+         "coordinates": [
+            40.3086111,
+            -75.1258333
+         ]
+      },
+      {
+         "name": "Gibbes Museum of Art",
+         "address": "135 Meeting St, Charleston, SC 29401, USA",
+         "phone_number": "(843) 722-2706",
+         "website": "http://www.gibbesmuseum.org/",
+         "coordinates": [
+            32.7785342,
+            -79.931906
+         ]
+      },
+      {
+         "name": "Museum of Russian Icons",
+         "address": "203 Union St, Clinton, MA 01510, USA",
+         "phone_number": "(978) 598-5000",
+         "website": "http://www.museumofrussianicons.org/",
+         "coordinates": [
+            42.41557299999999,
+            -71.683656
+         ]
+      },
+      {
+         "name": "Truman Home - Harry S Truman National Historic Site",
+         "address": "219 N Delaware St, Independence, MO 64050, USA",
+         "phone_number": "(816) 254-2720",
+         "website": "http://www.nps.gov/hstr/",
+         "coordinates": [
+            39.093754,
+            -94.4233898
+         ]
+      }
+   ],
+   "United Kingdom": [
+      {
+         "name": "Natural History Museum",
+         "address": "Cromwell Rd, South Kensington, London SW7 5BD, UK",
+         "phone_number": "020 7942 5000",
+         "website": "https://www.nhm.ac.uk/",
+         "coordinates": [
+            51.49671499999999,
+            -0.1763672
+         ]
+      },
+      {
+         "name": "Royal Albert Memorial Museum and Art Gallery",
+         "address": "Royal Albert Memorial Museum & Art Gallery, Queen St, Exeter EX4 3RX, UK",
+         "phone_number": "01392 265858",
+         "website": "http://www.rammuseum.org.uk/",
+         "coordinates": [
+            50.725019,
+            -3.532222
+         ]
+      },
+      {
+         "name": "The Ruskin",
+         "address": "Lancaster University, Bailrigg, Lancaster LA1 4YH, UK",
+         "phone_number": "01524 593587",
+         "website": "http://www.lancaster.ac.uk/the-ruskin",
+         "coordinates": [
+            54.01000639999999,
+            -2.7879853
+         ]
+      },
+      {
+         "name": "The National Gallery",
+         "address": "Trafalgar Square, Charing Cross, London WC2N 5DN, UK",
+         "phone_number": "020 7747 2885",
+         "website": "https://www.nationalgallery.org.uk/about-us/contact-us",
+         "coordinates": [
+            51.50892899999999,
+            -0.128299
+         ]
+      },
+      {
+         "name": "Dulwich Picture Gallery",
+         "address": "Gallery Rd, Dulwich, London SE21 7AD, UK",
+         "phone_number": "020 8693 5254",
+         "website": "http://www.dulwichpicturegallery.org.uk/",
+         "coordinates": [
+            51.4459781,
+            -0.08637689999999999
+         ]
+      }
+   ],
+   "Greece": [
+      {
+         "name": "Acropolis Museum",
+         "address": "Dionysiou Areopagitou 15, Athina 117 42, Greece",
+         "phone_number": "21 0900 0900",
+         "website": "http://www.theacropolismuseum.gr/",
+         "coordinates": [
+            37.96844989999999,
+            23.7285227
+         ]
+      }
+   ],
+   "Russia": [
+      {
+         "name": "Museum Theatre \"Bulgakov House\"",
+         "address": "Bol'shaya Sadovaya Ulitsa, 10, Moskva, Russia, 125047",
+         "phone_number": "8 (495) 775-94-61",
+         "website": "http://dombulgakova.ru/",
+         "coordinates": [
+            55.7672422,
+            37.5936706
+         ]
+      },
+      {
+         "name": "State Hermitage Museum",
+         "address": "Palace Square, 2, Sankt-Peterburg, Russia, 190000",
+         "phone_number": "8 (812) 710-90-79",
+         "website": "https://www.hermitagemuseum.org/wps/portal/hermitage/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zi_R0dzQyNnQ28_D29zQ0c_UNMPfz9w5yNnE30wwkpiAJKG-AAjgZA_VGElBTkRhikOyoqAgDOvDDP/dz/d5/L0lDU1EvUU5RSy80TlZFL3J1/?lng=ru",
+         "coordinates": [
+            59.93983170000001,
+            30.31455969999999
+         ]
+      },
+      {
+         "name": "The State Tretyakov Gallery",
+         "address": "Lavrushinsky Ln, 10, Moskva, Russia, 119017",
+         "phone_number": "8 (499) 230-77-88",
+         "website": "https://www.tretyakovgallery.ru/",
+         "coordinates": [
+            55.74138900000001,
+            37.6208639
+         ]
+      }
+   ],
+   "Turkey": [
+      {
+         "name": "Pera Museum",
+         "address": "Asmal\u0131 Mescit, Me\u015frutiyet Cd. No:65, 34430 Beyo\u011flu/\u0130stanbul, Turkey",
+         "phone_number": "(0212) 334 99 00",
+         "website": "http://www.peramuzesi.org.tr/",
+         "coordinates": [
+            41.031816,
+            28.9752003
+         ]
+      },
+      {
+         "name": "The Museum of Innocence",
+         "address": "\u00c7ukurcuma Caddesi, Firuza\u011fa, Dalg\u0131\u00e7 \u00c7k. No:2, 34425 Beyo\u011flu/\u0130stanbul, Turkey",
+         "phone_number": "(0212) 252 97 38",
+         "website": "http://www.masumiyetmuzesi.org/",
+         "coordinates": [
+            41.030849,
+            28.979854
+         ]
+      }
+   ],
+   "Canada": [
+      {
+         "name": "Royal Ontario Museum",
+         "address": "100 Queens Park, Toronto, ON M5S 2C6, Canada",
+         "phone_number": "(416) 586-8000",
+         "website": "https://www.rom.on.ca/",
+         "coordinates": [
+            43.6677097,
+            -79.3947771
+         ]
+      }
+   ],
+   "Pakistan": [
+      {
+         "name": "Museum, Lahore",
+         "address": "Mall Rd, Anarkali Bazaar Lahore, Punjab 54000, Pakistan",
+         "phone_number": "(042) 99211819",
+         "website": "https://lahoremuseum.punjab.gov.pk/",
+         "coordinates": [
+            31.568387,
+            74.3080969
+         ]
+      }
+   ],
+   "Netherlands": [
+      {
+         "name": "Museum Boijmans Van Beuningen",
+         "address": "Museumpark 18, 3015 CX Rotterdam, Netherlands",
+         "phone_number": "010 441 9400",
+         "website": "http://www.boijmans.nl/nl/",
+         "coordinates": [
+            51.9142145,
+            4.4733407
+         ]
+      },
+      {
+         "name": "Van Gogh Museum",
+         "address": "Museumplein 6, 1071 DJ Amsterdam, Netherlands",
+         "phone_number": "020 570 5200",
+         "website": "https://www.vangoghmuseum.nl/",
+         "coordinates": [
+            52.3584159,
+            4.8810756
+         ]
+      },
+      {
+         "name": "Rijksmuseum",
+         "address": "Museumstraat 1, 1071 XX Amsterdam, Netherlands",
+         "phone_number": "020 674 7000",
+         "website": "http://www.rijksmuseum.nl/",
+         "coordinates": [
+            52.3599976,
+            4.8852188
+         ]
+      },
+      {
+         "name": "Mauritshuis",
+         "address": "Plein 29, 2511 CS Den Haag, Netherlands",
+         "phone_number": "070 302 3456",
+         "website": "http://www.mauritshuis.nl/",
+         "coordinates": [
+            52.08042049999999,
+            4.314301299999999
+         ]
+      }
+   ],
+   "Italy": [
+      {
+         "name": "Uffizi Gallery",
+         "address": "Piazzale degli Uffizi, 6, 50122 Firenze FI, Italy",
+         "phone_number": "055 294883",
+         "website": "https://www.uffizi.it/gli-uffizi",
+         "coordinates": [
+            43.7677856,
+            11.2553108
+         ]
+      },
+      {
+         "name": "Museo Carlo Bilotti",
+         "address": "Viale Fiorello La Guardia, 6, 00197 Roma RM, Italy",
+         "phone_number": "06 0608",
+         "website": "http://www.museocarlobilotti.it/",
+         "coordinates": [
+            41.9133833,
+            12.4833165
+         ]
+      },
+      {
+         "name": "Doge's Palace",
+         "address": "Piazza San Marco, 1, 30124 Venezia VE, Italy",
+         "phone_number": "041 271 5911",
+         "website": "https://palazzoducale.visitmuve.it/",
+         "coordinates": [
+            45.4337035,
+            12.3403894
+         ]
+      },
+      {
+         "name": "Capitoline Museums",
+         "address": "Piazza del Campidoglio, 1, 00186 Roma RM, Italy",
+         "phone_number": "06 0608",
+         "website": "http://www.museicapitolini.org/",
+         "coordinates": [
+            41.8929428,
+            12.4825577
+         ]
+      },
+      {
+         "name": "Te Palace",
+         "address": "Viale Te, 13, 46100 Mantova MN, Italy",
+         "phone_number": "0376 323266",
+         "website": "http://www.palazzote.it/",
+         "coordinates": [
+            45.1475198,
+            10.7865928
+         ]
+      }
+   ],
+   "Czechia": [
+      {
+         "name": "Museum Kampa",
+         "address": "U Sovov\u00fdch ml\u00fdn\u016f 2, 118 00 Praha 1-Mal\u00e1 Strana, Czechia",
+         "phone_number": "257 286 147",
+         "website": "http://www.museumkampa.cz/",
+         "coordinates": [
+            50.0840301,
+            14.408453
+         ]
+      }
+   ],
+   "Hungary": [
+      {
+         "name": "Museum of Fine Arts",
+         "address": "Budapest, D\u00f3zsa Gy\u00f6rgy \u00fat 41, 1146 Hungary",
+         "phone_number": "(06 1) 469 7100",
+         "website": "https://www.szepmuveszeti.hu/",
+         "coordinates": [
+            47.5162036,
+            19.0764374
+         ]
+      }
+   ],
+   "Germany": [
+      {
+         "name": "Altes Museum",
+         "address": "Bodestra\u00dfe 1-3, 10178 Berlin, Germany",
+         "phone_number": "030 266424242",
+         "website": "https://www.smb.museum/museen-und-einrichtungen/altes-museum/home.html",
+         "coordinates": [
+            52.5194665,
+            13.3987445
+         ]
+      },
+      {
+         "name": "Alte Nationalgalerie",
+         "address": "Bodestra\u00dfe 1-3, 10178 Berlin, Germany",
+         "phone_number": "030 266424242",
+         "website": "https://www.smb.museum/museen-und-einrichtungen/alte-nationalgalerie/home.html/",
+         "coordinates": [
+            52.52081039999999,
+            13.3983529
+         ]
+      },
+      {
+         "name": "Gem\u00e4ldegalerie",
+         "address": "Matth\u00e4ikirchplatz, 10785 Berlin, Germany",
+         "phone_number": "030 266424242",
+         "website": "http://www.smb.museum/museen-und-einrichtungen/gemaeldegalerie/home.html",
+         "coordinates": [
+            52.5090131,
+            13.3660136
+         ]
+      },
+      {
+         "name": "St\u00e4del Museum",
+         "address": "Schaumainkai 63, 60596 Frankfurt am Main, Germany",
+         "phone_number": "069 605098200",
+         "website": "https://www.staedelmuseum.de/de",
+         "coordinates": [
+            50.1030925,
+            8.6740583
+         ]
+      }
+   ],
+   "Japan": [
+      {
+         "name": "Yamatane Museum of Art",
+         "address": "3-ch\u014dme-12-36 Hiroo, Shibuya City, T\u014dky\u014d-to 150-0012, Japan",
+         "phone_number": "03-5777-8600",
+         "website": "http://www.yamatane-museum.jp/",
+         "coordinates": [
+            35.653301,
+            139.713799
+         ]
+      },
+      {
+         "name": "Tokyo National Museum",
+         "address": "13-9 Uenok\u014den, Taito City, T\u014dky\u014d-to 110-8712, Japan",
+         "phone_number": "03-3822-1111",
+         "website": "http://www.tnm.jp/",
+         "coordinates": [
+            35.7188351,
+            139.7765215
+         ]
+      },
+      {
+         "name": "National Museum of Western Art",
+         "address": "7-7 Uenok\u014den, Taito City, T\u014dky\u014d-to 110-0007, Japan",
+         "phone_number": "03-3828-5131",
+         "website": "https://www.nmwa.go.jp/jp/index.html",
+         "coordinates": [
+            35.71538690000001,
+            139.7758138
+         ]
+      },
+      {
+         "name": "National Museum of Nature and Science Global Gallery",
+         "address": "Japan, \u3012110-0007 T\u014dky\u014d-to, Taito City, Uenok\u014den, 7\u2212\uff12\uff10 \u56fd\u7acb\u79d1\u5b66\u535a\u7269\u9928\u5730\u7403\u9928",
+         "phone_number": "03-5777-8600",
+         "website": "http://www.kahaku.go.jp/",
+         "coordinates": [
+            35.7155958,
+            139.7767899
+         ]
+      },
+      {
+         "name": "National Museum of Nature and Science",
+         "address": "7-20 Uenok\u014den, Taito City, T\u014dky\u014d-to 110-8718, Japan",
+         "phone_number": "03-5777-8600",
+         "website": "http://www.kahaku.go.jp/",
+         "coordinates": [
+            35.7163059,
+            139.7765252
+         ]
+      },
+      {
+         "name": "The Gallery of Horyuji Treasures, Tokyo National Museum",
+         "address": "13-9 Uenok\u014den, Taito City, T\u014dky\u014d-to 110-0007, Japan",
+         "phone_number": "03-3822-1111",
+         "website": "http://www.tnm.jp/modules/r_exhibition/index.php?controller=hall&hid=16&lang=ja",
+         "coordinates": [
+            35.7186111,
+            139.7741667
+         ]
+      },
+      {
+         "name": "Ohara Museum of Art",
+         "address": "1-ch\u014dme-1-15 Ch\u016b\u014d, Kurashiki, Okayama 710-0046, Japan",
+         "phone_number": "086-422-0005",
+         "website": "https://www.ohara.or.jp/",
+         "coordinates": [
+            34.5961099,
+            133.7706231
+         ]
+      },
+      {
+         "name": "Tokyofuji Museum",
+         "address": "492-1 Yanomachi, Hachioji, T\u014dky\u014d-to 192-0016, Japan",
+         "phone_number": "042-691-4511",
+         "website": "https://www.fujibi.or.jp/",
+         "coordinates": [
+            35.6863778,
+            139.3291361
+         ]
+      },
+      {
+         "name": "Shimane Prefectural Art Museum",
+         "address": "1-5 Sodeshich\u014d, Matsue, Shimane 690-0049, Japan",
+         "phone_number": "0852-55-4700",
+         "website": "http://www.shimane-art-museum.jp/",
+         "coordinates": [
+            35.4597803,
+            133.0528886
+         ]
+      },
+      {
+         "name": "Museum of Modern Art, Gunma",
+         "address": "Japan, \u3012370-1293 Gunma, Takasaki, \u7dbf\u8cab\u753aWatanukimachi, 992\u2212\uff11 \u7fa4\u99ac\u306e\u68ee\u516c\u5712\u5185",
+         "phone_number": "027-346-5560",
+         "website": "http://mmag.pref.gunma.jp/",
+         "coordinates": [
+            36.2987384,
+            139.0783965
+         ]
+      }
+   ],
+   "Australia": [
+      {
+         "name": "National Museum of Australia",
+         "address": "Lawson Cres, Acton ACT 2601, Australia",
+         "phone_number": "(02) 6208 5000",
+         "website": "https://www.nma.gov.au/",
+         "coordinates": [
+            -35.29248130000001,
+            149.1195319
+         ]
+      }
+   ],
+   "Austria": [
+      {
+         "name": "Kunsthistorisches Museum Wien",
+         "address": "Maria-Theresien-Platz, 1010 Wien, Austria",
+         "phone_number": "01 525240",
+         "website": "https://www.khm.at/",
+         "coordinates": [
+            48.2038016,
+            16.3617874
+         ]
+      },
+      {
+         "name": "Albertina",
+         "address": "Albertinaplatz 1, 1010 Wien, Austria",
+         "phone_number": "01 53483",
+         "website": "http://www.albertina.at/",
+         "coordinates": [
+            48.2046992,
+            16.3681824
+         ]
+      }
+   ],
+   "Spain": [
+      {
+         "name": "Cervantes Birthplace Museum",
+         "address": "Calle Mayor, 48, 28801 Alcal\u00e1 de Henares, Madrid, Spain",
+         "phone_number": "918 89 96 54",
+         "website": "http://www.museocasanataldecervantes.org/",
+         "coordinates": [
+            40.4822475,
+            -3.367135
+         ]
+      },
+      {
+         "name": "Thyssen-Bornemisza Museum",
+         "address": "Paseo del Prado, 8, 28014 Madrid, Spain",
+         "phone_number": "917 91 13 70",
+         "website": "https://www.museothyssen.org/",
+         "coordinates": [
+            40.41604059999999,
+            -3.694925399999999
+         ]
+      },
+      {
+         "name": "Museu Nacional d'Art de Catalunya",
+         "address": "Palau Nacional, Parc de Montju\u00efc, s/n, 08038 Barcelona, Spain",
+         "phone_number": "936 22 03 60",
+         "website": "http://www.museunacional.cat/",
+         "coordinates": [
+            41.36843990000001,
+            2.15357
+         ]
+      }
+   ],
+   "Romania": [
+      {
+         "name": "Palace of Parliament",
+         "address": "Strada Izvor 2-4, Bucure\u0219ti, Romania",
+         "phone_number": "021 316 0300",
+         "website": "http://www.cdep.ro/",
+         "coordinates": [
+            44.4275035,
+            26.08735059999999
+         ]
+      }
+   ],
+   "Mexico": [
+      {
+         "name": "Frida Kahlo Museum",
+         "address": "Londres 247, Del Carmen, Coyoac\u00e1n, 04100 Ciudad de M\u00e9xico, CDMX, Mexico",
+         "phone_number": "55 5554 5999",
+         "website": "https://www.museofridakahlo.org.mx/es/",
+         "coordinates": [
+            19.3551806,
+            -99.1624636
+         ]
+      },
+      {
+         "name": "Museo Dolores Olmedo",
+         "address": "Av Mexico 5843, La Noria, Xochimilco, 16030 Ciudad de M\u00e9xico, CDMX, Mexico",
+         "phone_number": "55 5555 0891",
+         "website": "http://www.museodoloresolmedo.org.mx/",
+         "coordinates": [
+            19.2656032,
+            -99.1253409
+         ]
+      },
+      {
+         "name": "Museo Nacional De Arte (MUNAL)",
+         "address": "Calle de Tacuba 8, Centro Hist\u00f3rico de la Cdad. de M\u00e9xico, Centro, Cuauht\u00e9moc, 06000 Ciudad de M\u00e9xico, CDMX, Mexico",
+         "phone_number": "55 8647 5430",
+         "website": "http://www.munal.mx/es",
+         "coordinates": [
+            19.4363712,
+            -99.1397023
+         ]
+      }
+   ],
+   "Brazil": [
+      {
+         "name": "Museum of Art of S\u00e3o Paulo Assis Chateaubriand",
+         "address": "Av. Paulista, 1578 - Bela Vista, S\u00e3o Paulo - SP, 01310-200, Brazil",
+         "phone_number": "(11) 3149-5959",
+         "website": "http://masp.art.br/",
+         "coordinates": [
+            -23.561414,
+            -46.6558819
+         ]
+      },
+      {
+         "name": "Museu Nacional de Belas Artes",
+         "address": "Av. Rio Branco, 199 - Centro, Rio de Janeiro - RJ, 20040-008, Brazil",
+         "phone_number": "(21) 3299-0600",
+         "website": "http://www.mnba.gov.br/abertura/abertura.htm",
+         "coordinates": [
+            -22.90876,
+            -43.1757007
+         ]
+      }
+   ],
+   "Switzerland": [
+      {
+         "name": "Fondation Beyeler",
+         "address": "Baselstrasse 101, 4125 Basel, Switzerland",
+         "phone_number": "061 645 97 00",
+         "website": "https://www.fondationbeyeler.ch/",
+         "coordinates": [
+            47.58810219999999,
+            7.6510161
+         ]
+      }
+   ],
+   "Denmark": [
+      {
+         "name": "Ny Carlsberg Glyptotek",
+         "address": "Dantes Plads 7, 1556 K\u00f8benhavn, Denmark",
+         "phone_number": "33 41 81 41",
+         "website": "http://www.glyptoteket.dk/",
+         "coordinates": [
+            55.67298,
+            12.572543
+         ]
+      },
+      {
+         "name": "Skagens Museum",
+         "address": "Br\u00f8ndumsvej 4, 9990 Skagen, Denmark",
+         "phone_number": "98 44 64 44",
+         "website": "https://skagenskunstmuseer.dk/",
+         "coordinates": [
+            57.72478229999999,
+            10.5971707
+         ]
+      }
+   ],
+   "Sweden": [
+      {
+         "name": "Nationalmuseum",
+         "address": "S\u00f6dra Blasieholmshamnen 2, 111 48 Stockholm, Sweden",
+         "phone_number": "08-519 543 00",
+         "website": "https://www.nationalmuseum.se/",
+         "coordinates": [
+            59.32849849999999,
+            18.0781954
+         ]
+      }
+   ],
+   "India": [
+      {
+         "name": "National Museum",
+         "address": "Janpath Rd, Rajpath Area, Central Secretariat, New Delhi, Delhi 110011, India",
+         "phone_number": "011 2379 2775",
+         "website": "http://www.nationalmuseumindia.gov.in/",
+         "coordinates": [
+            28.6118213,
+            77.21929329999999
+         ]
+      },
+      {
+         "name": "National Gallery of Modern Art",
+         "address": "Shershah Road Near India Gate Jaipur House, Delhi High Court, India Gate, New Delhi, Delhi 110003, India",
+         "phone_number": "011 2338 4640",
+         "website": "http://ngmaindia.gov.in/",
+         "coordinates": [
+            28.6102166,
+            77.2344188
+         ]
+      }
+   ],
+   "Norway": [
+      {
+         "name": "Nasjonalgalleriet",
+         "address": "Universitetsgata 13, 0164 Oslo, Norway",
+         "phone_number": "21 98 20 00",
+         "website": "http://www.nasjonalmuseet.no/",
+         "coordinates": [
+            59.91621079999999,
+            10.7376067
+         ]
+      }
+   ],
+   "Poland": [
+      {
+         "name": "The National Museum in Warsaw",
+         "address": "al. Jerozolimskie 3, 00-495 Warszawa, Poland",
+         "phone_number": "22 621 10 31",
+         "website": "https://www.mnw.art.pl/",
+         "coordinates": [
+            52.23159870000001,
+            21.0247987
+         ]
+      }
+   ]
+}
